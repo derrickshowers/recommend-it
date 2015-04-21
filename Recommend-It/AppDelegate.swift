@@ -14,7 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+
+        // setup initial storyboard
+        let sb = UIStoryboard(name: "Feed", bundle: nil)
+        let sbvc = sb.instantiateInitialViewController() as! UIViewController
+        window!.rootViewController = sbvc
+        window!.makeKeyAndVisible()
+
         return true
     }
 
