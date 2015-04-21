@@ -29,3 +29,6 @@ DerivedData
 # Carthage/Checkouts
 
 Carthage/Build
+
+# OS X Crap
+.DS_Store

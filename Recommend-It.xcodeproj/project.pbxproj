@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		E760D8BB1AE5DA6000C4518F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E760D8BA1AE5DA6000C4518F /* AppDelegate.swift */; };
 		E760D8C21AE5DA6000C4518F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E760D8C11AE5DA6000C4518F /* Images.xcassets */; };
-		E760D8C51AE5DA6000C4518F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E760D8C31AE5DA6000C4518F /* LaunchScreen.xib */; };
 		E760D8D11AE5DA6000C4518F /* Recommend_ItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E760D8D01AE5DA6000C4518F /* Recommend_ItTests.swift */; };
+		E760D8DC1AE6095600C4518F /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E760D8DB1AE6095600C4518F /* Feed.storyboard */; };
+		E760D8E11AE609EB00C4518F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E760D8E01AE609EB00C4518F /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,10 +29,11 @@
 		E760D8B91AE5DA6000C4518F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E760D8BA1AE5DA6000C4518F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E760D8C11AE5DA6000C4518F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E760D8C41AE5DA6000C4518F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E760D8CA1AE5DA6000C4518F /* Recommend-ItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Recommend-ItTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E760D8CF1AE5DA6000C4518F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E760D8D01AE5DA6000C4518F /* Recommend_ItTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommend_ItTests.swift; sourceTree = "<group>"; };
+		E760D8DB1AE6095600C4518F /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Feed.storyboard; path = Storyboards/Feed.storyboard; sourceTree = "<group>"; };
+		E760D8E01AE609EB00C4518F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = XIBs/LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,9 +76,10 @@
 			isa = PBXGroup;
 			children = (
 				E760D8BA1AE5DA6000C4518F /* AppDelegate.swift */,
-				E760D8C11AE5DA6000C4518F /* Images.xcassets */,
-				E760D8C31AE5DA6000C4518F /* LaunchScreen.xib */,
+				E760D8DA1AE605BE00C4518F /* Storyboards */,
+				E760D8DD1AE6099600C4518F /* XIBs */,
 				E760D8B81AE5DA6000C4518F /* Supporting Files */,
+				E760D8C11AE5DA6000C4518F /* Images.xcassets */,
 			);
 			path = "Recommend-It";
 			sourceTree = "<group>";
@@ -104,6 +107,22 @@
 				E760D8CF1AE5DA6000C4518F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E760D8DA1AE605BE00C4518F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E760D8DB1AE6095600C4518F /* Feed.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		E760D8DD1AE6099600C4518F /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				E760D8E01AE609EB00C4518F /* LaunchScreen.xib */,
+			);
+			name = XIBs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,8 +205,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E760D8C51AE5DA6000C4518F /* LaunchScreen.xib in Resources */,
 				E760D8C21AE5DA6000C4518F /* Images.xcassets in Resources */,
+				E760D8E11AE609EB00C4518F /* LaunchScreen.xib in Resources */,
+				E760D8DC1AE6095600C4518F /* Feed.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,17 +246,6 @@
 			targetProxy = E760D8CB1AE5DA6000C4518F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		E760D8C31AE5DA6000C4518F /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E760D8C41AE5DA6000C4518F /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E760D8D21AE5DA6000C4518F /* Debug */ = {
@@ -395,6 +404,7 @@
 				E760D8D61AE5DA6000C4518F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E760D8D71AE5DA6000C4518F /* Build configuration list for PBXNativeTarget "Recommend-ItTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +413,7 @@
 				E760D8D91AE5DA6000C4518F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
