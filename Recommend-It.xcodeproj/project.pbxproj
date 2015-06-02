@@ -12,6 +12,10 @@
 		E760D8D11AE5DA6000C4518F /* Recommend_ItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E760D8D01AE5DA6000C4518F /* Recommend_ItTests.swift */; };
 		E760D8DC1AE6095600C4518F /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E760D8DB1AE6095600C4518F /* Feed.storyboard */; };
 		E760D8E11AE609EB00C4518F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E760D8E01AE609EB00C4518F /* LaunchScreen.xib */; };
+		E79252681B1D5F0D005F0522 /* RecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79252671B1D5F0D005F0522 /* RecommendationCell.swift */; };
+		E79C60AA1AF9A5CF00F0E511 /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C60A91AF9A5CF00F0E511 /* Recommendation.swift */; };
+		E79C60AD1AF9A7A300F0E511 /* RecommendationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C60AC1AF9A7A300F0E511 /* RecommendationStore.swift */; };
+		E7C7F9D41AF1BC6000945EA1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,10 @@
 		E760D8D01AE5DA6000C4518F /* Recommend_ItTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommend_ItTests.swift; sourceTree = "<group>"; };
 		E760D8DB1AE6095600C4518F /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Feed.storyboard; path = Storyboards/Feed.storyboard; sourceTree = "<group>"; };
 		E760D8E01AE609EB00C4518F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = XIBs/LaunchScreen.xib; sourceTree = "<group>"; };
+		E79252671B1D5F0D005F0522 /* RecommendationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecommendationCell.swift; path = Views/RecommendationCell.swift; sourceTree = "<group>"; };
+		E79C60A91AF9A5CF00F0E511 /* Recommendation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Recommendation.swift; path = Models/Recommendation.swift; sourceTree = "<group>"; };
+		E79C60AC1AF9A7A300F0E511 /* RecommendationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecommendationStore.swift; path = Stores/RecommendationStore.swift; sourceTree = "<group>"; };
+		E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedViewController.swift; path = Controllers/FeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +84,10 @@
 			isa = PBXGroup;
 			children = (
 				E760D8BA1AE5DA6000C4518F /* AppDelegate.swift */,
+				E79C60AB1AF9A78000F0E511 /* Stores */,
+				E79C60A81AF9A59200F0E511 /* Models */,
+				E7C7F9D21AF1BC3E00945EA1 /* Controllers */,
+				E79252661B1D5EE9005F0522 /* Views */,
 				E760D8DA1AE605BE00C4518F /* Storyboards */,
 				E760D8DD1AE6099600C4518F /* XIBs */,
 				E760D8B81AE5DA6000C4518F /* Supporting Files */,
@@ -123,6 +135,38 @@
 				E760D8E01AE609EB00C4518F /* LaunchScreen.xib */,
 			);
 			name = XIBs;
+			sourceTree = "<group>";
+		};
+		E79252661B1D5EE9005F0522 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E79252671B1D5F0D005F0522 /* RecommendationCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E79C60A81AF9A59200F0E511 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E79C60A91AF9A5CF00F0E511 /* Recommendation.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E79C60AB1AF9A78000F0E511 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				E79C60AC1AF9A7A300F0E511 /* RecommendationStore.swift */,
+			);
+			name = Stores;
+			sourceTree = "<group>";
+		};
+		E7C7F9D21AF1BC3E00945EA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +269,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E79C60AA1AF9A5CF00F0E511 /* Recommendation.swift in Sources */,
+				E7C7F9D41AF1BC6000945EA1 /* FeedViewController.swift in Sources */,
+				E79C60AD1AF9A7A300F0E511 /* RecommendationStore.swift in Sources */,
+				E79252681B1D5F0D005F0522 /* RecommendationCell.swift in Sources */,
 				E760D8BB1AE5DA6000C4518F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,7 +23,7 @@
         <!--Recommendations-->
         <scene sceneID="dVY-ak-Axs">
             <objects>
-                <viewController id="gET-cK-EAe" sceneMemberID="viewController">
+                <viewController id="gET-cK-EAe" customClass="FeedViewController" customModule="Recommend_It" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vrf-Tc-hf3"/>
                         <viewControllerLayoutGuide type="bottom" id="JcF-fw-C8o"/>
@@ -31,9 +31,64 @@
                     <view key="view" contentMode="scaleToFill" id="4iO-mu-YaR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KBY-xg-8YI">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nwh-Iy-eyE">
+                                    <size key="itemSize" width="583" height="96"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LocationCell" id="MPU-hC-9T5" customClass="RecomendationCell" customModule="Recommend_It" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="583" height="96"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xb0-FM-b4h">
+                                                    <rect key="frame" x="0.0" y="13" width="70" height="70"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARL-9X-doH">
+                                                    <rect key="frame" x="81" y="48" width="494" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Sn-fe-E1m">
+                                                    <rect key="frame" x="80" y="19" width="495" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="image" destination="Xb0-FM-b4h" id="BFg-Ia-6gy"/>
+                                            <outlet property="nameLabel" destination="5Sn-fe-E1m" id="6oX-mt-OqB"/>
+                                            <outlet property="notesLabel" destination="ARL-9X-doH" id="afS-xx-Ll1"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="KBY-xg-8YI" secondAttribute="trailing" id="2fe-jJ-VRM"/>
+                            <constraint firstItem="KBY-xg-8YI" firstAttribute="top" secondItem="4iO-mu-YaR" secondAttribute="top" id="LHQ-IZ-dsy"/>
+                            <constraint firstItem="KBY-xg-8YI" firstAttribute="leading" secondItem="4iO-mu-YaR" secondAttribute="leading" id="ayC-lt-y3H"/>
+                            <constraint firstItem="JcF-fw-C8o" firstAttribute="top" secondItem="KBY-xg-8YI" secondAttribute="bottom" id="pGw-RQ-K4E"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Recommendations" id="CYx-cv-539"/>
+                    <connections>
+                        <outlet property="feedCollectionView" destination="KBY-xg-8YI" id="drw-E3-7iO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6iv-Ye-8Se" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
