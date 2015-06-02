@@ -13,6 +13,8 @@
 		E760D8DC1AE6095600C4518F /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E760D8DB1AE6095600C4518F /* Feed.storyboard */; };
 		E760D8E11AE609EB00C4518F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E760D8E01AE609EB00C4518F /* LaunchScreen.xib */; };
 		E79252681B1D5F0D005F0522 /* RecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79252671B1D5F0D005F0522 /* RecommendationCell.swift */; };
+		E792526A1B1D63D8005F0522 /* AddEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E79252691B1D63D8005F0522 /* AddEdit.storyboard */; };
+		E792526C1B1D66CD005F0522 /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792526B1B1D66CD005F0522 /* AddEditViewController.swift */; };
 		E79C60AA1AF9A5CF00F0E511 /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C60A91AF9A5CF00F0E511 /* Recommendation.swift */; };
 		E79C60AD1AF9A7A300F0E511 /* RecommendationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C60AC1AF9A7A300F0E511 /* RecommendationStore.swift */; };
 		E7C7F9D41AF1BC6000945EA1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */; };
@@ -39,6 +41,8 @@
 		E760D8DB1AE6095600C4518F /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Feed.storyboard; path = Storyboards/Feed.storyboard; sourceTree = "<group>"; };
 		E760D8E01AE609EB00C4518F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = XIBs/LaunchScreen.xib; sourceTree = "<group>"; };
 		E79252671B1D5F0D005F0522 /* RecommendationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecommendationCell.swift; path = Views/RecommendationCell.swift; sourceTree = "<group>"; };
+		E79252691B1D63D8005F0522 /* AddEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddEdit.storyboard; path = Storyboards/AddEdit.storyboard; sourceTree = "<group>"; };
+		E792526B1B1D66CD005F0522 /* AddEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddEditViewController.swift; path = Controllers/AddEditViewController.swift; sourceTree = "<group>"; };
 		E79C60A91AF9A5CF00F0E511 /* Recommendation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Recommendation.swift; path = Models/Recommendation.swift; sourceTree = "<group>"; };
 		E79C60AC1AF9A7A300F0E511 /* RecommendationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecommendationStore.swift; path = Stores/RecommendationStore.swift; sourceTree = "<group>"; };
 		E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedViewController.swift; path = Controllers/FeedViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				E760D8DB1AE6095600C4518F /* Feed.storyboard */,
+				E79252691B1D63D8005F0522 /* AddEdit.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */,
+				E792526B1B1D66CD005F0522 /* AddEditViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -249,6 +255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E792526A1B1D63D8005F0522 /* AddEdit.storyboard in Resources */,
 				E760D8C21AE5DA6000C4518F /* Images.xcassets in Resources */,
 				E760D8E11AE609EB00C4518F /* LaunchScreen.xib in Resources */,
 				E760D8DC1AE6095600C4518F /* Feed.storyboard in Resources */,
@@ -271,6 +278,7 @@
 			files = (
 				E79C60AA1AF9A5CF00F0E511 /* Recommendation.swift in Sources */,
 				E7C7F9D41AF1BC6000945EA1 /* FeedViewController.swift in Sources */,
+				E792526C1B1D66CD005F0522 /* AddEditViewController.swift in Sources */,
 				E79C60AD1AF9A7A300F0E511 /* RecommendationStore.swift in Sources */,
 				E79252681B1D5F0D005F0522 /* RecommendationCell.swift in Sources */,
 				E760D8BB1AE5DA6000C4518F /* AppDelegate.swift in Sources */,

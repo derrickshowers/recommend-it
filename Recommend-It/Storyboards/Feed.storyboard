@@ -85,7 +85,13 @@
                             <constraint firstItem="JcF-fw-C8o" firstAttribute="top" secondItem="KBY-xg-8YI" secondAttribute="bottom" id="pGw-RQ-K4E"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Recommendations" id="CYx-cv-539"/>
+                    <navigationItem key="navigationItem" title="Recommendations" id="CYx-cv-539">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="bq6-70-PjM">
+                            <connections>
+                                <action selector="addPressed:" destination="gET-cK-EAe" id="43b-m0-xaK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="feedCollectionView" destination="KBY-xg-8YI" id="drw-E3-7iO"/>
                     </connections>

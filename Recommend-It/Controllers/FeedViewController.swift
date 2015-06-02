@@ -23,6 +23,10 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         recommendationStore = (UIApplication.sharedApplication().delegate as! AppDelegate).recommendationStore
     }
     
+    override func viewWillAppear(animated: Bool) {
+        feedCollectionView.reloadData()
+    }
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let numOfRecs = recommendationStore?.allRecommendations.count {
             return numOfRecs
@@ -46,6 +50,12 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         } else {
             return CGSizeMake(self.view.bounds.width - 20, 100)
         }
+    }
+    
+    @IBAction func addPressed(sender: AnyObject) {
+        let sb = UIStoryboard(name: "AddEdit", bundle: nil)
+        let sbvc = sb.instantiateInitialViewController() as! UIViewController
+        self.presentViewController(sbvc, animated: true, completion: nil)   
     }
 
 }
