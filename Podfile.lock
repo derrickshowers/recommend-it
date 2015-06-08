@@ -1,0 +1,13 @@
+PODS:
+  - Alamofire (1.2.2)
+  - OAuthSwift (0.3.6)
+
+DEPENDENCIES:
+  - Alamofire (~> 1.2)
+  - OAuthSwift (~> 0.3.4)
+
+SPEC CHECKSUMS:
+  Alamofire: 11a6022f5089887d92ffb5a3014c97a0a915ab98
+  OAuthSwift: 3517e94380923085dfa7f23421bc3d4a61ce48c0
+
+COCOAPODS: 0.37.2

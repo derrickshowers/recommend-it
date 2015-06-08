@@ -32,3 +32,6 @@ Carthage/Build
 
 # OS X Crap
 .DS_Store
+
+# App Specific
+APIKeys.plist

@@ -15,6 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var recommendationStore = RecommendationStore()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        YelpAPI.sharedInstance.getBusinessesByLocationAndTerm(location: "San Francisco", term: "Seafood") { (businesses: [YelpBiz]) -> Void in
+            println(businesses)
+        }
+        
+        YelpAPI.sharedInstance.getBusinessesByLocationAndTerm(location: "San Francisco", term: "Burgers") { (businesses: [YelpBiz]) -> Void in
+            println(businesses)
+        }
 
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
