@@ -59,7 +59,7 @@ class YelpAPI {
         for biz in businesses {
             let bizId: String = biz.valueForKey("id") as! String
             let bizName: String = biz.valueForKey("name") as! String
-            let bizImageUrl: String = biz.valueForKey("image_url") as! String
+            let bizImageUrl: String? = biz.valueForKey("image_url") as? String
             let thisBiz = YelpBiz(yelpId: bizId, name: bizName, thumbnailUrl: bizImageUrl)
             results.append(thisBiz)
         }
@@ -76,6 +76,7 @@ class YelpAPI {
             "term": term
         ]
         oauthClient.get(YELP_SEARCH_URI, parameters: params, success: { (data, response) -> Void in
+            println("requesting locations...")
             var businesses = self.parseJSON(data)
             completion(businesses)
         }) { (error) -> Void in

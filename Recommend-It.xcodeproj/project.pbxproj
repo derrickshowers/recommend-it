@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0FED3ED26ECEFD3480C05F53 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6AE5CFD3B359BF4559B113 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E75C837C1B2561570070763D /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C837B1B2561570070763D /* Helpers.swift */; };
 		E760D8BB1AE5DA6000C4518F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E760D8BA1AE5DA6000C4518F /* AppDelegate.swift */; };
 		E760D8C21AE5DA6000C4518F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E760D8C11AE5DA6000C4518F /* Images.xcassets */; };
 		E760D8D11AE5DA6000C4518F /* Recommend_ItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E760D8D01AE5DA6000C4518F /* Recommend_ItTests.swift */; };
@@ -38,6 +39,8 @@
 		3A6AE5CFD3B359BF4559B113 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A65D8EA91AB501C99AC5C08 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6633D98C804EAFDFCEC308DC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E75C837B1B2561570070763D /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		E75C837D1B256B030070763D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E760D8B51AE5DA6000C4518F /* Recommend-It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recommend-It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E760D8B91AE5DA6000C4518F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E760D8BA1AE5DA6000C4518F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +83,7 @@
 		3F2CB9DEA3C6AFE2C9580CDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E75C837D1B256B030070763D /* CoreLocation.framework */,
 				3A6AE5CFD3B359BF4559B113 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -136,6 +140,7 @@
 				E7D7FD851B22CBD10078CDD2 /* APIs */,
 				E760D8B91AE5DA6000C4518F /* Info.plist */,
 				E7D7FD881B253C390078CDD2 /* APIKeys.plist */,
+				E75C837B1B2561570070763D /* Helpers.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -373,6 +378,7 @@
 				E792526E1B1D6BC4005F0522 /* SearchViewController.swift in Sources */,
 				E7C7F9D41AF1BC6000945EA1 /* FeedViewController.swift in Sources */,
 				E792526C1B1D66CD005F0522 /* AddEditViewController.swift in Sources */,
+				E75C837C1B2561570070763D /* Helpers.swift in Sources */,
 				E79C60AD1AF9A7A300F0E511 /* RecommendationStore.swift in Sources */,
 				E79252681B1D5F0D005F0522 /* RecommendationCell.swift in Sources */,
 				E760D8BB1AE5DA6000C4518F /* AppDelegate.swift in Sources */,

@@ -9,23 +9,48 @@
 import UIKit
 
 class SearchViewController: UITableViewController, UISearchBarDelegate {
+    
+    var results = [YelpBiz]()
+    var debouncedResults: (() -> ())!
+    var currentSearchText = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-    }
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 0
+        
+        debouncedResults = debounce(NSTimeInterval(0.25), queue: dispatch_get_main_queue(), getResults)
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return results.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("SearchResultCell") as! UITableViewCell
+        let biz = results[indexPath.row]
+        cell.textLabel?.text = biz.name
+        return cell
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        println(searchText)
+        currentSearchText = searchText
+        debouncedResults()
     }
+    
+    func getResults() {
+        YelpAPI.sharedInstance.getBusinessesByLocationAndTerm(location: "San+Francisco", term: self.currentSearchText) { (businesses: [YelpBiz]) -> Void in
+            self.results = businesses
+        }
+    }
+    
+//    func getLocation() {
+//        var geocoder = CLGeocoder()
+//        geocoder.geocodeAddressString("Mountain Veiw", completionHandler: { (placemarks, error) -> Void in
+//            let places = placemarks as NSArray
+//            for place in places {
+//                let clPlace = place as! CLPlacemark
+//                println("Your location is \(clPlace.locality) in \(clPlace.administrativeArea) in \(clPlace.country)")
+//            }
+//        })
+//    }
 
 }
