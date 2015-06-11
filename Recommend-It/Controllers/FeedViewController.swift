@@ -41,7 +41,18 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.nameLabel.text = recommendationStore?.allRecommendations[indexPath.row].name
         cell.notesLabel.text = recommendationStore?.allRecommendations[indexPath.row].notes
         
+        // if there's an image, show it
+        if let imageData = recommendationStore?.allRecommendations[indexPath.row].thumbnail {
+            cell.image.image = UIImage(data: imageData, scale: 1.0)!
+        }
+        
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        var aevc = getAddEditViewController()
+        aevc.currentRecommendation = recommendationStore!.allRecommendations[indexPath.row]
+        self.presentViewController(aevc, animated: true, completion: nil)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -52,10 +63,14 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    @IBAction func addPressed(sender: AnyObject) {
+    func getAddEditViewController() -> AddEditViewController {
         let sb = UIStoryboard(name: "AddEdit", bundle: nil)
-        let sbvc = sb.instantiateInitialViewController() as! UIViewController
-        self.presentViewController(sbvc, animated: true, completion: nil)   
+        let aevc = sb.instantiateInitialViewController() as! AddEditViewController
+        return aevc
+    }
+    
+    @IBAction func addPressed(sender: AnyObject) {
+        self.presentViewController(getAddEditViewController(), animated: true, completion: nil)
     }
 
 }

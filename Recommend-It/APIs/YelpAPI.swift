@@ -76,8 +76,7 @@ class YelpAPI {
             "term": term
         ]
         oauthClient.get(YELP_SEARCH_URI, parameters: params, success: { (data, response) -> Void in
-            println("requesting locations...")
-            var businesses = self.parseJSON(data)
+            let businesses = self.parseJSON(data)
             completion(businesses)
         }) { (error) -> Void in
             println("there was an error: \(error)")

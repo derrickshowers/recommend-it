@@ -17,4 +17,15 @@ class RecommendationStore {
         allRecommendations.append(rec)
         return rec
     }
+    
+    // public method to get a recommendation based on name (to modify?)
+    func getRecommendation(#name: String) -> Recommendation? {
+        var recommendation: Recommendation?
+        for rec in allRecommendations {
+            if rec.name == name {
+                recommendation = rec
+            }
+        }
+        return recommendation
+    }
 }
