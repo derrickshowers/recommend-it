@@ -11,20 +11,25 @@ import Alamofire
 
 class AddEditViewController: UIViewController {
     
+    // MARK: - Properties
+    // MARK: IBOutlet
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var notesField: UITextField!
     
+    // MARK: Other
     var recommendationStore: RecommendationStore?
     var selectedYelpBiz: YelpBiz?
     var currentRecommendation: Recommendation?
-    
+
+    // MARK: - View Controller Methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // get reservations from the AppDelegate
         recommendationStore = (UIApplication.sharedApplication().delegate as! AppDelegate).recommendationStore
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         if let selectedYelpBiz = selectedYelpBiz {
             nameField.text = selectedYelpBiz.name
@@ -39,6 +44,20 @@ class AddEditViewController: UIViewController {
         let svc = segue.destinationViewController as! SearchViewController
         svc.addEditViewController = self
     }
+    
+    // MARK: - Helper Functions
+    
+    /// Decides how to get back to the previous view controller 
+    /// (was it presented modally or part of a stack?)
+    func goBackToFeedVC() {
+        if let navController = self.navigationController {
+            navController.popToRootViewControllerAnimated(true)
+        } else {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
+    // MARK: - IBAction Functions
     
     @IBAction func savePressed(sender: AnyObject) {
         let name = nameField.text
@@ -70,11 +89,11 @@ class AddEditViewController: UIViewController {
                 }
                 
                 // dismiss the view after we get the image
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.goBackToFeedVC()
             }
         } else {
             // no image? just dismiss the view
-            self.dismissViewControllerAnimated(true, completion: nil)
+            goBackToFeedVC()
         }
     }
 }

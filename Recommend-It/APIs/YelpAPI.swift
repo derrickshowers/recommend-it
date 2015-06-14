@@ -10,24 +10,44 @@ import Foundation
 import OAuthSwift
 import Alamofire
 
+/**
+    A Yelp business that may contain the following properties:
+    
+    :yelpId:
+        The id given by the Yelp search endpoint. Used later to generate a URL
+    :name:
+        Name of business
+    :thumbnailUrl:
+        *(optional)* Url of the thumbnail image
+
+    This is primarily used by the YelpAPI singleton to return an array of results, but
+    may need to be declared in another class to understand the data being returned
+    from Yelp.
+*/
 struct YelpBiz {
     let yelpId: String
     let name: String
     let thumbnailUrl: String?
 }
 
+/**
+    A singleton to access Yelp's API endpoint. Proper usage is always `YelpAPI.sharedInstance().method`
+    (with 'method' being the method needed to retrieve data.
+*/
 class YelpAPI {
     
-    // CONSTANTS
+    // MARK: - Properties
+    // MARK: CONSTANTS
     private let YELP_SEARCH_URI = "http://api.yelp.com/v2/search"
     
+    // MARK: Other
     private let consumerKey: String
     private let consumerSecret: String
     private let accessToken: String
     private let accessTokenSecret: String
     private let oauthClient: OAuthSwiftClient
     
-    // singleton pattern
+    // MARK: - Singleton Pattern
     class var sharedInstance: YelpAPI {
         struct Static {
             static let instance = YelpAPI()
@@ -35,6 +55,7 @@ class YelpAPI {
         return Static.instance
     }
     
+    // MARK: - Initializers
     init() {
         // get api keys from APIKeys.plist
         var APIKeys: NSDictionary?
@@ -52,6 +73,14 @@ class YelpAPI {
         oauthClient = OAuthSwiftClient(consumerKey: self.consumerKey, consumerSecret: self.consumerSecret, accessToken: self.accessToken, accessTokenSecret: self.accessTokenSecret)
     }
     
+    // MARK: - Private Functions
+    /**
+        Parses JSON returned from Yelp's API and returns a `YelpBiz` object. Pretty handy!
+    
+        :param: data The server response as NSData
+    
+        :returns: an array of results based on the data passed in
+    */
     private func parseJSON(data: NSData) -> [YelpBiz] {
         let json: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as! NSDictionary
         var results = [YelpBiz]()
@@ -66,6 +95,16 @@ class YelpAPI {
         return results
     }
     
+    // MARK: - Public Functions
+    /**
+        Gets businesses from Yelp based on a location and search term string. Example would be 'seafood' (term)
+        in 'San Francisco' (location). Because a request is being made to a server, a completion function is
+        required for anything that needs to happen after the data is retrieved.
+    
+        :param: location the physical location (e.g. San Francisco)
+        :param: term the search term (e.g. seafood)
+        :param: completion callback function that is called once request is complete (passes in an array of businesses as `YelpBiz` objects)
+    */
     func getBusinessesByLocationAndTerm(#location: String, term: String, completion: ([YelpBiz]) -> Void) {
         if location.isEmpty || term.isEmpty {
             println("location and/or term cannot be empty")

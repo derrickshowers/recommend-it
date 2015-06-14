@@ -8,13 +8,17 @@
 
 import Foundation
 
+/**
+    A recommendation is something that is already saved by the user, not to be confused
+    with what is returned by Yelp (a `YelpBiz` object)
+*/
 class Recommendation {
     let yelpId: String
     var name: String
     var thumbnail: NSData?
     var notes: String?
     var archived = false
-    
+
     init(yelpId: String, name: String) {
         self.yelpId = yelpId
         self.name = name
