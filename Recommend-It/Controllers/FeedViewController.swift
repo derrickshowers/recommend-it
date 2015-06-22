@@ -16,6 +16,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     // MARK: Other
     var recommendationStore: RecommendationStore?
+    var feedHeaderView: FeedHeaderReusableView?
 
     // MARK: - View Controller Methods
 
@@ -26,6 +27,9 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         // get reservations from the AppDelegate
         recommendationStore = (UIApplication.sharedApplication().delegate as! AppDelegate).recommendationStore
+
+        // make the navigation bar transparent
+        self.navigationController?.navigationBar.makeLight()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -56,7 +60,12 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         return cell
     }
-    
+
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        feedHeaderView = feedCollectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "FeedHeader", forIndexPath: indexPath) as? FeedHeaderReusableView
+        return feedHeaderView!
+    }
+
     // MARK: Delegate
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -72,6 +81,19 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return CGSizeMake(self.view.bounds.width - 20, cell.frame.height)
         } else {
             return CGSizeMake(self.view.bounds.width - 20, 100)
+        }
+    }
+
+    // MARK: - ScrollView Methods
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.y + 64.0
+        if let feedHeaderView = feedHeaderView {
+            if offset < 134.0 {
+                feedHeaderView.feedHeaderImage.alpha = 0.8 - (offset / 134.0)
+            } else {
+                feedHeaderView.feedHeaderImage.alpha = 0.0
+            }
         }
     }
     
