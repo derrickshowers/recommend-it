@@ -93,6 +93,8 @@ class AddEditViewController: UIViewController {
             }
         } else {
             // no image? just dismiss the view
+            var placeholderImage = UIImage(named: "RecImagePlaceholder")
+            rec.thumbnail = UIImagePNGRepresentation(placeholderImage)
             goBackToFeedVC()
         }
     }
