@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		0FED3ED26ECEFD3480C05F53 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6AE5CFD3B359BF4559B113 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E707832C1B366E8A00168CA9 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707832B1B366E8A00168CA9 /* UINavigationBar.swift */; };
+		E707832E1B36757600168CA9 /* FeedFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707832D1B36757600168CA9 /* FeedFlowLayout.swift */; };
 		E75C837C1B2561570070763D /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C837B1B2561570070763D /* Helpers.swift */; };
 		E760D8BB1AE5DA6000C4518F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E760D8BA1AE5DA6000C4518F /* AppDelegate.swift */; };
 		E760D8C21AE5DA6000C4518F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E760D8C11AE5DA6000C4518F /* Images.xcassets */; };
 		E760D8D11AE5DA6000C4518F /* Recommend_ItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E760D8D01AE5DA6000C4518F /* Recommend_ItTests.swift */; };
 		E760D8DC1AE6095600C4518F /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E760D8DB1AE6095600C4518F /* Feed.storyboard */; };
 		E760D8E11AE609EB00C4518F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E760D8E01AE609EB00C4518F /* LaunchScreen.xib */; };
+		E778D70D1B37710D0022C6AC /* FeedHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E778D70C1B37710D0022C6AC /* FeedHeaderReusableView.swift */; };
 		E79252681B1D5F0D005F0522 /* RecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79252671B1D5F0D005F0522 /* RecommendationCell.swift */; };
 		E792526A1B1D63D8005F0522 /* AddEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E79252691B1D63D8005F0522 /* AddEdit.storyboard */; };
 		E792526C1B1D66CD005F0522 /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792526B1B1D66CD005F0522 /* AddEditViewController.swift */; };
@@ -39,6 +42,8 @@
 		3A6AE5CFD3B359BF4559B113 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A65D8EA91AB501C99AC5C08 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6633D98C804EAFDFCEC308DC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E707832B1B366E8A00168CA9 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UINavigationBar.swift; path = Extensions/UINavigationBar.swift; sourceTree = "<group>"; };
+		E707832D1B36757600168CA9 /* FeedFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedFlowLayout.swift; path = Views/FeedFlowLayout.swift; sourceTree = "<group>"; };
 		E75C837B1B2561570070763D /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E75C837D1B256B030070763D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E760D8B51AE5DA6000C4518F /* Recommend-It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recommend-It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,6 +55,7 @@
 		E760D8D01AE5DA6000C4518F /* Recommend_ItTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommend_ItTests.swift; sourceTree = "<group>"; };
 		E760D8DB1AE6095600C4518F /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Feed.storyboard; path = Storyboards/Feed.storyboard; sourceTree = "<group>"; };
 		E760D8E01AE609EB00C4518F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = XIBs/LaunchScreen.xib; sourceTree = "<group>"; };
+		E778D70C1B37710D0022C6AC /* FeedHeaderReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedHeaderReusableView.swift; path = Views/FeedHeaderReusableView.swift; sourceTree = "<group>"; };
 		E79252671B1D5F0D005F0522 /* RecommendationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecommendationCell.swift; path = Views/RecommendationCell.swift; sourceTree = "<group>"; };
 		E79252691B1D63D8005F0522 /* AddEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddEdit.storyboard; path = Storyboards/AddEdit.storyboard; sourceTree = "<group>"; };
 		E792526B1B1D66CD005F0522 /* AddEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddEditViewController.swift; path = Controllers/AddEditViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +104,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E70783281B366A1500168CA9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E707832B1B366E8A00168CA9 /* UINavigationBar.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		E760D8AC1AE5DA6000C4518F = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +141,7 @@
 				E7C7F9D21AF1BC3E00945EA1 /* Controllers */,
 				E79252661B1D5EE9005F0522 /* Views */,
 				E760D8DA1AE605BE00C4518F /* Storyboards */,
+				E70783281B366A1500168CA9 /* Extensions */,
 				E760D8DD1AE6099600C4518F /* XIBs */,
 				E760D8B81AE5DA6000C4518F /* Supporting Files */,
 				E760D8C11AE5DA6000C4518F /* Images.xcassets */,
@@ -183,6 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				E79252671B1D5F0D005F0522 /* RecommendationCell.swift */,
+				E778D70C1B37710D0022C6AC /* FeedHeaderReusableView.swift */,
+				E707832D1B36757600168CA9 /* FeedFlowLayout.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -375,14 +392,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E79C60AA1AF9A5CF00F0E511 /* Recommendation.swift in Sources */,
+				E707832E1B36757600168CA9 /* FeedFlowLayout.swift in Sources */,
 				E792526E1B1D6BC4005F0522 /* SearchViewController.swift in Sources */,
 				E7C7F9D41AF1BC6000945EA1 /* FeedViewController.swift in Sources */,
 				E792526C1B1D66CD005F0522 /* AddEditViewController.swift in Sources */,
 				E75C837C1B2561570070763D /* Helpers.swift in Sources */,
+				E778D70D1B37710D0022C6AC /* FeedHeaderReusableView.swift in Sources */,
 				E79C60AD1AF9A7A300F0E511 /* RecommendationStore.swift in Sources */,
 				E79252681B1D5F0D005F0522 /* RecommendationCell.swift in Sources */,
 				E760D8BB1AE5DA6000C4518F /* AppDelegate.swift in Sources */,
 				E7D7FD871B22CBE30078CDD2 /* YelpAPI.swift in Sources */,
+				E707832C1B366E8A00168CA9 /* UINavigationBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

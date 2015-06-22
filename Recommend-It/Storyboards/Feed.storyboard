@@ -32,12 +32,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KBY-xg-8YI">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KBY-xg-8YI">
+                                <rect key="frame" x="0.0" y="-63" width="600" height="663"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nwh-Iy-eyE">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nwh-Iy-eyE" customClass="FeedFlowLayout" customModule="Recommend_It" customModuleProvider="target">
                                     <size key="itemSize" width="583" height="96"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="197"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
@@ -55,13 +55,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARL-9X-doH">
                                                     <rect key="frame" x="81" y="48" width="494" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Sn-fe-E1m">
                                                     <rect key="frame" x="80" y="19" width="495" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -75,12 +75,31 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeedHeader" id="bkm-qT-lQT" customClass="FeedHeaderReusableView" customModule="Recommend_It" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="64" width="600" height="197"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FeedHeader" translatesAutoresizingMaskIntoConstraints="NO" id="jqa-d8-bXQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="197"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.38039215686274508" green="0.51372549019607838" blue="0.65098039215686276" alpha="0.95000000000000007" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="jqa-d8-bXQ" secondAttribute="trailing" id="UV9-dh-gDE"/>
+                                        <constraint firstAttribute="bottom" secondItem="jqa-d8-bXQ" secondAttribute="bottom" id="hDL-T6-Fa3"/>
+                                        <constraint firstItem="jqa-d8-bXQ" firstAttribute="leading" secondItem="bkm-qT-lQT" secondAttribute="leading" id="uJV-NO-SYV"/>
+                                        <constraint firstItem="jqa-d8-bXQ" firstAttribute="top" secondItem="bkm-qT-lQT" secondAttribute="top" id="y6b-e7-awz"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="feedHeaderImage" destination="jqa-d8-bXQ" id="BWU-a9-EyT"/>
+                                    </connections>
+                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="KBY-xg-8YI" secondAttribute="trailing" id="2fe-jJ-VRM"/>
-                            <constraint firstItem="KBY-xg-8YI" firstAttribute="top" secondItem="4iO-mu-YaR" secondAttribute="top" id="LHQ-IZ-dsy"/>
+                            <constraint firstItem="KBY-xg-8YI" firstAttribute="top" secondItem="4iO-mu-YaR" secondAttribute="top" constant="-63" id="LHQ-IZ-dsy"/>
                             <constraint firstItem="KBY-xg-8YI" firstAttribute="leading" secondItem="4iO-mu-YaR" secondAttribute="leading" id="ayC-lt-y3H"/>
                             <constraint firstItem="JcF-fw-C8o" firstAttribute="top" secondItem="KBY-xg-8YI" secondAttribute="bottom" id="pGw-RQ-K4E"/>
                         </constraints>
@@ -101,4 +120,7 @@
             <point key="canvasLocation" x="315" y="374"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="FeedHeader" width="706" height="472"/>
+    </resources>
 </document>
