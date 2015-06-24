@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
     This will take care of debouncing an action that needs some sort of delay applied. 
@@ -40,4 +41,25 @@ func debounce (delay: NSTimeInterval, #queue: dispatch_queue_t, action: (() -> (
                 }
         }
     }
+}
+
+/**
+    Helps to figure out the height of an object that has a label in it that contains an
+    unkown amount of text (say a UICollectionViewCell for instance)
+
+    :param: initialHeight height of the object before the label
+    :param: width the label's width
+    :param: font the label's font
+    :param: text the text value of the label
+
+    :returns: the new height of the object
+*/
+func heightFromDynamicLabel(#initialHeight: CGFloat, #width: CGFloat, #font: UIFont, #text: String?) -> CGFloat {
+    let rect: CGRect
+    if let text = text {
+        rect = NSString(string: text).boundingRectWithSize(CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+    } else {
+        rect = CGRect(x: 0, y: 0, width: 0, height: 0)
+    }
+    return initialHeight + ceil(rect.height)
 }

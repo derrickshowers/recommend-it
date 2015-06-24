@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecomendationCell: UICollectionViewCell {
+class RecommendationCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
     @IBOutlet weak var image: UIImageView!

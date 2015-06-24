@@ -48,7 +48,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = feedCollectionView.dequeueReusableCellWithReuseIdentifier("LocationCell", forIndexPath: indexPath) as! RecomendationCell
+        let cell = feedCollectionView.dequeueReusableCellWithReuseIdentifier("LocationCell", forIndexPath: indexPath) as! RecommendationCell
         
         cell.nameLabel.text = recommendationStore?.allRecommendations[indexPath.row].name
         cell.notesLabel.text = recommendationStore?.allRecommendations[indexPath.row].notes
@@ -57,6 +57,13 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if let imageData = recommendationStore?.allRecommendations[indexPath.row].thumbnail {
             cell.image.image = UIImage(data: imageData, scale: 1.0)!
         }
+
+        // make it pretty
+        cell.layer.masksToBounds = false
+        cell.layer.shadowOpacity = 0.25
+        cell.layer.shadowRadius = 1.0
+        cell.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        cell.layer.shadowPath = UIBezierPath(rect: cell.bounds).CGPath
         
         return cell
     }
@@ -77,22 +84,29 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: DelegateFlowLayout
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        if let cell = feedCollectionView.cellForItemAtIndexPath(indexPath) {
-            return CGSizeMake(self.view.bounds.width - 20, cell.frame.height)
-        } else {
-            return CGSizeMake(self.view.bounds.width - 20, 100)
-        }
+        let width = self.view.bounds.width - 20
+        let height = heightFromDynamicLabel(initialHeight: 140.0, width: width, font: UIFont.systemFontOfSize(14.0, weight: UIFontWeightThin), text: recommendationStore!.allRecommendations[indexPath.row].notes)
+        return CGSizeMake(self.view.bounds.width - 20, height)
     }
 
     // MARK: - ScrollView Methods
 
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y + 64.0
-        if let feedHeaderView = feedHeaderView {
-            if offset < 134.0 {
-                feedHeaderView.feedHeaderImage.alpha = 0.8 - (offset / 134.0)
-            } else {
-                feedHeaderView.feedHeaderImage.alpha = 0.0
+
+        // first we need to check if the view is loaded, otherwise this will be applied to stacked views
+        if (self.isViewLoaded() && view.window != nil) {
+
+            // now we're good to make some changes
+            if let feedHeaderView = feedHeaderView {
+                if offset < 134.0 {
+                    feedHeaderView.backgroundColor = UIColor(red: 97/255, green: 131/255, blue: 166/255, alpha: 1.0)
+                    feedHeaderView.feedHeaderImage.alpha = 0.8 - (offset / 134.0)
+                    navigationController?.navigationBar.makeLight()
+                } else {
+                    feedHeaderView.backgroundColor = UIColor.clearColor()
+                    navigationController?.navigationBar.makeDefaultBlue()
+                }
             }
         }
     }

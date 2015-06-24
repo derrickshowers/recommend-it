@@ -27,6 +27,9 @@ class FeedFlowLayout: UICollectionViewFlowLayout {
             if attrs.representedElementCategory == .SupplementaryView && attrs.representedElementKind == UICollectionElementKindSectionHeader {
                 let newAttrs = layoutAttributesForSupplementaryViewOfKind(UICollectionElementKindSectionHeader, atIndexPath: attrs.indexPath)
                 layoutAttributes![index] = newAttrs
+            } else {
+                let newAttributes = layoutAttributesForSupplementaryViewOfKind(UICollectionElementKindSectionHeader, atIndexPath: NSIndexPath(forItem: 0, inSection: 0))
+                layoutAttributes!.append(newAttributes)
             }
         }
 

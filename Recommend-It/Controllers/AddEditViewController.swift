@@ -28,6 +28,9 @@ class AddEditViewController: UIViewController {
         
         // get reservations from the AppDelegate
         recommendationStore = (UIApplication.sharedApplication().delegate as! AppDelegate).recommendationStore
+
+        // show the blue version of nav controller
+        navigationController?.navigationBar.makeDefaultBlue()
     }
 
     override func viewWillAppear(animated: Bool) {
