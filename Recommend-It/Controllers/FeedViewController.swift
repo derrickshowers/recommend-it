@@ -34,6 +34,12 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     override func viewWillAppear(animated: Bool) {
         feedCollectionView.reloadData()
+
+        if self.feedCollectionView.bounds.origin.y < 134.0 {
+            navigationController?.navigationBar.makeLight()
+        } else {
+            navigationController?.navigationBar.makeDefaultBlue()
+        }
     }
 
     // MARK: - CollectionView Methods
@@ -64,6 +70,10 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.layer.shadowRadius = 1.0
         cell.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
         cell.layer.shadowPath = UIBezierPath(rect: cell.bounds).CGPath
+
+        // fix autolayout bug
+        // http://stackoverflow.com/questions/27197813/autolayout-is-complaining-about-leading-trailing-space-for-uiimageview
+        cell.contentView.frame = cell.bounds
         
         return cell
     }
@@ -96,8 +106,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         // first we need to check if the view is loaded, otherwise this will be applied to stacked views
         if (self.isViewLoaded() && view.window != nil) {
-
-            // now we're good to make some changes
             if let feedHeaderView = feedHeaderView {
                 if offset < 134.0 {
                     feedHeaderView.backgroundColor = UIColor(red: 97/255, green: 131/255, blue: 166/255, alpha: 1.0)
@@ -119,9 +127,9 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let aevc = sb.instantiateInitialViewController() as! AddEditViewController
         return aevc
     }
-    
+
     // MARK: - IBAction Functions
-    
+
     @IBAction func addPressed(sender: AnyObject) {
         self.presentViewController(getAddEditViewController(), animated: true, completion: nil)
     }
