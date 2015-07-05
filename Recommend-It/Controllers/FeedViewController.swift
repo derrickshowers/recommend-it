@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class FeedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, RecommendationCellDelegate {
     
     // MARK: - Properties
     // MARK: IBOutlet
@@ -64,6 +64,9 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.image.image = UIImage(data: imageData, scale: 1.0)!
         }
 
+        cell.delegate = self
+        cell.cellIndex = indexPath.row
+
         // make it pretty
         cell.layer.masksToBounds = false
         cell.layer.shadowOpacity = 0.25
@@ -109,6 +112,19 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             }
         }
+    }
+
+    // MARK: - RecommendationCell Methods
+    func didPressRemoveAtIndex(cellIndex: Int) {
+        recommendationStore?.allRecommendations.removeAtIndex(cellIndex)
+        feedCollectionView.reloadData()
+    }
+    func didPressArchiveAtIndex(cellIndex: Int) {
+        recommendationStore?.allRecommendations[cellIndex].archived = true
+        feedCollectionView.reloadData()
+    }
+    func didPressYelpAtIndex(cellIndex: Int) {
+        UIAlertView(title: "Coming Soon", message: "This feature has not yet been enabled", delegate: nil, cancelButtonTitle: "Ok").show()
     }
     
     // MARK: - Helper Functions

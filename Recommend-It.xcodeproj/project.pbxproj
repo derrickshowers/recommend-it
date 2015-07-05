@@ -11,6 +11,7 @@
 		E707832C1B366E8A00168CA9 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707832B1B366E8A00168CA9 /* UINavigationBar.swift */; };
 		E707832E1B36757600168CA9 /* FeedFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707832D1B36757600168CA9 /* FeedFlowLayout.swift */; };
 		E74DC1E21B49DBF600AE45CF /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74DC1E11B49DBF600AE45CF /* UISearchBar.swift */; };
+		E74DC1E51B49EA3100AE45CF /* RecommendationCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74DC1E41B49EA3100AE45CF /* RecommendationCellDelegate.swift */; };
 		E75C837C1B2561570070763D /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C837B1B2561570070763D /* Helpers.swift */; };
 		E760D8BB1AE5DA6000C4518F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E760D8BA1AE5DA6000C4518F /* AppDelegate.swift */; };
 		E760D8C21AE5DA6000C4518F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E760D8C11AE5DA6000C4518F /* Images.xcassets */; };
@@ -46,6 +47,7 @@
 		E707832B1B366E8A00168CA9 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UINavigationBar.swift; path = Extensions/UINavigationBar.swift; sourceTree = "<group>"; };
 		E707832D1B36757600168CA9 /* FeedFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedFlowLayout.swift; path = Views/FeedFlowLayout.swift; sourceTree = "<group>"; };
 		E74DC1E11B49DBF600AE45CF /* UISearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UISearchBar.swift; path = Extensions/UISearchBar.swift; sourceTree = "<group>"; };
+		E74DC1E41B49EA3100AE45CF /* RecommendationCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecommendationCellDelegate.swift; path = Protocols/RecommendationCellDelegate.swift; sourceTree = "<group>"; };
 		E75C837B1B2561570070763D /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E75C837D1B256B030070763D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E760D8B51AE5DA6000C4518F /* Recommend-It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recommend-It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +117,14 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		E74DC1E31B49EA0000AE45CF /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E74DC1E41B49EA3100AE45CF /* RecommendationCellDelegate.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		E760D8AC1AE5DA6000C4518F = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +154,7 @@
 				E7C7F9D21AF1BC3E00945EA1 /* Controllers */,
 				E79252661B1D5EE9005F0522 /* Views */,
 				E760D8DA1AE605BE00C4518F /* Storyboards */,
+				E74DC1E31B49EA0000AE45CF /* Protocols */,
 				E70783281B366A1500168CA9 /* Extensions */,
 				E760D8DD1AE6099600C4518F /* XIBs */,
 				E760D8B81AE5DA6000C4518F /* Supporting Files */,
@@ -406,6 +417,7 @@
 				E79252681B1D5F0D005F0522 /* RecommendationCell.swift in Sources */,
 				E760D8BB1AE5DA6000C4518F /* AppDelegate.swift in Sources */,
 				E7D7FD871B22CBE30078CDD2 /* YelpAPI.swift in Sources */,
+				E74DC1E51B49EA3100AE45CF /* RecommendationCellDelegate.swift in Sources */,
 				E707832C1B366E8A00168CA9 /* UINavigationBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

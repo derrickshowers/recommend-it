@@ -85,6 +85,9 @@
                                                         <color key="titleColor" red="0.3803921569" green="0.51372549020000002" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="yelpPressed:" destination="MPU-hC-9T5" eventType="touchUpInside" id="A7C-UO-wrp"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLf-uQ-SKu">
                                                     <rect key="frame" x="386" y="187" width="188.5" height="30"/>
@@ -96,6 +99,9 @@
                                                         <color key="titleColor" red="0.3803921569" green="0.51372549020000002" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="removePressed:" destination="MPU-hC-9T5" eventType="touchUpInside" id="n74-af-dgA"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lb5-xK-ZeM">
                                                     <rect key="frame" x="198.5" y="187" width="188" height="30"/>
@@ -106,6 +112,9 @@
                                                     <state key="normal" title="Archive">
                                                         <color key="titleColor" red="0.3803921569" green="0.51372549020000002" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="archivePressed:" destination="MPU-hC-9T5" eventType="touchUpInside" id="TcG-S9-0ko"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Notes" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARL-9X-doH">
                                                     <rect key="frame" x="10" y="70" width="563" height="17"/>
