@@ -9,28 +9,49 @@
 import UIKit
 import CoreLocation
 
-class SearchViewController: UITableViewController, UISearchBarDelegate {
+class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
     
     // MARK: - Properties
     // MARK: IBOutlet
     @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var locationSearchBar: UISearchBar!
     
     // MARK: Other
     var results = [YelpBiz]()
     var debouncedResults: (() -> ())!
     var currentSearchText = ""
     var addEditViewController: AddEditViewController?
+    let locationManager = CLLocationManager()
 
     // MARK: - View Controller Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        // change UISearchBar text color
+        locationSearchBar.textColor(UIColor.whiteColor())
+
+        // setup the location manager to get user's current location
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.requestWhenInUseAuthorization()
+
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        } else {
+            locationTextField.text = "San Francisco, CA, United States"
+        }
+
+
         // make sure we're not getting results with every character typed in the search bar
         debouncedResults = debounce(NSTimeInterval(0.25), queue: dispatch_get_main_queue(), getResults)
     }
 
-    // MARK: - CollectionView Methods
+    override func viewDidDisappear(animated: Bool) {
+        locationManager.stopUpdatingLocation()
+    }
+
+    // MARK: - TableView Methods
     // MARK: Datasource
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,6 +63,10 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         cell = self.tableView.dequeueReusableCellWithIdentifier("SearchResultCell") as! UITableViewCell
         let biz = results[indexPath.row]
         cell.textLabel?.text = biz.name
+
+        // let's make the text look a little prettier
+        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 14.0)
+
         return cell
     }
     
@@ -58,6 +83,32 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         currentSearchText = searchText
         debouncedResults()
+    }
+
+    // MARK: - TextField Methods
+    // MARK: Delegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        setLocation()
+        textField.resignFirstResponder()
+        return true;
+    }
+
+    // MARK: - CLLocationManager Methods
+    // MARK: Delegate
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: { (placemarks, error) -> Void in
+            if (error == nil) {
+                if placemarks.count > 0 {
+                    var locality = (placemarks[0] as! CLPlacemark).locality
+                    self.locationTextField.text = locality
+                    self.setLocation()
+                    self.locationManager.stopUpdatingLocation()
+                }
+            }
+            else {
+                println(error)
+            }
+        })
     }
     
     // MARK: - Helper Functions
@@ -83,22 +134,10 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         })
     }
     
-    /// Retrieves the value of the location text field. Will set it to "San Francisco, CA, United States"
-    /// if empty
-    func getLocation() -> String {
-        
-        // if location is empty, let's go with San Francisco for now
-        if locationTextField.text.isEmpty {
-            locationTextField.text = "San Francisco, CA, United States"
-        }
-        
-        return locationTextField.text
-    }
-    
     /// Retrieves the results from the Yelp API. In the callback, updates the results array and reloads
     /// the table view's data
     func getResults() {
-        let location = getLocation()
+        let location = locationTextField.text
         YelpAPI.sharedInstance.getBusinessesByLocationAndTerm(location: location, term: self.currentSearchText) { (businesses: [YelpBiz]) -> Void in
             self.results = businesses
             self.tableView.reloadData()
@@ -108,7 +147,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     // MARK: - IBAction Functions
 
     @IBAction func changeButtonPressed(sender: AnyObject) {
-        setLocation()
+        locationTextField.becomeFirstResponder()
     }
 
 }

@@ -47,21 +47,13 @@ class AddEditViewController: UIViewController {
         let svc = segue.destinationViewController as! SearchViewController
         svc.addEditViewController = self
     }
-    
-    // MARK: - Helper Functions
-    
-    /// Decides how to get back to the previous view controller 
-    /// (was it presented modally or part of a stack?)
-    func goBackToFeedVC() {
-        if let navController = self.navigationController {
-            navController.popToRootViewControllerAnimated(true)
-        } else {
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
-    }
-    
+
     // MARK: - IBAction Functions
-    
+
+    @IBAction func cancelPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
     @IBAction func savePressed(sender: AnyObject) {
         let name = nameField.text
         let notes = notesField.text
@@ -92,13 +84,13 @@ class AddEditViewController: UIViewController {
                 }
                 
                 // dismiss the view after we get the image
-                self.goBackToFeedVC()
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         } else {
             // no image? just dismiss the view
             var placeholderImage = UIImage(named: "RecImagePlaceholder")
             rec.thumbnail = UIImagePNGRepresentation(placeholderImage)
-            goBackToFeedVC()
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
 }

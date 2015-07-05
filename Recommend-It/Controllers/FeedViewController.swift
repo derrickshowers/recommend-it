@@ -82,14 +82,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         feedHeaderView = feedCollectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "FeedHeader", forIndexPath: indexPath) as? FeedHeaderReusableView
         return feedHeaderView!
     }
-
-    // MARK: Delegate
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        var aevc = getAddEditViewController()
-        aevc.currentRecommendation = recommendationStore!.allRecommendations[indexPath.row]
-        self.showViewController(aevc, sender: self)
-    }
     
     // MARK: DelegateFlowLayout
     
