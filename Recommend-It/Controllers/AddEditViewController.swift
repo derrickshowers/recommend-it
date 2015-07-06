@@ -73,6 +73,20 @@ class AddEditViewController: UIViewController {
             rec = recommendationStore!.createRecommendation(yelpId: selectedYelpBiz?.yelpId ?? "no-yelp-id", name: name)
         }
         rec.notes = notes
+
+        // save the location
+        var location = ""
+        if let city = selectedYelpBiz?.city {
+            location = "\(city)"
+        }
+        if let state = selectedYelpBiz?.state {
+            if !location.isEmpty {
+                location = "\(location), \(state)"
+            } else {
+                location = "\(state)"
+            }
+        }
+        rec.location = location
         
         // save the image
         if let selectedYelpBiz = selectedYelpBiz, selectedYelpBizImg = selectedYelpBiz.thumbnailUrl {

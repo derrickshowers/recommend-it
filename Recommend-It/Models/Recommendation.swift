@@ -17,6 +17,7 @@ class Recommendation {
     var name: String
     var thumbnail: NSData?
     var notes: String?
+    var location: String?
     var archived = false
 
     init(yelpId: String, name: String) {

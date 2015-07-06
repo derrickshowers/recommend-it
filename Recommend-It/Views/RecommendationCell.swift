@@ -12,6 +12,7 @@ class RecommendationCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var locationLabel: UILabel!
 
     var delegate: RecommendationCellDelegate?
     var cellIndex: Int?

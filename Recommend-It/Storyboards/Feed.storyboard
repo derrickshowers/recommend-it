@@ -66,7 +66,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City, State, Country" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHn-kV-him">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHn-kV-him">
                                                     <rect key="frame" x="70" y="30" width="503" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="JYS-6C-A6f"/>
@@ -163,6 +163,7 @@
                                         </variation>
                                         <connections>
                                             <outlet property="image" destination="Xb0-FM-b4h" id="BFg-Ia-6gy"/>
+                                            <outlet property="locationLabel" destination="hHn-kV-him" id="4Yd-xT-J3t"/>
                                             <outlet property="nameLabel" destination="5Sn-fe-E1m" id="6oX-mt-OqB"/>
                                             <outlet property="notesLabel" destination="ARL-9X-doH" id="afS-xx-Ll1"/>
                                         </connections>

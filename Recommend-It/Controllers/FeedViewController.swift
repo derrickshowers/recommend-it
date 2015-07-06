@@ -62,6 +62,14 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // if there's an image, show it
         if let imageData = recommendationStore?.allRecommendations[indexPath.row].thumbnail {
             cell.image.image = UIImage(data: imageData, scale: 1.0)!
+        } else {
+            cell.image.image = UIImage(named: "RecImagePlaceholder")
+        }
+
+        if let location = recommendationStore?.allRecommendations[indexPath.row].location {
+            cell.locationLabel.text = location
+        } else {
+            cell.locationLabel.text = "Unknown Location"
         }
 
         cell.delegate = self
