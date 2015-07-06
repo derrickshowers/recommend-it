@@ -115,7 +115,7 @@
         <scene sceneID="vI9-6J-0HA">
             <objects>
                 <tableViewController id="NNW-MZ-8YX" customClass="SearchViewController" customModule="Recommend_It" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" id="6zp-8d-vmD">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" id="6zp-8d-vmD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -173,13 +173,21 @@
                                 <constraint firstItem="YSy-An-5PH" firstAttribute="leading" secondItem="JBO-Dl-B7g" secondAttribute="trailing" constant="8" id="aen-j3-FdM"/>
                                 <constraint firstAttribute="trailing" secondItem="ObD-9b-sJ1" secondAttribute="trailing" id="bA2-PC-ftS"/>
                                 <constraint firstItem="JBO-Dl-B7g" firstAttribute="leading" secondItem="dxy-AI-B14" secondAttribute="leading" id="c6i-DB-BeF"/>
+                                <constraint firstItem="ObD-9b-sJ1" firstAttribute="top" secondItem="Ugo-dz-Jo8" secondAttribute="top" constant="21" id="die-gQ-T3m"/>
                                 <constraint firstItem="ObD-9b-sJ1" firstAttribute="top" secondItem="Ugo-dz-Jo8" secondAttribute="top" constant="21" id="l7p-5M-eBf"/>
                                 <constraint firstItem="YSy-An-5PH" firstAttribute="centerY" secondItem="JBO-Dl-B7g" secondAttribute="centerY" id="m5v-JJ-DKW"/>
                                 <constraint firstAttribute="bottom" secondItem="JBO-Dl-B7g" secondAttribute="bottom" constant="8" id="msQ-bA-kIu"/>
                                 <constraint firstItem="JBO-Dl-B7g" firstAttribute="top" secondItem="dxy-AI-B14" secondAttribute="top" id="pfe-fZ-w9B"/>
+                                <constraint firstItem="ObD-9b-sJ1" firstAttribute="top" secondItem="Ugo-dz-Jo8" secondAttribute="top" constant="21" id="wAx-Jg-awb"/>
                                 <constraint firstItem="JBO-Dl-B7g" firstAttribute="leading" secondItem="Ugo-dz-Jo8" secondAttribute="leading" constant="8" id="xr7-oq-i5Z"/>
                                 <constraint firstAttribute="trailing" secondItem="YSy-An-5PH" secondAttribute="trailing" constant="8" id="zGa-4l-pOk"/>
                             </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="die-gQ-T3m"/>
+                                    <exclude reference="l7p-5M-eBf"/>
+                                </mask>
+                            </variation>
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="40" id="heR-p3-MB9">
