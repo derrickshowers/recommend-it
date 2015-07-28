@@ -12,4 +12,5 @@ protocol RecommendationCellDelegate {
     func didPressRemoveAtIndex(cellIndex: Int)
     func didPressArchiveAtIndex(cellIndex: Int)
     func didPressYelpAtIndex(cellIndex: Int)
+    func didPressConfirmRemove(cellIndex: Int)
 }

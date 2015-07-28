@@ -75,6 +75,10 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.delegate = self
         cell.cellIndex = indexPath.row
 
+        // reset the delete overlay
+        cell.confirmRemoveButton.hidden = true
+        cell.confirmRemoveButton.alpha = 0.0
+
         // make it pretty
         cell.layer.masksToBounds = false
         cell.layer.shadowOpacity = 0.25
@@ -124,8 +128,13 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     // MARK: - RecommendationCell Methods
     func didPressRemoveAtIndex(cellIndex: Int) {
-        recommendationStore?.allRecommendations.removeAtIndex(cellIndex)
-        feedCollectionView.reloadData()
+        var cell = feedCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: cellIndex, inSection: 0)) as! RecommendationCell
+        cell.confirmRemoveButton.hidden = false;
+        cell.cancelRemoveButton.hidden = false;
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            cell.confirmRemoveButton.alpha = 0.80
+            cell.cancelRemoveButton.alpha = 1.0
+        })
     }
     func didPressArchiveAtIndex(cellIndex: Int) {
         recommendationStore?.allRecommendations[cellIndex].archived = true
@@ -133,6 +142,11 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     func didPressYelpAtIndex(cellIndex: Int) {
         UIAlertView(title: "Coming Soon", message: "This feature has not yet been enabled", delegate: nil, cancelButtonTitle: "Ok").show()
+    }
+    func didPressConfirmRemove(cellIndex: Int) {
+        recommendationStore?.allRecommendations.removeAtIndex(cellIndex)
+        feedCollectionView.deleteItemsAtIndexPaths([NSIndexPath(forItem: cellIndex, inSection: 0)])
+        feedCollectionView.reloadSections(NSIndexSet(index: 0))
     }
     
     // MARK: - Helper Functions
