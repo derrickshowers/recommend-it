@@ -61,16 +61,16 @@ class AddEditViewController: UIViewController {
         
         // check for empty fields - more to do here later
         if name == "" && notes == "" {
-            println("name or notes not populated")
+            print("name or notes not populated")
             return
         }
         
         // save the rec
         if let currentRecommendation = currentRecommendation {
             rec = currentRecommendation
-            rec.name = nameField.text
+            rec.name = nameField.text!
         } else {
-            rec = recommendationStore!.createRecommendation(yelpId: selectedYelpBiz?.yelpId ?? "no-yelp-id", name: name)
+            rec = recommendationStore!.createRecommendation(yelpId: selectedYelpBiz?.yelpId ?? "no-yelp-id", name: name!)
         }
         rec.notes = notes
 
@@ -93,17 +93,15 @@ class AddEditViewController: UIViewController {
             Alamofire.request(.GET, selectedYelpBizImg).response() {
                 (req, res, data, error) in
                 
-                if let data = data as? NSData {
-                    rec.thumbnail = data
-                }
+                rec.thumbnail = data! as NSData
                 
                 // dismiss the view after we get the image
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         } else {
             // no image? just dismiss the view
-            var placeholderImage = UIImage(named: "RecImagePlaceholder")
-            rec.thumbnail = UIImagePNGRepresentation(placeholderImage)
+            let placeholderImage = UIImage(named: "RecImagePlaceholder")
+            rec.thumbnail = UIImagePNGRepresentation(placeholderImage!)
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }

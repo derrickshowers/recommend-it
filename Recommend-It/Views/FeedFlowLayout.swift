@@ -21,24 +21,24 @@ class FeedFlowLayout: UICollectionViewFlowLayout {
         return true
     }
 
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
-        var layoutAttributes = super.layoutAttributesForElementsInRect(rect) as? [UICollectionViewLayoutAttributes]
+    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        var layoutAttributes = super.layoutAttributesForElementsInRect(rect)! as [UICollectionViewLayoutAttributes]
 
-        for (index, attrs) in enumerate(layoutAttributes!) {
+        for (index, attrs) in (layoutAttributes).enumerate() {
             if attrs.representedElementCategory == .SupplementaryView && attrs.representedElementKind == UICollectionElementKindSectionHeader {
                 let replacementAttrs = layoutAttributesForSupplementaryViewOfKind(UICollectionElementKindSectionHeader, atIndexPath: attrs.indexPath)
-                layoutAttributes![index] = replacementAttrs
+                layoutAttributes[index] = replacementAttrs
             } else {
                 let newAttrs = layoutAttributesForSupplementaryViewOfKind(UICollectionElementKindSectionHeader, atIndexPath: NSIndexPath(forItem: 0, inSection: 0))
-                layoutAttributes!.append(newAttrs)
+                layoutAttributes.append(newAttrs)
             }
         }
 
         return layoutAttributes
     }
 
-    override func layoutAttributesForSupplementaryViewOfKind(elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
-        let attributes = super.layoutAttributesForSupplementaryViewOfKind(elementKind, atIndexPath: indexPath)
+    override func layoutAttributesForSupplementaryViewOfKind(elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes {
+        let attributes = super.layoutAttributesForSupplementaryViewOfKind(elementKind, atIndexPath: indexPath)!
         if elementKind == UICollectionElementKindSectionHeader {
 
             var y: CGFloat = 0.0

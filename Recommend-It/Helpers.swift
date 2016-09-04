@@ -15,13 +15,13 @@ import UIKit
     An example might be pinging a server for something typed into a search box. Instead of 
     pinging the server each time, set a delay to give the user time to type a few characters first.
 
-    :param: delay length of the delay
-    :param: queue thread to be used for action
-    :param: action a func that executes if delay time has passed
+    - parameter delay: length of the delay
+    - parameter queue: thread to be used for action
+    - parameter action: a func that executes if delay time has passed
     
-    :returns: a closure that is called instead of the actual action
+    - returns: a closure that is called instead of the actual action
 */
-func debounce (delay: NSTimeInterval, #queue: dispatch_queue_t, action: (() -> ())) -> () -> () {
+func debounce(delay: NSTimeInterval, queue: dispatch_queue_t, action: (() -> ())) -> () -> () {
     
     var lastFireTime: dispatch_time_t = 0
     let dispatchDelay = Int64(delay * Double(NSEC_PER_SEC))
@@ -47,14 +47,14 @@ func debounce (delay: NSTimeInterval, #queue: dispatch_queue_t, action: (() -> (
     Helps to figure out the height of an object that has a label in it that contains an
     unkown amount of text (say a UICollectionViewCell for instance)
 
-    :param: initialHeight height of the object before the label
-    :param: width the label's width
-    :param: font the label's font
-    :param: text the text value of the label
+    - parameter initialHeight: height of the object before the label
+    - parameter width: the label's width
+    - parameter font: the label's font
+    - parameter text: the text value of the label
 
-    :returns: the new height of the object
+    - returns: the new height of the object
 */
-func heightFromDynamicLabel(#initialHeight: CGFloat, #width: CGFloat, #font: UIFont, #text: String?) -> CGFloat {
+func heightFromDynamicLabel(initialHeight initialHeight: CGFloat, width: CGFloat, font: UIFont, text: String?) -> CGFloat {
     let rect: CGRect
     if let text = text {
         rect = NSString(string: text).boundingRectWithSize(CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)

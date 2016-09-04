@@ -42,9 +42,8 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
             locationTextField.text = "San Francisco, CA, United States"
         }
 
-
         // make sure we're not getting results with every character typed in the search bar
-        debouncedResults = debounce(NSTimeInterval(0.25), queue: dispatch_get_main_queue(), getResults)
+        debouncedResults = debounce(NSTimeInterval(0.25), queue: dispatch_get_main_queue(), action: getResults)
     }
 
     override func viewDidDisappear(animated: Bool) {
@@ -60,7 +59,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell
-        cell = self.tableView.dequeueReusableCellWithIdentifier("SearchResultCell") as! UITableViewCell
+        cell = self.tableView.dequeueReusableCellWithIdentifier("SearchResultCell")! as UITableViewCell
         let biz = results[indexPath.row]
         cell.textLabel?.text = biz.name
 
@@ -95,18 +94,18 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
 
     // MARK: - CLLocationManager Methods
     // MARK: Delegate
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: { (placemarks, error) -> Void in
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: { (placemarks, error) -> Void in
             if (error == nil) {
-                if placemarks.count > 0 {
-                    var locality = (placemarks[0] as! CLPlacemark).locality
+                if placemarks!.count > 0 {
+                    let locality = (placemarks![0] as CLPlacemark).locality
                     self.locationTextField.text = locality
                     self.setLocation()
                     self.locationManager.stopUpdatingLocation()
                 }
             }
             else {
-                println(error)
+                print(error)
             }
         })
     }
@@ -116,20 +115,20 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
     /// Retrieves the location from the location text field and looks up the address using CoreLocation. Then,
     /// updates the location text field in a completion callback and gets new results.
     func setLocation() {
-        let location = locationTextField.text
+        let location = locationTextField.text!
         let geocoder = CLGeocoder()
-        var realLocation: String
+        var _: String
         
         // get the real location
         geocoder.geocodeAddressString(location, completionHandler: { (placemarks, error) -> Void in
             if let error = error {
-                println("there was an error: \(error)")
+                print("there was an error: \(error)")
                 self.locationTextField.text = ""
                 return
             }
-            let places = placemarks as! [CLPlacemark]
+            let places = placemarks as [CLPlacemark]!
             let place = places[0]
-            self.locationTextField.text = "\(place.locality), \(place.administrativeArea), \(place.country)"
+            self.locationTextField.text = "\(place.locality!), \(place.administrativeArea!), \(place.country!)"
             self.getResults()
         })
     }
@@ -138,7 +137,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
     /// the table view's data
     func getResults() {
         let location = locationTextField.text
-        YelpAPI.sharedInstance.getBusinessesByLocationAndTerm(location: location, term: self.currentSearchText) { (businesses: [YelpBiz]) -> Void in
+        YelpAPI.sharedInstance.getBusinessesByLocationAndTerm(location: location!, term: self.currentSearchText) { (businesses: [YelpBiz]) -> Void in
             self.results = businesses
             self.tableView.reloadData()
         }

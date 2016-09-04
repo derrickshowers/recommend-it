@@ -40,7 +40,7 @@ class YelpAPI {
     
     // MARK: - Properties
     // MARK: CONSTANTS
-    private let YELP_SEARCH_URI = "http://api.yelp.com/v2/search"
+    private let YELP_SEARCH_URI = "https://api.yelp.com/v2/search"
     
     // MARK: Other
     private let consumerKey: String
@@ -64,7 +64,7 @@ class YelpAPI {
         if let path = NSBundle.mainBundle().pathForResource("APIKeys", ofType: "plist") {
             APIKeys = NSDictionary(contentsOfFile: path)
         } else {
-            println("ERROR: APIKeys.plist does not exist")
+            print("ERROR: APIKeys.plist does not exist")
         }
         consumerKey = APIKeys?.objectForKey("consumerKey") as! String
         consumerSecret = APIKeys?.objectForKey("consumerSecret") as! String
@@ -79,12 +79,12 @@ class YelpAPI {
     /**
         Parses JSON returned from Yelp's API and returns a `YelpBiz` object. Pretty handy!
     
-        :param: data The server response as NSData
+        - parameter data: The server response as NSData
     
-        :returns: an array of results based on the data passed in
+        - returns: an array of results based on the data passed in
     */
     private func parseJSON(data: NSData) -> [YelpBiz] {
-        let json: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as! NSDictionary
+        let json: NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(data, options: [])) as! NSDictionary
         var results = [YelpBiz]()
         let businesses = json.valueForKey("businesses") as! NSArray
         for biz in businesses {
@@ -105,13 +105,13 @@ class YelpAPI {
         in 'San Francisco' (location). Because a request is being made to a server, a completion function is
         required for anything that needs to happen after the data is retrieved.
     
-        :param: location the physical location (e.g. San Francisco)
-        :param: term the search term (e.g. seafood)
-        :param: completion callback function that is called once request is complete (passes in an array of businesses as `YelpBiz` objects)
+        - parameter location: the physical location (e.g. San Francisco)
+        - parameter term: the search term (e.g. seafood)
+        - parameter completion: callback function that is called once request is complete (passes in an array of businesses as `YelpBiz` objects)
     */
-    func getBusinessesByLocationAndTerm(#location: String, term: String, completion: ([YelpBiz]) -> Void) {
+    func getBusinessesByLocationAndTerm(location location: String, term: String, completion: ([YelpBiz]) -> Void) {
         if location.isEmpty || term.isEmpty {
-            println("location and/or term cannot be empty")
+            print("location and/or term cannot be empty")
             return
         }
         let params: [String: String] = [
@@ -122,7 +122,7 @@ class YelpAPI {
             let businesses = self.parseJSON(data)
             completion(businesses)
         }) { (error) -> Void in
-            println("there was an error: \(error)")
+            print("there was an error: \(error)")
         }
     }
     

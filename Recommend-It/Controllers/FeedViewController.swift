@@ -128,7 +128,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     // MARK: - RecommendationCell Methods
     func didPressRemoveAtIndex(cellIndex: Int) {
-        var cell = feedCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: cellIndex, inSection: 0)) as! RecommendationCell
+        let cell = feedCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: cellIndex, inSection: 0)) as! RecommendationCell
         cell.confirmRemoveButton.hidden = false;
         cell.cancelRemoveButton.hidden = false;
         UIView.animateWithDuration(0.3, animations: { () -> Void in
