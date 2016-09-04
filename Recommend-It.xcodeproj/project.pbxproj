@@ -357,7 +357,7 @@
 			attributes = {
 				LastSwiftMigration = 0730;
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Derrick Showers";
 				TargetAttributes = {
 					E760D8B41AE5DA6000C4518F = {
@@ -521,6 +521,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -598,6 +599,7 @@
 				);
 				INFOPLIST_FILE = "Recommend-It/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.derrickshowers.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "dae56648-1f6a-4896-8144-a0f808729fe0";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -616,6 +618,7 @@
 				);
 				INFOPLIST_FILE = "Recommend-It/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.derrickshowers.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "dae56648-1f6a-4896-8144-a0f808729fe0";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -638,6 +641,7 @@
 				);
 				INFOPLIST_FILE = "Recommend-ItTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.derrickshowers.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Recommend-It.app/Recommend-It";
@@ -656,6 +660,7 @@
 				);
 				INFOPLIST_FILE = "Recommend-ItTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.derrickshowers.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Recommend-It.app/Recommend-It";
