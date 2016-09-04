@@ -12,8 +12,6 @@
 		E71424121D7BC24700A077FC /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E71424111D7BC24700A077FC /* APIKeys.plist */; };
 		E721F9241B4A059300138CCA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E721F9231B4A059300138CCA /* Social.framework */; };
 		E721F9261B4A059A00138CCA /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E721F9251B4A059A00138CCA /* Accounts.framework */; };
-		E72DFCE11B4A03A6000E6274 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72DFCDF1B4A03A6000E6274 /* Bolts.framework */; };
-		E72DFCE21B4A03A6000E6274 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72DFCE01B4A03A6000E6274 /* Parse.framework */; };
 		E72DFCE31B4A0442000E6274 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75C837D1B256B030070763D /* CoreLocation.framework */; };
 		E72DFCEE1B4A0442000E6274 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72DFCE41B4A0442000E6274 /* AudioToolbox.framework */; };
 		E72DFCEF1B4A0442000E6274 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72DFCE51B4A0442000E6274 /* CFNetwork.framework */; };
@@ -119,8 +117,6 @@
 				E72DFCF61B4A0442000E6274 /* StoreKit.framework in Frameworks */,
 				E72DFCF71B4A0442000E6274 /* SystemConfiguration.framework in Frameworks */,
 				E72DFCE31B4A0442000E6274 /* CoreLocation.framework in Frameworks */,
-				E72DFCE21B4A03A6000E6274 /* Parse.framework in Frameworks */,
-				E72DFCE11B4A03A6000E6274 /* Bolts.framework in Frameworks */,
 				FD9257D54A6E62720F16CE2B /* Pods_Recommend_It.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
