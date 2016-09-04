@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import OAuthSwift
 import Alamofire
 
 /**
@@ -40,14 +39,13 @@ class YelpAPI {
     
     // MARK: - Properties
     // MARK: CONSTANTS
-    private let YELP_SEARCH_URI = "https://api.yelp.com/v2/search"
+    private let YELP_SEARCH_URI = "https://api.yelp.com/v3/businesses/search"
+    private let YELP_AUTH_URI = "https://api.yelp.com/oauth2/token"
     
     // MARK: Other
-    private let consumerKey: String
-    private let consumerSecret: String
-    private let accessToken: String
-    private let accessTokenSecret: String
-    private let oauthClient: OAuthSwiftClient
+    private let clientId: String
+    private let clientSecret: String
+    private var accessToken: String?
     
     // MARK: - Singleton Pattern
     class var sharedInstance: YelpAPI {
@@ -66,13 +64,8 @@ class YelpAPI {
         } else {
             print("ERROR: APIKeys.plist does not exist")
         }
-        consumerKey = APIKeys?.objectForKey("consumerKey") as! String
-        consumerSecret = APIKeys?.objectForKey("consumerSecret") as! String
-        accessToken = APIKeys?.objectForKey("accessToken") as! String
-        accessTokenSecret = APIKeys?.objectForKey("accessTokenSecret") as! String
-        
-        // setup the oauth client with developer API keys
-        oauthClient = OAuthSwiftClient(consumerKey: self.consumerKey, consumerSecret: self.consumerSecret, accessToken: self.accessToken, accessTokenSecret: self.accessTokenSecret)
+        clientId = APIKeys?.objectForKey("clientId") as! String
+        clientSecret = APIKeys?.objectForKey("clientSecret") as! String
     }
     
     // MARK: - Private Functions
@@ -83,20 +76,48 @@ class YelpAPI {
     
         - returns: an array of results based on the data passed in
     */
-    private func parseJSON(data: NSData) -> [YelpBiz] {
-        let json: NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(data, options: [])) as! NSDictionary
+    private func parseJSON(data: NSDictionary) -> [YelpBiz] {
         var results = [YelpBiz]()
-        let businesses = json.valueForKey("businesses") as! NSArray
+        let businesses = data.valueForKey("businesses") as! NSArray
         for biz in businesses {
             let bizId: String = biz.valueForKey("id") as! String
             let bizName: String = biz.valueForKey("name") as! String
-            let bizImageUrl: String? = biz.valueForKey("image_url") as? String
+            var bizImageUrl: String? = biz.valueForKey("image_url") as? String
             let bizLocationCity: String? = biz.valueForKeyPath("location.city") as? String
             let bizLocationState: String? = biz.valueForKeyPath("location.state_code") as? String
+
+            // Image url needs to be https
+            if let imageUrl = bizImageUrl {
+                bizImageUrl = imageUrl.stringByReplacingOccurrencesOfString("http", withString: "https", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            }
+
             let thisBiz = YelpBiz(yelpId: bizId, name: bizName, thumbnailUrl: bizImageUrl, city: bizLocationCity, state: bizLocationState)
+
             results.append(thisBiz)
         }
         return results
+    }
+    
+    /**
+        Gets the access token from Yelp and stores it in a private var
+     */
+    private func getAccessToken(completion: (String) -> ()) {
+        if let accessToken = accessToken {
+            completion(accessToken)
+        }
+        
+        let params = [
+            "grant_type": "client_credentials",
+            "client_id": clientId,
+            "client_secret": clientSecret
+        ]
+        
+        Alamofire.request(.POST, YELP_AUTH_URI, parameters: params).responseJSON { response in
+            if let data = response.result.value as? NSDictionary {
+                self.accessToken = data.objectForKey("access_token") as? String
+                completion(self.accessToken!)
+            }
+        }
     }
     
     // MARK: - Public Functions
@@ -118,12 +139,18 @@ class YelpAPI {
             "location": location,
             "term": term
         ]
-        oauthClient.get(YELP_SEARCH_URI, parameters: params, success: { (data, response) -> Void in
-            let businesses = self.parseJSON(data)
-            completion(businesses)
-        }) { (error) -> Void in
-            print("there was an error: \(error)")
+        getAccessToken { (accessToken) in
+            let headers = [
+                "Authorization": "Bearer \(accessToken)"
+            ]
+            Alamofire.request(.GET, self.YELP_SEARCH_URI, parameters: params, headers: headers).responseJSON { response in switch response.result {
+                case .Success(let data):
+                    let businesses = self.parseJSON(data as! NSDictionary)
+                    completion(businesses)
+                case .Failure(let error):
+                    print("Request failed with error: \(error)")
+                }
+            }
         }
     }
-    
-}
+};
