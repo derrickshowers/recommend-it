@@ -10,21 +10,21 @@ import UIKit
 import CoreLocation
 
 class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
-    
+
     // MARK: - Properties
     // MARK: IBOutlet
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var locationSearchBar: UISearchBar!
-    
+
     // MARK: Other
     var results = [YelpBiz]()
     var debouncedResults: (() -> ())!
-    var currentSearchText = ""
+    var currentSearchText:String?
     var addEditViewController: AddEditViewController?
     let locationManager = CLLocationManager()
 
     // MARK: - View Controller Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,7 +56,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
     }
-    
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell
         cell = self.tableView.dequeueReusableCellWithIdentifier("SearchResultCell")! as UITableViewCell
@@ -68,14 +68,14 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
 
         return cell
     }
-    
+
     // MARK: Delegate
-    
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         addEditViewController?.selectedYelpBiz = results[indexPath.row]
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     // MARK: - SearchBar Methods
     // MARK: Delegate
     
@@ -109,44 +109,45 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
             }
         })
     }
-    
+
     // MARK: - Helper Functions
-    
+
     /// Retrieves the location from the location text field and looks up the address using CoreLocation. Then,
     /// updates the location text field in a completion callback and gets new results.
     func setLocation() {
-        let location = locationTextField.text!
+        let location = locationTextField.text
         let geocoder = CLGeocoder()
         var _: String
         
         // get the real location
-        geocoder.geocodeAddressString(location, completionHandler: { (placemarks, error) -> Void in
-            if let error = error {
-                print("there was an error: \(error)")
-                self.locationTextField.text = ""
-                return
-            }
-            let places = placemarks as [CLPlacemark]!
-            let place = places[0]
-            self.locationTextField.text = "\(place.locality!), \(place.administrativeArea!), \(place.country!)"
-            self.getResults()
-        })
+        if let location = location {
+            geocoder.geocodeAddressString(location, completionHandler: { (placemarks, error) -> Void in
+                if let error = error {
+                    print("there was an error: \(error)")
+                    self.locationTextField.text = ""
+                    return
+                }
+                let places = placemarks as [CLPlacemark]!
+                let place = places[0]
+                self.locationTextField.text = "\(place.locality!), \(place.administrativeArea!), \(place.country!)"
+                self.getResults()
+            })
+        }
     }
-    
+
     /// Retrieves the results from the Yelp API. In the callback, updates the results array and reloads
     /// the table view's data
     func getResults() {
         let location = locationTextField.text
-        YelpAPI.sharedInstance.getBusinessesByLocationAndTerm(location: location!, term: self.currentSearchText) { (businesses: [YelpBiz]) -> Void in
+        YelpAPI.sharedInstance.getBusinessesByLocationAndTerm(location: location, term: self.currentSearchText) { (businesses: [YelpBiz]) -> Void in
             self.results = businesses
             self.tableView.reloadData()
         }
     }
-    
+
     // MARK: - IBAction Functions
 
     @IBAction func changeButtonPressed(sender: AnyObject) {
         locationTextField.becomeFirstResponder()
     }
-
 }
