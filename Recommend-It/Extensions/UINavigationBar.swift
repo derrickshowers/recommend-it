@@ -12,12 +12,11 @@ extension UISearchBar {
     func textColor(color: UIColor) {
         for subView in self.subviews {
             for secondLevelSubview in subView.subviews {
-                if (secondLevelSubview.isKindOfClass(UITextField)) {
-                    if let searchBarTextField:UITextField = secondLevelSubview as? UITextField {
+                if secondLevelSubview.isKindOfClass(UITextField) {
+                    if let searchBarTextField: UITextField = secondLevelSubview as? UITextField {
                         searchBarTextField.textColor = color
-                        break;
+                        break
                     }
-                    
                 }
             }
         }

@@ -43,13 +43,13 @@ class FeedFlowLayout: UICollectionViewFlowLayout {
 
             var y: CGFloat = 0.0
             let posFromTop = collectionView!.contentOffset.y + collectionView!.contentInset.top
-            var height = (headerReferenceSize.height + HEADER_OVERFLOW) * (1.0 - (posFromTop / 680.0));
+            var height = (headerReferenceSize.height + HEADER_OVERFLOW) * (1.0 - (posFromTop / 680.0))
 
-            if (posFromTop >= 134.0) {
+            if posFromTop >= 134.0 {
                 y = posFromTop - (headerReferenceSize.height - NAVBAR_HEIGHT)
             }
 
-            if (posFromTop <= 0) {
+            if posFromTop <= 0 {
                 y = posFromTop
                 height = headerReferenceSize.height + -posFromTop  + HEADER_OVERFLOW
             }

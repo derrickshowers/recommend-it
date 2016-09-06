@@ -19,7 +19,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
     // MARK: Other
     var results = [YelpBiz]()
     var debouncedResults: (() -> ())!
-    var currentSearchText:String?
+    var currentSearchText: String?
     var addEditViewController: AddEditViewController?
     let locationManager = CLLocationManager()
 
@@ -78,7 +78,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
 
     // MARK: - SearchBar Methods
     // MARK: Delegate
-    
+
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         currentSearchText = searchText
         debouncedResults()
@@ -89,22 +89,21 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         setLocation()
         textField.resignFirstResponder()
-        return true;
+        return true
     }
 
     // MARK: - CLLocationManager Methods
     // MARK: Delegate
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: { (placemarks, error) -> Void in
-            if (error == nil) {
+            if error == nil {
                 if placemarks!.count > 0 {
                     let locality = (placemarks![0] as CLPlacemark).locality
                     self.locationTextField.text = locality
                     self.setLocation()
                     self.locationManager.stopUpdatingLocation()
                 }
-            }
-            else {
+            } else {
                 print(error)
             }
         })
@@ -118,7 +117,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
         let location = locationTextField.text
         let geocoder = CLGeocoder()
         var _: String
-        
+
         // get the real location
         if let location = location {
             geocoder.geocodeAddressString(location, completionHandler: { (placemarks, error) -> Void in

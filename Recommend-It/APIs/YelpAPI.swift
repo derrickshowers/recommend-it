@@ -33,7 +33,7 @@ struct YelpBiz {
  (with 'method' being the method needed to retrieve data.
  */
 class YelpAPI {
-    
+
     // MARK: - Properties
     // MARK: CONSTANTS
     private let YELP_SEARCH_URI = "https://api.yelp.com/v3/businesses/search"
@@ -95,13 +95,13 @@ class YelpAPI {
 
         return results
     }
-    
+
     /**
      Gets the access token from Yelp and stores it in a private var
 
      - parameter completion: callback function that is called once accessToken is available
      */
-    private func getAccessToken(completion: (String) -> ()) {
+    private func getAccessToken(completion: (String) -> Void) {
         if let accessToken = accessToken {
             completion(accessToken)
         }
@@ -159,4 +159,4 @@ class YelpAPI {
             }
         }
     }
-};
+}

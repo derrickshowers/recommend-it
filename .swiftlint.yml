@@ -1,0 +1,16 @@
+disabled_rules:
+  - line_length
+  - type_body_length
+  - todo
+  - nesting
+  - variable_name
+  - force_cast
+  - function_body_length
+included:
+  - Recommend-It
+type_body_length:
+  - 600 # warning
+  - 800 # error
+file_length:
+  warning: 600
+  error: 1200

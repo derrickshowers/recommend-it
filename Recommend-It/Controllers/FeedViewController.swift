@@ -9,7 +9,7 @@
 import UIKit
 
 class FeedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, RecommendationCellDelegate {
-    
+
     // MARK: - Properties
     // MARK: IBOutlet
     @IBOutlet weak var feedCollectionView: UICollectionView!
@@ -24,7 +24,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // setup feed collection view
         feedCollectionView.delegate = self
         feedCollectionView.dataSource = self
-        
+
         // get reservations from the AppDelegate
         recommendationStore = (UIApplication.sharedApplication().delegate as! AppDelegate).recommendationStore
 
@@ -55,10 +55,10 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = feedCollectionView.dequeueReusableCellWithReuseIdentifier("LocationCell", forIndexPath: indexPath) as! RecommendationCell
-        
+
         cell.nameLabel.text = recommendationStore?.allRecommendations[indexPath.row].name
         cell.notesLabel.text = recommendationStore?.allRecommendations[indexPath.row].notes
-        
+
         // if there's an image, show it
         if let imageData = recommendationStore?.allRecommendations[indexPath.row].thumbnail {
             cell.image.image = UIImage(data: imageData, scale: 1.0)!
@@ -89,7 +89,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // fix autolayout bug
         // http://stackoverflow.com/questions/27197813/autolayout-is-complaining-about-leading-trailing-space-for-uiimageview
         cell.contentView.frame = cell.bounds
-        
+
         return cell
     }
 
@@ -97,9 +97,9 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         feedHeaderView = feedCollectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "FeedHeader", forIndexPath: indexPath) as? FeedHeaderReusableView
         return feedHeaderView!
     }
-    
+
     // MARK: DelegateFlowLayout
-    
+
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let width = self.view.bounds.width - 20
         let height = heightFromDynamicLabel(initialHeight: 140.0, width: width, font: UIFont.systemFontOfSize(14.0, weight: UIFontWeightThin), text: recommendationStore!.allRecommendations[indexPath.row].notes)
@@ -112,7 +112,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let offset = scrollView.contentOffset.y + 64.0
 
         // first we need to check if the view is loaded, otherwise this will be applied to stacked views
-        if (self.isViewLoaded() && view.window != nil) {
+        if self.isViewLoaded() && view.window != nil {
             if let feedHeaderView = feedHeaderView {
                 if offset < 134.0 {
                     feedHeaderView.backgroundColor = UIColor(red: 97/255, green: 131/255, blue: 166/255, alpha: 1.0)
@@ -129,8 +129,8 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - RecommendationCell Methods
     func didPressRemoveAtIndex(cellIndex: Int) {
         let cell = feedCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: cellIndex, inSection: 0)) as! RecommendationCell
-        cell.confirmRemoveButton.hidden = false;
-        cell.cancelRemoveButton.hidden = false;
+        cell.confirmRemoveButton.hidden = false
+        cell.cancelRemoveButton.hidden = false
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             cell.confirmRemoveButton.alpha = 0.80
             cell.cancelRemoveButton.alpha = 1.0
@@ -148,9 +148,9 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         feedCollectionView.deleteItemsAtIndexPaths([NSIndexPath(forItem: cellIndex, inSection: 0)])
         feedCollectionView.reloadSections(NSIndexSet(index: 0))
     }
-    
+
     // MARK: - Helper Functions
-    
+
     /// Gets the AddEditViewController from the AddEdit.storyboard
     func getAddEditViewController() -> AddEditViewController {
         let sb = UIStoryboard(name: "AddEdit", bundle: nil)

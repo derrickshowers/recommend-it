@@ -10,12 +10,12 @@ import UIKit
 import Alamofire
 
 class AddEditViewController: UIViewController {
-    
+
     // MARK: - Properties
     // MARK: IBOutlet
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var notesField: UITextField!
-    
+
     // MARK: Other
     var recommendationStore: RecommendationStore?
     var selectedYelpBiz: YelpBiz?
@@ -25,7 +25,7 @@ class AddEditViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // get reservations from the AppDelegate
         recommendationStore = (UIApplication.sharedApplication().delegate as! AppDelegate).recommendationStore
 
@@ -42,7 +42,7 @@ class AddEditViewController: UIViewController {
             notesField.text = currentRecommendation.notes
         }
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let svc = segue.destinationViewController as! SearchViewController
         svc.addEditViewController = self
@@ -58,13 +58,13 @@ class AddEditViewController: UIViewController {
         let name = nameField.text
         let notes = notesField.text
         var rec: Recommendation
-        
+
         // check for empty fields - more to do here later
         if name == "" && notes == "" {
             print("name or notes not populated")
             return
         }
-        
+
         // save the rec
         if let currentRecommendation = currentRecommendation {
             rec = currentRecommendation
@@ -87,14 +87,14 @@ class AddEditViewController: UIViewController {
             }
         }
         rec.location = location
-        
+
         // save the image
         if let selectedYelpBiz = selectedYelpBiz, selectedYelpBizImg = selectedYelpBiz.thumbnailUrl {
             Alamofire.request(.GET, selectedYelpBizImg).response() {
                 (req, res, data, error) in
-                
+
                 rec.thumbnail = data! as NSData
-                
+
                 // dismiss the view after we get the image
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
