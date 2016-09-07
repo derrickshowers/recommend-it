@@ -13,6 +13,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - Properties
     // MARK: IBOutlet
     @IBOutlet weak var feedCollectionView: UICollectionView!
+    @IBOutlet weak var initialInformationView: UIView!
 
     // MARK: Other
     var recommendationStore: RecommendationStore?
@@ -34,6 +35,10 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     override func viewWillAppear(animated: Bool) {
         feedCollectionView.reloadData()
+
+        if recommendationStore?.allRecommendations.count > 0 {
+            self.initialInformationView.hidden = true
+        }
 
         if self.feedCollectionView.bounds.origin.y < 134.0 {
             navigationController?.navigationBar.makeLight()
