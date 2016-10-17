@@ -9,10 +9,10 @@
 import UIKit
 
 extension UISearchBar {
-    func textColor(color: UIColor) {
+    func textColor(_ color: UIColor) {
         for subView in self.subviews {
             for secondLevelSubview in subView.subviews {
-                if secondLevelSubview.isKindOfClass(UITextField) {
+                if secondLevelSubview.isKind(of: UITextField.self) {
                     if let searchBarTextField: UITextField = secondLevelSubview as? UITextField {
                         searchBarTextField.textColor = color
                         break
