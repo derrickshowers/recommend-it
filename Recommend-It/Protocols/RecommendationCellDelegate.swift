@@ -9,8 +9,8 @@
 import Foundation
 
 protocol RecommendationCellDelegate {
-    func didPressRemoveAtIndex(cellIndex: Int)
-    func didPressArchiveAtIndex(cellIndex: Int)
-    func didPressYelpAtIndex(cellIndex: Int)
-    func didPressConfirmRemove(cellIndex: Int)
+    func didPressRemoveAtIndex(_ cellIndex: Int)
+    func didPressArchiveAtIndex(_ cellIndex: Int)
+    func didPressYelpAtIndex(_ cellIndex: Int)
+    func didPressConfirmRemove(_ cellIndex: Int)
 }

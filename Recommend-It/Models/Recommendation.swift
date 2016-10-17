@@ -15,7 +15,7 @@ import Foundation
 class Recommendation {
     let yelpId: String
     var name: String
-    var thumbnail: NSData?
+    var thumbnail: Data?
     var notes: String?
     var location: String?
     var archived = false

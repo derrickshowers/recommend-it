@@ -28,7 +28,7 @@ class RecommendationStore {
 
         - returns: A reference to the new recommendation that was added to the allRecommendations array
     */
-    func createRecommendation(yelpId yelpId: String, name: String) -> Recommendation {
+    func createRecommendation(yelpId: String, name: String) -> Recommendation {
         let rec = Recommendation(yelpId: yelpId, name: name)
         allRecommendations.append(rec)
         return rec
@@ -42,7 +42,7 @@ class RecommendationStore {
 
         - returns: *(optional)* A reference to the instance of the business
     */
-    func getRecommendation(name name: String) -> Recommendation? {
+    func getRecommendation(name: String) -> Recommendation? {
         var recommendation: Recommendation?
         for rec in allRecommendations {
             if rec.name == name {

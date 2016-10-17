@@ -17,19 +17,19 @@ class FeedFlowLayout: UICollectionViewFlowLayout {
 
     // MARK: Overriden UICollectionViewFlowLayout methods
 
-    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
 
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        var layoutAttributes = super.layoutAttributesForElementsInRect(rect)! as [UICollectionViewLayoutAttributes]
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        var layoutAttributes = super.layoutAttributesForElements(in: rect)! as [UICollectionViewLayoutAttributes]
 
-        for (index, attrs) in (layoutAttributes).enumerate() {
-            if attrs.representedElementCategory == .SupplementaryView && attrs.representedElementKind == UICollectionElementKindSectionHeader {
-                let replacementAttrs = layoutAttributesForSupplementaryViewOfKind(UICollectionElementKindSectionHeader, atIndexPath: attrs.indexPath)
+        for (index, attrs) in (layoutAttributes).enumerated() {
+            if attrs.representedElementCategory == .supplementaryView && attrs.representedElementKind == UICollectionElementKindSectionHeader {
+                let replacementAttrs = layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: attrs.indexPath)
                 layoutAttributes[index] = replacementAttrs
             } else {
-                let newAttrs = layoutAttributesForSupplementaryViewOfKind(UICollectionElementKindSectionHeader, atIndexPath: NSIndexPath(forItem: 0, inSection: 0))
+                let newAttrs = layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: IndexPath(item: 0, section: 0))
                 layoutAttributes.append(newAttrs)
             }
         }
@@ -37,8 +37,8 @@ class FeedFlowLayout: UICollectionViewFlowLayout {
         return layoutAttributes
     }
 
-    override func layoutAttributesForSupplementaryViewOfKind(elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes {
-        let attributes = super.layoutAttributesForSupplementaryViewOfKind(elementKind, atIndexPath: indexPath)!
+    override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes {
+        let attributes = super.layoutAttributesForSupplementaryView(ofKind: elementKind, at: indexPath)!
         if elementKind == UICollectionElementKindSectionHeader {
 
             var y: CGFloat = 0.0
@@ -54,7 +54,7 @@ class FeedFlowLayout: UICollectionViewFlowLayout {
                 height = headerReferenceSize.height + -posFromTop  + HEADER_OVERFLOW
             }
 
-            attributes.frame = CGRectMake(0.0, y, collectionView!.frame.width, height)
+            attributes.frame = CGRect(x: 0.0, y: y, width: collectionView!.frame.width, height: height)
             attributes.zIndex = -1
         }
 

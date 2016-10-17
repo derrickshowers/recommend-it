@@ -21,21 +21,17 @@ import UIKit
 
     - returns: a closure that is called instead of the actual action
 */
-func debounce(delay: NSTimeInterval, queue: dispatch_queue_t, action: (() -> ())) -> () -> () {
+func debounce(_ delay: TimeInterval, queue: DispatchQueue, action: @escaping (() -> ())) -> () -> () {
 
-    var lastFireTime: dispatch_time_t = 0
+    var lastFireTime: DispatchTime = DispatchTime(uptimeNanoseconds: 0)
     let dispatchDelay = Int64(delay * Double(NSEC_PER_SEC))
 
     return {
-        lastFireTime = dispatch_time(DISPATCH_TIME_NOW, 0)
-        dispatch_after(
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                dispatchDelay
-            ),
-            queue) {
-                let now = dispatch_time(DISPATCH_TIME_NOW, 0)
-                let when = dispatch_time(lastFireTime, dispatchDelay)
+        lastFireTime = DispatchTime.now() + Double(0) / Double(NSEC_PER_SEC)
+        queue.asyncAfter(
+            deadline: DispatchTime.now() + Double(dispatchDelay) / Double(NSEC_PER_SEC)) {
+                let now = DispatchTime.now() + Double(0) / Double(NSEC_PER_SEC)
+                let when = lastFireTime + Double(dispatchDelay) / Double(NSEC_PER_SEC)
                 if now >= when {
                     action()
                 }
@@ -54,10 +50,10 @@ func debounce(delay: NSTimeInterval, queue: dispatch_queue_t, action: (() -> ())
 
     - returns: the new height of the object
 */
-func heightFromDynamicLabel(initialHeight initialHeight: CGFloat, width: CGFloat, font: UIFont, text: String?) -> CGFloat {
+func heightFromDynamicLabel(initialHeight: CGFloat, width: CGFloat, font: UIFont, text: String?) -> CGFloat {
     let rect: CGRect
     if let text = text {
-        rect = NSString(string: text).boundingRectWithSize(CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+        rect = NSString(string: text).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
     } else {
         rect = CGRect(x: 0, y: 0, width: 0, height: 0)
     }

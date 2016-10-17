@@ -36,13 +36,13 @@ class YelpAPI {
 
     // MARK: - Properties
     // MARK: CONSTANTS
-    private let YELP_SEARCH_URI = "https://api.yelp.com/v3/businesses/search"
-    private let YELP_AUTH_URI = "https://api.yelp.com/oauth2/token"
+    fileprivate let YELP_SEARCH_URI = "https://api.yelp.com/v3/businesses/search"
+    fileprivate let YELP_AUTH_URI = "https://api.yelp.com/oauth2/token"
 
     // MARK: Other
-    private let clientId: String
-    private let clientSecret: String
-    private var accessToken: String?
+    fileprivate let clientId: String
+    fileprivate let clientSecret: String
+    fileprivate var accessToken: String?
 
     // MARK: - Singleton Pattern
     class var sharedInstance: YelpAPI {
@@ -56,13 +56,13 @@ class YelpAPI {
     init() {
         // get api keys from APIKeys.plist
         var APIKeys: NSDictionary?
-        if let path = NSBundle.mainBundle().pathForResource("APIKeys", ofType: "plist") {
+        if let path = Bundle.main.path(forResource: "APIKeys", ofType: "plist") {
             APIKeys = NSDictionary(contentsOfFile: path)
         } else {
             print("ERROR: APIKeys.plist does not exist")
         }
-        clientId = APIKeys?.objectForKey("clientId") as! String
-        clientSecret = APIKeys?.objectForKey("clientSecret") as! String
+        clientId = APIKeys?.object(forKey: "clientId") as! String
+        clientSecret = APIKeys?.object(forKey: "clientSecret") as! String
     }
 
     // MARK: - Private Functions
@@ -73,19 +73,19 @@ class YelpAPI {
 
      - returns: an array of results based on the data passed in
      */
-    private func parseJSON(data: NSDictionary) -> [YelpBiz] {
+    fileprivate func parseJSON(_ data: NSDictionary) -> [YelpBiz] {
         var results = [YelpBiz]()
-        let businesses = data.valueForKey("businesses") as! NSArray
+        let businesses = data.value(forKey: "businesses") as! NSArray
         for biz in businesses {
-            let bizId: String = biz.valueForKey("id") as! String
-            let bizName: String = biz.valueForKey("name") as! String
-            var bizImageUrl: String? = biz.valueForKey("image_url") as? String
-            let bizLocationCity: String? = biz.valueForKeyPath("location.city") as? String
-            let bizLocationState: String? = biz.valueForKeyPath("location.state_code") as? String
+            let bizId: String = (biz as AnyObject).value(forKey: "id") as! String
+            let bizName: String = (biz as AnyObject).value(forKey: "name") as! String
+            var bizImageUrl: String? = (biz as AnyObject).value(forKey: "image_url") as? String
+            let bizLocationCity: String? = (biz as AnyObject).value(forKeyPath: "location.city") as? String
+            let bizLocationState: String? = (biz as AnyObject).value(forKeyPath: "location.state_code") as? String
 
             // Image url needs to be https
             if let imageUrl = bizImageUrl {
-                bizImageUrl = imageUrl.stringByReplacingOccurrencesOfString("http", withString: "https", options: NSStringCompareOptions.LiteralSearch, range: nil)
+                bizImageUrl = imageUrl.replacingOccurrences(of: "http", with: "https", options: NSString.CompareOptions.literal, range: nil)
             }
 
             let thisBiz = YelpBiz(yelpId: bizId, name: bizName, thumbnailUrl: bizImageUrl, city: bizLocationCity, state: bizLocationState)
@@ -101,7 +101,7 @@ class YelpAPI {
 
      - parameter completion: callback function that is called once accessToken is available
      */
-    private func getAccessToken(completion: (String) -> Void) {
+    fileprivate func getAccessToken(_ completion: @escaping (String) -> Void) {
         if let accessToken = accessToken {
             completion(accessToken)
         }
@@ -112,9 +112,9 @@ class YelpAPI {
             "client_secret": clientSecret
         ]
 
-        Alamofire.request(.POST, YELP_AUTH_URI, parameters: params).responseJSON { response in
+        Alamofire.request(YELP_AUTH_URI, method: .post, parameters: params).responseJSON { response in
             if let data = response.result.value as? NSDictionary {
-                self.accessToken = data.objectForKey("access_token") as? String
+                self.accessToken = data.object(forKey: "access_token") as? String
                 completion(self.accessToken!)
             }
         }
@@ -130,7 +130,7 @@ class YelpAPI {
      - parameter term: the search term (e.g. seafood)
      - parameter completion: callback function that is called once request is complete (passes in an array of businesses as `YelpBiz` objects)
      */
-    func getBusinessesByLocationAndTerm(location location: String?, term: String?, completion: ([YelpBiz]) -> Void) {
+    func getBusinessesByLocationAndTerm(location: String?, term: String?, completion: @escaping ([YelpBiz]) -> Void) {
         guard let location = location else {
             return
         }
@@ -148,12 +148,13 @@ class YelpAPI {
             let headers = [
                 "Authorization": "Bearer \(accessToken)"
             ]
-            Alamofire.request(.GET, self.YELP_SEARCH_URI, parameters: params, headers: headers).responseJSON { response in
+
+            Alamofire.request(self.YELP_SEARCH_URI, method: .get, parameters: params, headers: headers).responseJSON { response in
                 switch response.result {
-                case .Success(let data):
+                case .success(let data):
                     let businesses = self.parseJSON(data as! NSDictionary)
                     completion(businesses)
-                case .Failure(let error):
+                case .failure(let error):
                     print("Request failed with error: \(error)")
                 }
             }

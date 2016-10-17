@@ -27,13 +27,13 @@ class AddEditViewController: UIViewController {
         super.viewDidLoad()
 
         // get reservations from the AppDelegate
-        recommendationStore = (UIApplication.sharedApplication().delegate as! AppDelegate).recommendationStore
+        recommendationStore = (UIApplication.shared.delegate as! AppDelegate).recommendationStore
 
         // show the blue version of nav controller
         navigationController?.navigationBar.makeDefaultBlue()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         if let selectedYelpBiz = selectedYelpBiz {
             nameField.text = selectedYelpBiz.name
         }
@@ -43,18 +43,18 @@ class AddEditViewController: UIViewController {
         }
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let svc = segue.destinationViewController as! SearchViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let svc = segue.destination as! SearchViewController
         svc.addEditViewController = self
     }
 
     // MARK: - IBAction Functions
 
-    @IBAction func cancelPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelPressed(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func savePressed(sender: AnyObject) {
+    @IBAction func savePressed(_ sender: AnyObject) {
         let name = nameField.text
         let notes = notesField.text
         var rec: Recommendation
@@ -89,20 +89,19 @@ class AddEditViewController: UIViewController {
         rec.location = location
 
         // save the image
-        if let selectedYelpBiz = selectedYelpBiz, selectedYelpBizImg = selectedYelpBiz.thumbnailUrl {
-            Alamofire.request(.GET, selectedYelpBizImg).response() {
-                (req, res, data, error) in
+        if let selectedYelpBiz = selectedYelpBiz, let selectedYelpBizImg = selectedYelpBiz.thumbnailUrl {
+            Alamofire.request(selectedYelpBizImg, method: .get).response { response in
 
-                rec.thumbnail = data! as NSData
+                rec.thumbnail = response.data! as Data
 
                 // dismiss the view after we get the image
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         } else {
             // no image? just dismiss the view
             let placeholderImage = UIImage(named: "RecImagePlaceholder")
             rec.thumbnail = UIImagePNGRepresentation(placeholderImage!)
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }

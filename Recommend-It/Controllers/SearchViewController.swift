@@ -29,7 +29,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
         super.viewDidLoad()
 
         // change UISearchBar text color
-        locationSearchBar.textColor(UIColor.whiteColor())
+        locationSearchBar.textColor(UIColor.white)
 
         // setup the location manager to get user's current location
         locationManager.delegate = self
@@ -43,24 +43,24 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
         }
 
         // make sure we're not getting results with every character typed in the search bar
-        debouncedResults = debounce(NSTimeInterval(0.25), queue: dispatch_get_main_queue(), action: getResults)
+        debouncedResults = debounce(TimeInterval(0.25), queue: DispatchQueue.main, action: getResults)
     }
 
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         locationManager.stopUpdatingLocation()
     }
 
     // MARK: - TableView Methods
     // MARK: Datasource
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell
-        cell = self.tableView.dequeueReusableCellWithIdentifier("SearchResultCell")! as UITableViewCell
-        let biz = results[indexPath.row]
+        cell = self.tableView.dequeueReusableCell(withIdentifier: "SearchResultCell")! as UITableViewCell
+        let biz = results[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = biz.name
 
         // let's make the text look a little prettier
@@ -71,22 +71,22 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
 
     // MARK: Delegate
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        addEditViewController?.selectedYelpBiz = results[indexPath.row]
-        self.dismissViewControllerAnimated(true, completion: nil)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        addEditViewController?.selectedYelpBiz = results[(indexPath as NSIndexPath).row]
+        self.dismiss(animated: true, completion: nil)
     }
 
     // MARK: - SearchBar Methods
     // MARK: Delegate
 
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         currentSearchText = searchText
         debouncedResults()
     }
 
     // MARK: - TextField Methods
     // MARK: Delegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         setLocation()
         textField.resignFirstResponder()
         return true
@@ -94,7 +94,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
 
     // MARK: - CLLocationManager Methods
     // MARK: Delegate
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: { (placemarks, error) -> Void in
             if error == nil {
                 if placemarks!.count > 0 {
@@ -116,7 +116,6 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
     func setLocation() {
         let location = locationTextField.text
         let geocoder = CLGeocoder()
-        var _: String
 
         // get the real location
         if let location = location {
@@ -127,8 +126,8 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
                     return
                 }
                 let places = placemarks as [CLPlacemark]!
-                let place = places[0]
-                self.locationTextField.text = "\(place.locality!), \(place.administrativeArea!), \(place.country!)"
+                let place = places?[0]
+                self.locationTextField.text = "\(place!.locality!), \(place!.administrativeArea!), \(place!.country!)"
                 self.getResults()
             })
         }
@@ -146,7 +145,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
 
     // MARK: - IBAction Functions
 
-    @IBAction func changeButtonPressed(sender: AnyObject) {
+    @IBAction func changeButtonPressed(_ sender: AnyObject) {
         locationTextField.becomeFirstResponder()
     }
 }

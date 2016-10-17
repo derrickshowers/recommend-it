@@ -19,29 +19,29 @@ class RecommendationCell: UICollectionViewCell {
     var delegate: RecommendationCellDelegate?
     var cellIndex: Int?
 
-    @IBAction func cancelRemoveButtonPressed(sender: AnyObject) {
+    @IBAction func cancelRemoveButtonPressed(_ sender: AnyObject) {
         confirmRemoveButton.alpha = 0.0
         cancelRemoveButton.alpha = 0.0
-        confirmRemoveButton.hidden = true
-        cancelRemoveButton.hidden = true
+        confirmRemoveButton.isHidden = true
+        cancelRemoveButton.isHidden = true
     }
-    @IBAction func confirmRemovePressed(sender: AnyObject) {
-        if let delegate = delegate, cellIndex = cellIndex {
+    @IBAction func confirmRemovePressed(_ sender: AnyObject) {
+        if let delegate = delegate, let cellIndex = cellIndex {
             delegate.didPressConfirmRemove(cellIndex)
         }
     }
-    @IBAction func removePressed(sender: AnyObject) {
-        if let delegate = delegate, cellIndex = cellIndex {
+    @IBAction func removePressed(_ sender: AnyObject) {
+        if let delegate = delegate, let cellIndex = cellIndex {
             delegate.didPressRemoveAtIndex(cellIndex)
         }
     }
-    @IBAction func archivePressed(sender: AnyObject) {
-        if let delegate = delegate, cellIndex = cellIndex {
+    @IBAction func archivePressed(_ sender: AnyObject) {
+        if let delegate = delegate, let cellIndex = cellIndex {
             delegate.didPressArchiveAtIndex(cellIndex)
         }
     }
-    @IBAction func yelpPressed(sender: AnyObject) {
-        if let delegate = delegate, cellIndex = cellIndex {
+    @IBAction func yelpPressed(_ sender: AnyObject) {
+        if let delegate = delegate, let cellIndex = cellIndex {
             delegate.didPressYelpAtIndex(cellIndex)
         }
     }
