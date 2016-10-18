@@ -79,14 +79,9 @@ class YelpAPI {
         for biz in businesses {
             let bizId: String = (biz as AnyObject).value(forKey: "id") as! String
             let bizName: String = (biz as AnyObject).value(forKey: "name") as! String
-            var bizImageUrl: String? = (biz as AnyObject).value(forKey: "image_url") as? String
+            let bizImageUrl: String? = (biz as AnyObject).value(forKey: "image_url") as? String
             let bizLocationCity: String? = (biz as AnyObject).value(forKeyPath: "location.city") as? String
             let bizLocationState: String? = (biz as AnyObject).value(forKeyPath: "location.state_code") as? String
-
-            // Image url needs to be https
-            if let imageUrl = bizImageUrl {
-                bizImageUrl = imageUrl.replacingOccurrences(of: "http", with: "https", options: NSString.CompareOptions.literal, range: nil)
-            }
 
             let thisBiz = YelpBiz(yelpId: bizId, name: bizName, thumbnailUrl: bizImageUrl, city: bizLocationCity, state: bizLocationState)
 

@@ -36,8 +36,8 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewWillAppear(_ animated: Bool) {
         feedCollectionView.reloadData()
 
-        if recommendationStore?.allRecommendations.count > 0 {
-            self.initialInformationView.hidden = true
+        if let count = recommendationStore?.allRecommendations.count, count > 0 {
+            self.initialInformationView.isHidden = true
         }
 
         if self.feedCollectionView.bounds.origin.y < 134.0 {
@@ -66,7 +66,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         // if there's an image, show it
         if let imageData = recommendationStore?.allRecommendations[(indexPath as NSIndexPath).row].thumbnail {
-            cell.image.image = UIImage(data: imageData as Data, scale: 1.0)!
+            cell.image.image = UIImage(data: imageData as Data, scale: 1.0)
         } else {
             cell.image.image = UIImage(named: "RecImagePlaceholder")
         }
