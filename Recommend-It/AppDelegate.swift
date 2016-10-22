@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var recommendationStore = RecommendationStore()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -29,5 +29,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.makeKeyAndVisible()
 
         return true
+    }
+
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+
+        migrateData()
+
+        return true
+    }
+
+    private func migrateData() {
+        let locationEntity: [Location] = CoreDataManager.sharedInstance.fetchEntity(entityName: "Location")
+
+        locationEntity.forEach { Location in
+            let rec = CoreDataManager.sharedInstance.newItem(entityName: "Recommendation")
+
+            rec.setValue(Location.archived, forKey: "archived")
+            rec.setValue(Location.city, forKey: "location")
+            rec.setValue(Location.image, forKey: "image")
+            rec.setValue(Location.name, forKey: "name")
+            rec.setValue(Location.notes, forKey: "notes")
+            rec.setValue(Location.yelpId, forKey: "yelpId")
+            rec.setValue(Location.recommendedBy, forKey: "recommendedBy")
+        }
+
+        CoreDataManager.sharedInstance.saveContext()
     }
 }

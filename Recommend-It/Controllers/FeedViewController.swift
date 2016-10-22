@@ -27,7 +27,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         feedCollectionView.dataSource = self
 
         // get reservations from the AppDelegate
-        recommendationStore = (UIApplication.shared.delegate as! AppDelegate).recommendationStore
+        recommendationStore = RecommendationStore.sharedInstance
 
         // make the navigation bar transparent
         self.navigationController?.navigationBar.makeLight()
@@ -65,7 +65,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.notesLabel.text = recommendationStore?.allRecommendations[(indexPath as NSIndexPath).row].notes
 
         // if there's an image, show it
-        if let imageData = recommendationStore?.allRecommendations[(indexPath as NSIndexPath).row].thumbnail {
+        if let imageData = recommendationStore?.allRecommendations[(indexPath as NSIndexPath).row].image {
             cell.image.image = UIImage(data: imageData as Data, scale: 1.0)
         } else {
             cell.image.image = UIImage(named: "RecImagePlaceholder")
@@ -149,7 +149,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         UIAlertView(title: "Coming Soon", message: "This feature has not yet been enabled", delegate: nil, cancelButtonTitle: "Ok").show()
     }
     func didPressConfirmRemove(_ cellIndex: Int) {
-        recommendationStore?.allRecommendations.remove(at: cellIndex)
+        recommendationStore?.removeRecommendation(at: cellIndex)
         feedCollectionView.deleteItems(at: [IndexPath(item: cellIndex, section: 0)])
         feedCollectionView.reloadSections(IndexSet(integer: 0))
     }

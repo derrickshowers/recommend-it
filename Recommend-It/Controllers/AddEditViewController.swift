@@ -17,7 +17,7 @@ class AddEditViewController: UIViewController {
     @IBOutlet weak var notesField: UITextField!
 
     // MARK: Other
-    var recommendationStore: RecommendationStore?
+    var recommendationStore: RecommendationStore!
     var selectedYelpBiz: YelpBiz?
     var currentRecommendation: Recommendation?
 
@@ -27,7 +27,7 @@ class AddEditViewController: UIViewController {
         super.viewDidLoad()
 
         // get reservations from the AppDelegate
-        recommendationStore = (UIApplication.shared.delegate as! AppDelegate).recommendationStore
+        recommendationStore = RecommendationStore.sharedInstance
 
         // show the blue version of nav controller
         navigationController?.navigationBar.makeDefaultBlue()
@@ -55,24 +55,9 @@ class AddEditViewController: UIViewController {
     }
 
     @IBAction func savePressed(_ sender: AnyObject) {
-        let name = nameField.text
-        let notes = notesField.text
-        var rec: Recommendation
 
-        // check for empty fields - more to do here later
-        if name == "" && notes == "" {
-            print("name or notes not populated")
-            return
-        }
-
-        // save the rec
-        if let currentRecommendation = currentRecommendation {
-            rec = currentRecommendation
-            rec.name = nameField.text!
-        } else {
-            rec = recommendationStore!.createRecommendation(yelpId: selectedYelpBiz?.yelpId ?? "no-yelp-id", name: name!)
-        }
-        rec.notes = notes
+        guard let name = nameField.text else { return }
+        guard let notes = notesField.text else { return }
 
         // save the location
         var location = ""
@@ -86,13 +71,22 @@ class AddEditViewController: UIViewController {
                 location = "\(state)"
             }
         }
-        rec.location = location
+
+        currentRecommendation = recommendationStore.createRecommendation(yelpId: selectedYelpBiz?.yelpId ?? "no-yelp-id", name: name, notes: notes, location: location)
 
         // save the image
+        var image: NSData?
+
         if let selectedYelpBiz = selectedYelpBiz, let selectedYelpBizImg = selectedYelpBiz.thumbnailUrl {
             Alamofire.request(selectedYelpBizImg, method: .get).response { response in
 
-                rec.thumbnail = response.data! as Data
+                if let imageData = response.data {
+                    image = imageData as NSData?
+                }
+
+                if let currentRecommendation = self.currentRecommendation {
+                    self.recommendationStore.updateImageForRecommendation(currentRecommendation, image: image)
+                }
 
                 // dismiss the view after we get the image
                 self.dismiss(animated: true, completion: nil)
@@ -100,8 +94,11 @@ class AddEditViewController: UIViewController {
         } else {
             // no image? just dismiss the view
             let placeholderImage = UIImage(named: "RecImagePlaceholder")
-            rec.thumbnail = UIImagePNGRepresentation(placeholderImage!)
+            image = UIImagePNGRepresentation(placeholderImage!) as NSData?
+            recommendationStore.updateImageForRecommendation(self.currentRecommendation!, image: image)
             self.dismiss(animated: true, completion: nil)
         }
+
+
     }
 }
