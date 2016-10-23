@@ -45,6 +45,7 @@
 		E79C60AD1AF9A7A300F0E511 /* RecommendationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C60AC1AF9A7A300F0E511 /* RecommendationStore.swift */; };
 		E7C7F9D41AF1BC6000945EA1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */; };
 		E7CA65D11DBC5D03002E03BD /* InitialEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7E6748D1DBC153D00672DC5 /* InitialEmptyView.xib */; };
+		E7CA65D31DBC968E002E03BD /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CA65D21DBC968E002E03BD /* SearchResultCell.swift */; };
 		E7D7FD871B22CBE30078CDD2 /* YelpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D7FD861B22CBE30078CDD2 /* YelpAPI.swift */; };
 		FD9257D54A6E62720F16CE2B /* Pods_Recommend_It.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F7F35EC578A903EF18A5A0 /* Pods_Recommend_It.framework */; };
 /* End PBXBuildFile section */
@@ -107,6 +108,7 @@
 		E792526D1B1D6BC4005F0522 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = Controllers/SearchViewController.swift; sourceTree = "<group>"; };
 		E79C60AC1AF9A7A300F0E511 /* RecommendationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecommendationStore.swift; path = Stores/RecommendationStore.swift; sourceTree = "<group>"; };
 		E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedViewController.swift; path = Controllers/FeedViewController.swift; sourceTree = "<group>"; };
+		E7CA65D21DBC968E002E03BD /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultCell.swift; path = Views/SearchResultCell.swift; sourceTree = "<group>"; };
 		E7D7FD861B22CBE30078CDD2 /* YelpAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpAPI.swift; path = APIs/YelpAPI.swift; sourceTree = "<group>"; };
 		E7E6748D1DBC153D00672DC5 /* InitialEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InitialEmptyView.xib; path = XIBs/InitialEmptyView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -288,6 +290,7 @@
 				E778D70C1B37710D0022C6AC /* FeedHeaderReusableView.swift */,
 				E707832D1B36757600168CA9 /* FeedFlowLayout.swift */,
 				E76CCD7E1DBC0E2400E739DB /* InitialEmptyView.swift */,
+				E7CA65D21DBC968E002E03BD /* SearchResultCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				E792526E1B1D6BC4005F0522 /* SearchViewController.swift in Sources */,
 				E74DC1E21B49DBF600AE45CF /* UISearchBar.swift in Sources */,
 				E773B5201DB89D6D0082C1AD /* CoreDataManager.swift in Sources */,
+				E7CA65D31DBC968E002E03BD /* SearchResultCell.swift in Sources */,
 				E7C7F9D41AF1BC6000945EA1 /* FeedViewController.swift in Sources */,
 				E76CCD7F1DBC0E2400E739DB /* InitialEmptyView.swift in Sources */,
 				E792526C1B1D66CD005F0522 /* AddEditViewController.swift in Sources */,

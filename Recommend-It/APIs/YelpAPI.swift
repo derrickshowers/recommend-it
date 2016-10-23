@@ -26,6 +26,7 @@ struct YelpBiz {
     let thumbnailUrl: String?
     let city: String?
     let state: String?
+    let address: String?
 }
 
 /**
@@ -82,8 +83,9 @@ class YelpAPI {
             let bizImageUrl: String? = (biz as AnyObject).value(forKey: "image_url") as? String
             let bizLocationCity: String? = (biz as AnyObject).value(forKeyPath: "location.city") as? String
             let bizLocationState: String? = (biz as AnyObject).value(forKeyPath: "location.state_code") as? String
+            let bizAddress: String? = (biz as AnyObject).value(forKeyPath: "location.address1") as? String
 
-            let thisBiz = YelpBiz(yelpId: bizId, name: bizName, thumbnailUrl: bizImageUrl, city: bizLocationCity, state: bizLocationState)
+            let thisBiz = YelpBiz(yelpId: bizId, name: bizName, thumbnailUrl: bizImageUrl, city: bizLocationCity, state: bizLocationState, address: bizAddress)
 
             results.append(thisBiz)
         }
