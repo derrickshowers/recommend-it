@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -109,7 +110,7 @@
         <scene sceneID="vI9-6J-0HA">
             <objects>
                 <tableViewController id="NNW-MZ-8YX" customClass="SearchViewController" customModule="Recommend_It" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" id="6zp-8d-vmD">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="43" sectionHeaderHeight="22" sectionFooterHeight="22" id="6zp-8d-vmD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -178,13 +179,40 @@
                             </variation>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="40" id="heR-p3-MB9">
-                                <rect key="frame" x="0.0" y="144" width="375" height="40"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="43" id="heR-p3-MB9" customClass="SearchResultCell" customModule="Recommend_It" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="144" width="375" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="heR-p3-MB9" id="3k9-ji-vUA">
-                                    <frame key="frameInset" width="375" height="39"/>
+                                    <frame key="frameInset" width="375" height="42"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" text="{{Recommendation Name}}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97A-A6-UlX">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{{Recommendation Address}}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKl-an-45E">
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="leadingMargin" secondItem="97A-A6-UlX" secondAttribute="leading" id="5zu-Sp-g2H"/>
+                                        <constraint firstItem="LKl-an-45E" firstAttribute="top" secondItem="97A-A6-UlX" secondAttribute="bottom" id="7Q3-TI-cHY"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="97A-A6-UlX" secondAttribute="trailing" id="Frc-zX-JgE"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="LKl-an-45E" secondAttribute="leading" id="SM6-ng-jE9"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="LKl-an-45E" secondAttribute="trailing" id="kND-lH-goU"/>
+                                        <constraint firstAttribute="topMargin" secondItem="97A-A6-UlX" secondAttribute="top" constant="5" id="lNg-I5-ujz"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="LKl-an-45E" secondAttribute="bottom" constant="5" id="O4t-vz-uIc"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="recommendationAddressLabel" destination="LKl-an-45E" id="Vbb-bL-PUT"/>
+                                    <outlet property="recommendationNameLabel" destination="97A-A6-UlX" id="TQ0-zY-ZrL"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -208,7 +236,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1124" y="356"/>
+            <point key="canvasLocation" x="1124" y="355.7721139430285"/>
         </scene>
     </scenes>
 </document>

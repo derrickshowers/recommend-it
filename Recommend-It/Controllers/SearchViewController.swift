@@ -60,10 +60,13 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell
-        cell = self.tableView.dequeueReusableCell(withIdentifier: "SearchResultCell")! as UITableViewCell
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as? SearchResultCell else {
+            return UITableViewCell()
+        }
+
         let biz = results[(indexPath as NSIndexPath).row]
-        cell.textLabel?.text = biz.name
+        cell.recommendationNameLabel.text = biz.name
+        cell.recommendationAddressLabel.text = biz.address
 
         // let's make the text look a little prettier
         cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 14.0)
