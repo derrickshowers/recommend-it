@@ -32,6 +32,8 @@
 		E760D8D11AE5DA6000C4518F /* Recommend_ItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E760D8D01AE5DA6000C4518F /* Recommend_ItTests.swift */; };
 		E760D8DC1AE6095600C4518F /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E760D8DB1AE6095600C4518F /* Feed.storyboard */; };
 		E760D8E11AE609EB00C4518F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E760D8E01AE609EB00C4518F /* LaunchScreen.xib */; };
+		E76CCD7F1DBC0E2400E739DB /* InitialEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76CCD7E1DBC0E2400E739DB /* InitialEmptyView.swift */; };
+		E76CCD811DBC0FD000E739DB /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76CCD801DBC0FD000E739DB /* UIView.swift */; };
 		E773B5201DB89D6D0082C1AD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E773B51F1DB89D6D0082C1AD /* CoreDataManager.swift */; };
 		E778D70D1B37710D0022C6AC /* FeedHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E778D70C1B37710D0022C6AC /* FeedHeaderReusableView.swift */; };
 		E7855B921DB479140066CD16 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7855B911DB479140066CD16 /* APIKeys.plist */; };
@@ -42,6 +44,7 @@
 		E792526E1B1D6BC4005F0522 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792526D1B1D6BC4005F0522 /* SearchViewController.swift */; };
 		E79C60AD1AF9A7A300F0E511 /* RecommendationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C60AC1AF9A7A300F0E511 /* RecommendationStore.swift */; };
 		E7C7F9D41AF1BC6000945EA1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */; };
+		E7CA65D11DBC5D03002E03BD /* InitialEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7E6748D1DBC153D00672DC5 /* InitialEmptyView.xib */; };
 		E7D7FD871B22CBE30078CDD2 /* YelpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D7FD861B22CBE30078CDD2 /* YelpAPI.swift */; };
 		FD9257D54A6E62720F16CE2B /* Pods_Recommend_It.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F7F35EC578A903EF18A5A0 /* Pods_Recommend_It.framework */; };
 /* End PBXBuildFile section */
@@ -92,6 +95,8 @@
 		E760D8D01AE5DA6000C4518F /* Recommend_ItTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommend_ItTests.swift; sourceTree = "<group>"; };
 		E760D8DB1AE6095600C4518F /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Feed.storyboard; path = Storyboards/Feed.storyboard; sourceTree = "<group>"; };
 		E760D8E01AE609EB00C4518F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = XIBs/LaunchScreen.xib; sourceTree = "<group>"; };
+		E76CCD7E1DBC0E2400E739DB /* InitialEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitialEmptyView.swift; path = Views/InitialEmptyView.swift; sourceTree = "<group>"; };
+		E76CCD801DBC0FD000E739DB /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView.swift; path = Extensions/UIView.swift; sourceTree = "<group>"; };
 		E773B51F1DB89D6D0082C1AD /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = Utils/CoreDataManager.swift; sourceTree = "<group>"; };
 		E778D70C1B37710D0022C6AC /* FeedHeaderReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedHeaderReusableView.swift; path = Views/FeedHeaderReusableView.swift; sourceTree = "<group>"; };
 		E7855B911DB479140066CD16 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
@@ -103,6 +108,7 @@
 		E79C60AC1AF9A7A300F0E511 /* RecommendationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecommendationStore.swift; path = Stores/RecommendationStore.swift; sourceTree = "<group>"; };
 		E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedViewController.swift; path = Controllers/FeedViewController.swift; sourceTree = "<group>"; };
 		E7D7FD861B22CBE30078CDD2 /* YelpAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpAPI.swift; path = APIs/YelpAPI.swift; sourceTree = "<group>"; };
+		E7E6748D1DBC153D00672DC5 /* InitialEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InitialEmptyView.xib; path = XIBs/InitialEmptyView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +174,7 @@
 			children = (
 				E707832B1B366E8A00168CA9 /* UINavigationBar.swift */,
 				E74DC1E11B49DBF600AE45CF /* UISearchBar.swift */,
+				E76CCD801DBC0FD000E739DB /* UIView.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -259,6 +266,7 @@
 		E760D8DD1AE6099600C4518F /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				E7E6748D1DBC153D00672DC5 /* InitialEmptyView.xib */,
 				E760D8E01AE609EB00C4518F /* LaunchScreen.xib */,
 			);
 			name = XIBs;
@@ -279,6 +287,7 @@
 				E79252671B1D5F0D005F0522 /* RecommendationCell.swift */,
 				E778D70C1B37710D0022C6AC /* FeedHeaderReusableView.swift */,
 				E707832D1B36757600168CA9 /* FeedFlowLayout.swift */,
+				E76CCD7E1DBC0E2400E739DB /* InitialEmptyView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -416,6 +425,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7CA65D11DBC5D03002E03BD /* InitialEmptyView.xib in Resources */,
 				E792526A1B1D63D8005F0522 /* AddEdit.storyboard in Resources */,
 				E760D8C21AE5DA6000C4518F /* Images.xcassets in Resources */,
 				E7855B921DB479140066CD16 /* APIKeys.plist in Resources */,
@@ -505,6 +515,7 @@
 				E74DC1E21B49DBF600AE45CF /* UISearchBar.swift in Sources */,
 				E773B5201DB89D6D0082C1AD /* CoreDataManager.swift in Sources */,
 				E7C7F9D41AF1BC6000945EA1 /* FeedViewController.swift in Sources */,
+				E76CCD7F1DBC0E2400E739DB /* InitialEmptyView.swift in Sources */,
 				E792526C1B1D66CD005F0522 /* AddEditViewController.swift in Sources */,
 				E71CFC0A1DB5D07400DF77D7 /* RecommendIt.xcdatamodeld in Sources */,
 				E75C837C1B2561570070763D /* Helpers.swift in Sources */,
@@ -513,6 +524,7 @@
 				E79C60AD1AF9A7A300F0E511 /* RecommendationStore.swift in Sources */,
 				E79252681B1D5F0D005F0522 /* RecommendationCell.swift in Sources */,
 				E760D8BB1AE5DA6000C4518F /* AppDelegate.swift in Sources */,
+				E76CCD811DBC0FD000E739DB /* UIView.swift in Sources */,
 				E7D7FD871B22CBE30078CDD2 /* YelpAPI.swift in Sources */,
 				E74DC1E51B49EA3100AE45CF /* RecommendationCellDelegate.swift in Sources */,
 				E707832C1B366E8A00168CA9 /* UINavigationBar.swift in Sources */,

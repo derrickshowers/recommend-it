@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gsy-5Y-6uU">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,23 +32,23 @@
                         <viewControllerLayoutGuide type="bottom" id="JcF-fw-C8o"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4iO-mu-YaR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KBY-xg-8YI">
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nwh-Iy-eyE" customClass="FeedFlowLayout" customModule="Recommend_It" customModuleProvider="target">
-                                    <size key="itemSize" width="583" height="227"/>
+                                    <size key="itemSize" width="418" height="227"/>
                                     <size key="headerReferenceSize" width="50" height="197"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LocationCell" id="MPU-hC-9T5" customClass="RecommendationCell" customModule="Recommend_It" customModuleProvider="target">
-                                        <rect key="frame" x="-104" y="207" width="583" height="227"/>
+                                        <rect key="frame" x="-2" y="207" width="418" height="227"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="583" height="227"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="418" height="227"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xb0-FM-b4h">
@@ -177,9 +177,9 @@
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="bvw-05-GoW"/>
-                                                <exclude reference="pRL-Zj-4if"/>
                                                 <exclude reference="3GR-mW-0Q1"/>
                                                 <exclude reference="J8Z-NE-BSk"/>
+                                                <exclude reference="pRL-Zj-4if"/>
                                                 <exclude reference="WT3-ah-DnY"/>
                                             </mask>
                                         </variation>
@@ -194,7 +194,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" reuseIdentifier="FeedHeader" id="bkm-qT-lQT" customClass="FeedHeaderReusableView" customModule="Recommend_It" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="197"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="197"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FeedHeader" translatesAutoresizingMaskIntoConstraints="NO" id="jqa-d8-bXQ"/>
@@ -211,49 +211,13 @@
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZZ-in-uCX">
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xqd-Y5-cvS">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="71" id="MYX-9j-lSK"/>
-                                            <constraint firstAttribute="height" constant="71" id="Ytp-Kd-Hzi"/>
-                                        </constraints>
-                                        <state key="normal" title="Add recommendation" image="add-tag"/>
-                                        <connections>
-                                            <action selector="addPressed:" destination="gET-cK-EAe" eventType="touchUpInside" id="8S6-cU-a41"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M41-Om-Qft">
-                                        <string key="text">Let's get started. First things first, though – do you have a personal recommendation you want to add? Think Yelp bookmark, but with some notes so you have a chance of remembering months later why on earth you added the recommendation in the first place.
-
-What kind of notes should you add? How about who told you about it. Or, why you think it sounds super amazing.
-
-So tap the button to add your neat-o recommendation and then come back here for a list of all those cool places you want to try!</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="M41-Om-Qft" secondAttribute="trailing" constant="43" id="0Yn-r2-gnA"/>
-                                    <constraint firstItem="M41-Om-Qft" firstAttribute="leading" secondItem="BZZ-in-uCX" secondAttribute="leading" constant="43" id="3Gb-z9-qLQ"/>
-                                    <constraint firstItem="M41-Om-Qft" firstAttribute="top" secondItem="Xqd-Y5-cvS" secondAttribute="bottom" constant="30" id="5RO-pP-NkE"/>
-                                    <constraint firstItem="Xqd-Y5-cvS" firstAttribute="centerX" secondItem="BZZ-in-uCX" secondAttribute="centerX" id="TXe-Qp-vid"/>
-                                    <constraint firstItem="Xqd-Y5-cvS" firstAttribute="top" secondItem="BZZ-in-uCX" secondAttribute="top" constant="25" id="nd2-wA-fZw"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="KBY-xg-8YI" secondAttribute="trailing" id="2fe-jJ-VRM"/>
-                            <constraint firstItem="BZZ-in-uCX" firstAttribute="leading" secondItem="4iO-mu-YaR" secondAttribute="leading" constant="10" id="6Vp-Vi-6Gi"/>
-                            <constraint firstItem="BZZ-in-uCX" firstAttribute="top" secondItem="4iO-mu-YaR" secondAttribute="topMargin" constant="134" id="7Lj-1K-3DE"/>
-                            <constraint firstAttribute="trailing" secondItem="BZZ-in-uCX" secondAttribute="trailing" constant="10" id="HfJ-Cx-YrI"/>
                             <constraint firstItem="KBY-xg-8YI" firstAttribute="top" secondItem="4iO-mu-YaR" secondAttribute="top" constant="-64" id="LHQ-IZ-dsy"/>
                             <constraint firstItem="KBY-xg-8YI" firstAttribute="leading" secondItem="4iO-mu-YaR" secondAttribute="leading" id="ayC-lt-y3H"/>
                             <constraint firstItem="JcF-fw-C8o" firstAttribute="top" secondItem="KBY-xg-8YI" secondAttribute="bottom" id="pGw-RQ-K4E"/>
-                            <constraint firstItem="JcF-fw-C8o" firstAttribute="top" secondItem="BZZ-in-uCX" secondAttribute="bottom" constant="10" id="qGh-le-6yb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Recommendations" id="CYx-cv-539">
@@ -265,16 +229,14 @@ So tap the button to add your neat-o recommendation and then come back here for 
                     </navigationItem>
                     <connections>
                         <outlet property="feedCollectionView" destination="KBY-xg-8YI" id="drw-E3-7iO"/>
-                        <outlet property="initialInformationView" destination="BZZ-in-uCX" id="Fkt-2w-41J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6iv-Ye-8Se" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="315" y="374"/>
+            <point key="canvasLocation" x="311.59420289855075" y="373.36956521739131"/>
         </scene>
     </scenes>
     <resources>
         <image name="FeedHeader" width="706" height="472"/>
-        <image name="add-tag" width="100" height="100"/>
     </resources>
 </document>
