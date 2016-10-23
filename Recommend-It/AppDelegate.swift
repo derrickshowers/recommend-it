@@ -33,26 +33,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
 
-        migrateData()
+        if !hasDataBeenMigrated() {
+            migrateData()
+            cleanupFromOldVersion()
+        }
 
         return true
     }
 
-    private func migrateData() {
-        let locationEntity: [Location] = CoreDataManager.sharedInstance.fetchEntity(entityName: "Location")
+    private func hasDataBeenMigrated() -> Bool {
+        let fileManager = FileManager.default
+        return !fileManager.fileExists(atPath: documentsUrlForFile(fileName: "RecommendIt.sqlite"))
+    }
 
-        locationEntity.forEach { Location in
+    private func migrateData() {
+        var locationEntity: [Location]?
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Location")
+
+        do {
+            locationEntity = try getOldDB().fetch(fetchRequest) as? [Location]
+        }
+        catch {
+            print("An error occured fetching from Core Data")
+        }
+
+        guard let oldEntity = locationEntity else { return }
+
+        oldEntity.forEach { entity in
             let rec = CoreDataManager.sharedInstance.newItem(entityName: "Recommendation")
 
-            rec.setValue(Location.archived, forKey: "archived")
-            rec.setValue(Location.city, forKey: "location")
-            rec.setValue(Location.image, forKey: "image")
-            rec.setValue(Location.name, forKey: "name")
-            rec.setValue(Location.notes, forKey: "notes")
-            rec.setValue(Location.yelpId, forKey: "yelpId")
-            rec.setValue(Location.recommendedBy, forKey: "recommendedBy")
+            rec.setValue(entity.archived, forKey: "archived")
+            rec.setValue(entity.city, forKey: "location")
+            rec.setValue(entity.image, forKey: "image")
+            rec.setValue(entity.name, forKey: "name")
+            rec.setValue(entity.notes, forKey: "notes")
+            rec.setValue(entity.yelpId, forKey: "yelpId")
+            rec.setValue(entity.recommendedBy, forKey: "recommendedBy")
         }
 
         CoreDataManager.sharedInstance.saveContext()
+    }
+
+    private func cleanupFromOldVersion() {
+        let fileManager = FileManager.default
+
+        try? fileManager.removeItem(at: URL(fileURLWithPath: documentsUrlForFile(fileName: "RecommendIt.sqlite")))
+        try? fileManager.removeItem(at: URL(fileURLWithPath: documentsUrlForFile(fileName: "RecommendIt.sqlite-shm")))
+        try? fileManager.removeItem(at: URL(fileURLWithPath: documentsUrlForFile(fileName: "RecommendIt.sqlite-wal")))
+
+    }
+
+    private func getOldDB() -> NSManagedObjectContext {
+        let container = NSPersistentContainer(name: "RecommendIt")
+        let url = URL(fileURLWithPath: documentsUrlForFile(fileName: "RecommendIt.sqlite"))
+        container.persistentStoreDescriptions = [NSPersistentStoreDescription(url: url)]
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+
+        return container.viewContext
+    }
+
+    private func documentsUrlForFile(fileName: String) -> String {
+        return "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])/\(fileName)"
     }
 }

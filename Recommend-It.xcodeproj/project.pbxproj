@@ -35,6 +35,7 @@
 		E773B5201DB89D6D0082C1AD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E773B51F1DB89D6D0082C1AD /* CoreDataManager.swift */; };
 		E778D70D1B37710D0022C6AC /* FeedHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E778D70C1B37710D0022C6AC /* FeedHeaderReusableView.swift */; };
 		E7855B921DB479140066CD16 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7855B911DB479140066CD16 /* APIKeys.plist */; };
+		E786CA8D1DBC2ADD00ED136C /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E786CA8C1DBC2ADD00ED136C /* PersistentContainer.swift */; };
 		E79252681B1D5F0D005F0522 /* RecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79252671B1D5F0D005F0522 /* RecommendationCell.swift */; };
 		E792526A1B1D63D8005F0522 /* AddEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E79252691B1D63D8005F0522 /* AddEdit.storyboard */; };
 		E792526C1B1D66CD005F0522 /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792526B1B1D66CD005F0522 /* AddEditViewController.swift */; };
@@ -94,6 +95,7 @@
 		E773B51F1DB89D6D0082C1AD /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = Utils/CoreDataManager.swift; sourceTree = "<group>"; };
 		E778D70C1B37710D0022C6AC /* FeedHeaderReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedHeaderReusableView.swift; path = Views/FeedHeaderReusableView.swift; sourceTree = "<group>"; };
 		E7855B911DB479140066CD16 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
+		E786CA8C1DBC2ADD00ED136C /* PersistentContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentContainer.swift; path = Utils/PersistentContainer.swift; sourceTree = "<group>"; };
 		E79252671B1D5F0D005F0522 /* RecommendationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecommendationCell.swift; path = Views/RecommendationCell.swift; sourceTree = "<group>"; };
 		E79252691B1D63D8005F0522 /* AddEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddEdit.storyboard; path = Storyboards/AddEdit.storyboard; sourceTree = "<group>"; };
 		E792526B1B1D66CD005F0522 /* AddEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddEditViewController.swift; path = Controllers/AddEditViewController.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				E773B51F1DB89D6D0082C1AD /* CoreDataManager.swift */,
+				E786CA8C1DBC2ADD00ED136C /* PersistentContainer.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				E792526C1B1D66CD005F0522 /* AddEditViewController.swift in Sources */,
 				E71CFC0A1DB5D07400DF77D7 /* RecommendIt.xcdatamodeld in Sources */,
 				E75C837C1B2561570070763D /* Helpers.swift in Sources */,
+				E786CA8D1DBC2ADD00ED136C /* PersistentContainer.swift in Sources */,
 				E778D70D1B37710D0022C6AC /* FeedHeaderReusableView.swift in Sources */,
 				E79C60AD1AF9A7A300F0E511 /* RecommendationStore.swift in Sources */,
 				E79252681B1D5F0D005F0522 /* RecommendationCell.swift in Sources */,
