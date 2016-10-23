@@ -25,9 +25,9 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omd-NH-65e">
                     <string key="text">Let's get started. First things first, though – do you have a personal recommendation you want to add? Think Yelp bookmark, but with some notes so you have a chance of remembering months later why on earth you added the recommendation in the first place.
 
-What kind of notes should you add? How about who told you about it. Or, why you think it sounds super amazing.
+What kind of notes should you add? Who told you about it? Or, why does it sounds super amazing?
 
-So tap the button to add your neat-o recommendation and then come back here for a list of all those cool places you want to try!</string>
+Tap the add button (above) to add your neat-o recommendation and then come back here for a list of all those cool places you want to try!</string>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
