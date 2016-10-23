@@ -94,12 +94,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.confirmRemoveButton.isHidden = true
         cell.confirmRemoveButton.alpha = 0.0
 
-        // make it pretty
-        cell.layer.masksToBounds = false
-        cell.layer.shadowOpacity = 0.25
-        cell.layer.shadowRadius = 1.0
-        cell.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-        cell.layer.shadowPath = UIBezierPath(rect: cell.bounds).cgPath
+        cell.layer.cornerRadius = 2.0
 
         // fix autolayout bug
         // http://stackoverflow.com/questions/27197813/autolayout-is-complaining-about-leading-trailing-space-for-uiimageview
