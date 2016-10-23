@@ -151,13 +151,20 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.cancelRemoveButton.alpha = 1.0
         })
     }
+
     func didPressArchiveAtIndex(_ cellIndex: Int) {
         recommendationStore?.allRecommendations[cellIndex].archived = true
         feedCollectionView.reloadData()
     }
+
     func didPressYelpAtIndex(_ cellIndex: Int) {
-        UIAlertView(title: "Coming Soon", message: "This feature has not yet been enabled", delegate: nil, cancelButtonTitle: "Ok").show()
+        let rec = recommendationStore?.allRecommendations[cellIndex]
+
+        if let id = rec?.yelpId, let url = URL(string: "http://yelp.com/biz/\(id)") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
+
     func didPressConfirmRemove(_ cellIndex: Int) {
         recommendationStore?.removeRecommendation(at: cellIndex)
         feedCollectionView.deleteItems(at: [IndexPath(item: cellIndex, section: 0)])
