@@ -148,8 +148,17 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 
     func didPressArchiveAtIndex(_ cellIndex: Int) {
-        recommendationStore?.allRecommendations[cellIndex].archived = true
-        feedCollectionView.reloadData()
+        let alert = UIAlertController(title: "Just so you know...", message: "The archive feature isn't ready for prime time quite yet. By continuing, you will set this recommendation as archived, which means it will no longer show on your feed, but there currently isn't a way to view recommendations you've archived. Don't fret - there will be soon!", preferredStyle: .actionSheet)
+        let confirmAction = UIAlertAction(title: "Let's do it!", style: .default) {
+            [weak self] action in
+            self?.recommendationStore?.allRecommendations[cellIndex].archived = true
+            CoreDataManager.sharedInstance.saveContext()
+            self?.feedCollectionView.reloadData()
+        }
+        let cancelAction = UIAlertAction(title: "Nevermind, I'll wait", style: .cancel, handler: nil)
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true) {}
     }
 
     func didPressYelpAtIndex(_ cellIndex: Int) {
