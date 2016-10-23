@@ -13,11 +13,11 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - Properties
     // MARK: IBOutlet
     @IBOutlet weak var feedCollectionView: UICollectionView!
-    @IBOutlet weak var initialInformationView: UIView!
 
     // MARK: Other
     var recommendationStore: RecommendationStore?
     var feedHeaderView: FeedHeaderReusableView?
+    var initialEmptyView: InitialEmptyView?
 
     // MARK: - View Controller Methods
 
@@ -37,7 +37,17 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         feedCollectionView.reloadData()
 
         if let count = recommendationStore?.allRecommendations.count, count > 0 {
-            self.initialInformationView.isHidden = true
+            initialEmptyView?.removeFromSuperview()
+        } else {
+            initialEmptyView = UIView.loadFromNib(type: InitialEmptyView.self)
+
+            if let initialEmptyView = initialEmptyView {
+                initialEmptyView.frame = CGRect(x: 10.0, y: 140.0, width: view.bounds.width - 20.0, height: view.bounds.height - 150.0)
+                initialEmptyView.onTapAddRecommendation = { sender in
+                    self.present(self.getAddEditViewController(), animated: true, completion: nil)
+                }
+                view.addSubview(initialEmptyView)
+            }
         }
 
         if self.feedCollectionView.bounds.origin.y < 134.0 {
