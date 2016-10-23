@@ -44,6 +44,8 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
 
         // make sure we're not getting results with every character typed in the search bar
         debouncedResults = debounce(TimeInterval(0.25), queue: DispatchQueue.main, action: getResults)
+
+        locationSearchBar.becomeFirstResponder()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
