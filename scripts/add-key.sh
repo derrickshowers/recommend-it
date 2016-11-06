@@ -1,22 +1,26 @@
 #!/bin/sh
 
+KEY_CHAIN=ios-build.keychain
+
 # Create a custom keychain
-security create-keychain -p travis ios-build.keychain
+security create-keychain -p travis $KEY_CHAIN
 
 # Make the custom keychain default, so xcodebuild will use it for signing
-security default-keychain -s ios-build.keychain
+security default-keychain -s $KEY_CHAIN
 
 # Unlock the keychain
-security unlock-keychain -p travis ios-build.keychain
+security unlock-keychain -p travis $KEY_CHAIN
 
 # Set keychain timeout to 1 hour for long builds
 # see http://www.egeek.me/2013/02/23/jenkins-and-xcode-user-interaction-is-not-allowed/
-security set-keychain-settings -t 3600 -l ~/Library/Keychains/ios-build.keychain
+security set-keychain-settings -t 3600 -u $KEY_CHAIN
 
 # Add certificates to keychain and allow codesign to access them
-security import ./scripts/certs/apple.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
-security import ./scripts/certs/distribution.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
-security import ./scripts/certs/distribution.p12 -k ~/Library/Keychains/ios-build.keychain -P $KEY_PASSWORD -T /usr/bin/codesign
+security import ./scripts/certs/apple.cer -k $KEY_CHAIN -T /usr/bin/codesign
+security import ./scripts/certs/development.cer -k $KEY_CHAIN -T /usr/bin/codesign
+security import ./scripts/certs/distribution.cer -k $KEY_CHAIN -T /usr/bin/codesign
+security import ./scripts/certs/development.p12 -k $KEY_CHAIN -P $KEY_PASSWORD -T /usr/bin/codesign
+security import ./scripts/certs/distribution.p12 -k $KEY_CHAIN -P $KEY_PASSWORD -T /usr/bin/codesign
 
 # Put the provisioning profile in place
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
