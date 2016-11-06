@@ -1,3 +1,4 @@
 language: objective-c
+osx_image: xcode8
 
 script: xcodebuild build test -workspace Recommend-It.xcworkspace -scheme Recommend-It -destination "platform=iOS Simulator,name=iPhone 7" ONLY_ACTIVE_ARCH=NO
