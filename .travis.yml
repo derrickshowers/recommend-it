@@ -1,3 +1,3 @@
 language: objective-c
 
-script: xcodebuild -workspace Recommend-It.xcworkspace -scheme Recommend-It -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+script: xcodebuild -workspace Recommend-It.xcworkspace -scheme Recommend-It -destination platform=iOS Simulator,name=iPhone 6s Plus,OS=latest ONLY_ACTIVE_ARCH=NO
