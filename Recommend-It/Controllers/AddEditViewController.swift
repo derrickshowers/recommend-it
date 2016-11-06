@@ -14,7 +14,7 @@ class AddEditViewController: UIViewController {
     // MARK: - Properties
     // MARK: IBOutlet
     @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var notesField: UITextField!
+    @IBOutlet weak var notesTextView: UITextView!
 
     // MARK: Other
     var recommendationStore: RecommendationStore!
@@ -31,6 +31,8 @@ class AddEditViewController: UIViewController {
 
         // show the blue version of nav controller
         navigationController?.navigationBar.makeDefaultBlue()
+
+        notesTextView.contentInset = UIEdgeInsetsMake(-5, -5, 0, 0)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +41,7 @@ class AddEditViewController: UIViewController {
         }
         if let currentRecommendation = currentRecommendation {
             nameField.text = currentRecommendation.name
-            notesField.text = currentRecommendation.notes
+            notesTextView.text = currentRecommendation.notes
         }
     }
 
@@ -57,7 +59,7 @@ class AddEditViewController: UIViewController {
     @IBAction func savePressed(_ sender: AnyObject) {
 
         guard let name = nameField.text else { return }
-        guard let notes = notesField.text else { return }
+        guard let notes = notesTextView.text else { return }
 
         // save the location
         var location = ""
