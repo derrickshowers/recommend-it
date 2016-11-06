@@ -61,9 +61,11 @@ class AddEditViewController: UIViewController {
 
         // save the location
         var location = ""
+
         if let city = selectedYelpBiz?.city {
             location = "\(city)"
         }
+
         if let state = selectedYelpBiz?.state {
             if !location.isEmpty {
                 location = "\(location), \(state)"
@@ -72,32 +74,10 @@ class AddEditViewController: UIViewController {
             }
         }
 
-        currentRecommendation = recommendationStore.createRecommendation(yelpId: selectedYelpBiz?.yelpId ?? "no-yelp-id", name: name, notes: notes, location: location)
+        currentRecommendation = recommendationStore.createRecommendation(yelpId: selectedYelpBiz?.yelpId ?? "no-yelp-id", name: name, notes: notes, location: location, thumbnailURL: selectedYelpBiz?.thumbnailURL)
 
-        // save the image
-        var image: NSData?
-
-        if let selectedYelpBiz = selectedYelpBiz, let selectedYelpBizImg = selectedYelpBiz.thumbnailUrl {
-            Alamofire.request(selectedYelpBizImg, method: .get).response { response in
-
-                if let imageData = response.data {
-                    image = imageData as NSData?
-                }
-
-                if let currentRecommendation = self.currentRecommendation {
-                    self.recommendationStore.updateImageForRecommendation(currentRecommendation, image: image)
-                }
-
-                // dismiss the view after we get the image
-                self.dismiss(animated: true, completion: nil)
-            }
-        } else {
-            // no image? just dismiss the view
-            let placeholderImage = UIImage(named: "RecImagePlaceholder")
-            image = UIImagePNGRepresentation(placeholderImage!) as NSData?
-            recommendationStore.updateImageForRecommendation(self.currentRecommendation!, image: image)
-            self.dismiss(animated: true, completion: nil)
-        }
+        // dismiss the view after we get the image
+        self.dismiss(animated: true, completion: nil)
 
 
     }
