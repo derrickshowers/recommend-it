@@ -710,7 +710,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Recommend-It.app/Recommend-It";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DEBUG: Recommend-It.app/DEBUG: Recommend-It";
 			};
 			name = Debug;
 		};
@@ -730,7 +730,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Recommend-It.app/Recommend-It";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DEBUG: Recommend-It.app/DEBUG: Recommend-It";
 			};
 			name = Release;
 		};
