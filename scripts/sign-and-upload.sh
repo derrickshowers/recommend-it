@@ -11,4 +11,4 @@
 
 gem install shenzhen
 ipa build
-ipa distribute:itunesconnect -a derrick.showers@me.com -p $ITUNES_PASSWORD -i 951556200 --verbose
+ipa distribute:itunesconnect -a derrick.showers@me.com -p $ITUNES_PASSWORD -i 951556200 --upload
