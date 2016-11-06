@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FeedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, RecommendationCellDelegate {
 
@@ -77,6 +78,11 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // if there's an image, show it
         if let imageData = recommendationStore?.allRecommendations[(indexPath as NSIndexPath).row].image {
             cell.image.image = UIImage(data: imageData as Data, scale: 1.0)
+        } else if
+            let thumbnailURLString = recommendationStore?.allRecommendations[(indexPath as NSIndexPath).row].thumbnailURL,
+            let thumbailURL = URL(string: thumbnailURLString) {
+
+            cell.image.sd_setImage(with: thumbailURL)
         } else {
             cell.image.image = UIImage(named: "RecImagePlaceholder")
         }
@@ -95,10 +101,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.confirmRemoveButton.alpha = 0.0
 
         cell.layer.cornerRadius = 2.0
-
-        // fix autolayout bug
-        // http://stackoverflow.com/questions/27197813/autolayout-is-complaining-about-leading-trailing-space-for-uiimageview
-        cell.contentView.frame = cell.bounds
 
         return cell
     }
