@@ -27,7 +27,7 @@ before_script:
   - ./scripts/add-key.sh
 script:
   - xcodebuild build -workspace Recommend-It.xcworkspace -scheme Recommend-It -destination "platform=iOS Simulator,name=iPhone 7" -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
-  - xcodebuild test -workspace Recommend-It.xcworkspace -scheme Recommend-It -destination "platform=iOS Simulator,name=iPhone 7" ONLY_ACTIVE_ARCH=NO
+  # - xcodebuild test -workspace Recommend-It.xcworkspace -scheme Recommend-It -destination "platform=iOS Simulator,name=iPhone 7" ONLY_ACTIVE_ARCH=NO
 after_success:
   - ./scripts/sign-and-upload.sh
 after_script:
