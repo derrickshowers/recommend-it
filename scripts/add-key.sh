@@ -25,3 +25,4 @@ security import ./scripts/certs/distribution.p12 -k $KEY_CHAIN -P $KEY_PASSWORD 
 # Put the provisioning profile in place
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 cp "./scripts/profile/$PROFILE_NAME.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
+cp "./scripts/profile/${PROFILE_NAME}_Team.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
