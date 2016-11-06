@@ -4,7 +4,6 @@ cache: cocoapods
 
 before_install:
   - gem install cocoapods
-  - pod update
 before_script:
   - wget -O ./Recommend-It/APIKeys.plist "https://concrete-userfiles-production.s3.amazonaws.com/project_file_storage_documents/uploads/1678/original/APIKeys.plist?AWSAccessKeyId=AKIAIOC7N256G7J2W2TQ&Expires=1478505170&Signature=C%2BrZgeelA%2Bfut6ddR6semjbwlzA%3D"
 script:
