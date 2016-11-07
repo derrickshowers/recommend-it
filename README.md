@@ -1,5 +1,7 @@
 # Recommend It
 
+[![Build Status](https://travis-ci.org/derrickshowers/recommend-it.svg?branch=master)](https://travis-ci.org/derrickshowers/recommend-it)
+
 Now live on the [App Store]((https://itunes.apple.com/us/app/recommend-it/id951556200?ls=1&mt=8))! Check it out. (And don’t forget to [submit bugs](https://github.com/derrickshowers/recommend-it/issues))
 
 A simple iOS app that helps you keep track of recommendations. The idea came from Yelp’s bookmark feature -- but the problem is, there is no way to add notes to your bookmarks on a mobile device.
