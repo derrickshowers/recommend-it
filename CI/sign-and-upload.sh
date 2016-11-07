@@ -14,7 +14,7 @@ gem install shenzhen
 
 # Archive and package as IPA
 xcodebuild -workspace Recommend-It.xcworkspace -scheme Recommend-It -sdk iphoneos -configuration AppStoreDistribution archive -archivePath ./build/Recommend-It.xcarchive
-xcodebuild -exportArchive -archivePath ./build/Recommend-It.xcarchive -exportOptionsPlist exportOptions.plist -exportPath ./build
+xcodebuild -exportArchive -archivePath ./build/Recommend-It.xcarchive -exportOptionsPlist ./CI/exportOptions.plist -exportPath ./build
 
 # Send to iTunes connect
 ipa distribute:itunesconnect -a derrick.showers@me.com -p $ITUNES_PASSWORD -i 951556200 -f ./build/Recommend-It.ipa --upload --verbose

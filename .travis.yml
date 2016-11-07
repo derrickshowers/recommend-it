@@ -6,8 +6,9 @@ osx_image: xcode8
 # [ ] Enable Tests
 # [ ] Uncomment conditional in sign-and-upload
 # [ ] Why does build not fail when scripts fail?
+#       - https://github.com/travis-ci/travis-ci/issues/891
+#       - https://github.com/travis-ci/travis-ci/issues/1066
 # [ ] Find a better spot for exportOptions.plist
-
 
 # Environment variables: https://docs.travis-ci.com/user/environment-variables/
 env:
@@ -44,3 +45,6 @@ script:
 after_script:
   - ./CI/sign-and-upload.sh
   - ./CI/remove-key.sh
+
+# Ref: https://www.objc.io/issues/6-build-tools/travis-ci/
+# Example repo: https://github.com/objcio/issue-6-travis-ci
