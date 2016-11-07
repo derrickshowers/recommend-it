@@ -1,14 +1,9 @@
 language: objective-c
 osx_image: xcode8
 
-# TODO:
-# [X] Store APIKeys.plist somewhere else
-# [X] Enable Tests
-# [ ] Uncomment conditional in sign-and-upload
-# [ ] Why does build not fail when scripts fail?
+# TODO: Why does build not fail when scripts fail?
 #       - https://github.com/travis-ci/travis-ci/issues/891
 #       - https://github.com/travis-ci/travis-ci/issues/1066
-# [X] Find a better spot for exportOptions.plist
 
 # Environment variables: https://docs.travis-ci.com/user/environment-variables/
 env:
