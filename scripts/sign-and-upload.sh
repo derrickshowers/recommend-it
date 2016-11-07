@@ -12,7 +12,7 @@
 # Fail build when any of the scripts below fail
 set -e
 
-PROVISIONING_PROFILE="$HOME/Library/MobileDevice/Provisioning Profiles/$PROFILE_NAME.mobileprovision"
+PROVISIONING_PROFILE="$HOME/Library/MobileDevice/Provisioning\ Profiles/$PROFILE_NAME.mobileprovision"
 
 # Install shenzhen for `ipa distribute`
 gem install shenzhen
