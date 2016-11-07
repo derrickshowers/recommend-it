@@ -12,14 +12,12 @@
 # Fail build when any of the scripts below fail
 set -e
 
-PROVISIONING_PROFILE="$HOME/Library/MobileDevice/Provisioning\ Profiles/$PROFILE_NAME.mobileprovision"
-
 # Install shenzhen for `ipa distribute`
 gem install shenzhen
 
 # Archive and package as IPA
 xcodebuild archive -workspace Recommend-It.xcworkspace -scheme Recommend-It -sdk iphoneos -archivePath ./build/Recommend-It.xcarchive
-xcodebuild -exportArchive -archivePath ./build/Recommend-It.xcarchive -exportPath ./build/Recommend-It.ipa -exportProvisioningProfile $PROVISIONING_PROFILE
+xcodebuild -exportArchive -archivePath ./build/Recommend-It.xcarchive -exportPath ./build/Recommend-It.ipa -exportProvisioningProfile "$HOME/Library/MobileDevice/Provisioning\ Profiles/$PROFILE_NAME.mobileprovision"
 
 # Send to iTunes connect
 ipa distribute:itunesconnect -a derrick.showers@me.com -p $ITUNES_PASSWORD -i 951556200 -f ./build/Recommend-It.ipa --upload --verbose
