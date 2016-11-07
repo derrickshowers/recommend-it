@@ -9,6 +9,12 @@
 #   exit 0
 # fi
 
+# Install shenzhen for `ipa distribute`
 gem install shenzhen
-ipa build --verbose
-ipa distribute:itunesconnect -a derrick.showers@me.com -p $ITUNES_PASSWORD -i 951556200 --upload
+
+# Archive and package as IPA
+xcodebuild archive -workspace Recommend-It.xcworkspace -scheme Recommend-It -sdk iphoneos -archivePath ./build/Recommend-It.xcarchive
+xcodebuild -exportArchive -archivePath ./build/Recommend-It.xcarchive -exportPath ./build/Recommend-It.ipa
+
+# Send to iTunes connect
+ipa distribute:itunesconnect -a derrick.showers@me.com -p $ITUNES_PASSWORD -i 951556200 -f build/Recommend-It.ipa --upload
