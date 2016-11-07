@@ -3,7 +3,7 @@ osx_image: xcode8
 
 # TODO:
 # [X] Store APIKeys.plist somewhere else
-# [ ] Enable Tests
+# [X] Enable Tests
 # [ ] Uncomment conditional in sign-and-upload
 # [ ] Why does build not fail when scripts fail?
 #       - https://github.com/travis-ci/travis-ci/issues/891
@@ -40,8 +40,7 @@ before_script:
   - ./CI/add-key.sh
   - ./CI/update-bundle.sh
 script:
-  - xcodebuild build -workspace Recommend-It.xcworkspace -scheme Recommend-It -configuration Release -sdk iphoneos OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
-  # - xcodebuild test -workspace Recommend-It.xcworkspace -scheme Recommend-It -destination "platform=iOS Simulator,name=iPhone 7" ONLY_ACTIVE_ARCH=NO
+  - xcodebuild test -workspace Recommend-It.xcworkspace -scheme Recommend-It -destination "platform=iOS Simulator,name=iPhone 7" ONLY_ACTIVE_ARCH=NO
 after_script:
   - ./CI/sign-and-upload.sh
   - ./CI/remove-key.sh
