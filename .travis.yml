@@ -2,8 +2,8 @@ language: objective-c
 osx_image: xcode8
 
 # TODO: Why does build not fail when scripts fail?
-#       - https://github.com/travis-ci/travis-ci/issues/891
-#       - https://github.com/travis-ci/travis-ci/issues/1066
+# - https://github.com/travis-ci/travis-ci/issues/891
+# - https://github.com/travis-ci/travis-ci/issues/1066
 
 # Environment variables: https://docs.travis-ci.com/user/environment-variables/
 env:
@@ -24,6 +24,8 @@ cache: cocoapods
 
 before_install:
   - gem install cocoapods
+install:
+  - pod install --repo-update
 before_script:
   - wget -O ./Recommend-It/APIKeys.plist $API_KEYS_PATH
   - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in CI/profile/XC_iOS_comderrickshowersRecommendIt.mobileprovision.enc -d -a -out CI/profile/XC_iOS_comderrickshowersRecommendIt.mobileprovision
