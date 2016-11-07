@@ -17,4 +17,4 @@ xcodebuild archive -workspace Recommend-It.xcworkspace -scheme Recommend-It -sdk
 xcodebuild -exportArchive -archivePath ./build/Recommend-It.xcarchive -exportPath ./build/Recommend-It.ipa
 
 # Send to iTunes connect
-ipa distribute:itunesconnect -a derrick.showers@me.com -p $ITUNES_PASSWORD -i 951556200 -f build/Recommend-It.ipa --upload
+ipa distribute:itunesconnect -a derrick.showers@me.com -p $ITUNES_PASSWORD -i 951556200 -f ./build/Recommend-It.ipa --upload --verbose

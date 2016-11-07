@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+          <package version="software4.7" xmlns="http://apple.com/itunes/importer">
+            <software_assets apple_id="951556200">
+              <asset type="bundle">
+                <data_file>
+                  <file_name>build.ipa</file_name>
+                  <checksum type="md5">d16022ea6dc3959761729badafddcbc9</checksum>
+                  <size>35623501</size>
+                </data_file>
+              </asset>
+            </software_assets>
+          </package>
+        
