@@ -37,7 +37,7 @@ before_script:
   - ./CI/add-key.sh
   - ./CI/update-bundle.sh
 script:
-  - xcodebuild test -workspace Recommend-It.xcworkspace -scheme Recommend-It -destination "platform=iOS Simulator,name=iPhone 7" ONLY_ACTIVE_ARCH=NO
+  - travis_retry xcodebuild test -workspace Recommend-It.xcworkspace -scheme Recommend-It -destination "platform=iOS Simulator,name=iPhone 7"
 after_script:
   - ./CI/sign-and-upload.sh
   - ./CI/remove-key.sh

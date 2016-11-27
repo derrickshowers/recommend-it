@@ -16,10 +16,14 @@ security unlock-keychain -p travis $KEY_CHAIN
 security set-keychain-settings -t 3600 -u $KEY_CHAIN
 
 # Add certificates to keychain and allow codesign to access them
-security import ./CI/certs/development.cer -k $KEY_CHAIN -T /usr/bin/codesign
-security import ./CI/certs/distribution.cer -k $KEY_CHAIN -T /usr/bin/codesign
+security import ./CI/certs/development.cer -k $KEY_CHAIN -A /usr/bin/codesign
+security import ./CI/certs/distribution.cer -k $KEY_CHAIN -A /usr/bin/codesign
 security import ./CI/certs/development.p12 -k $KEY_CHAIN -P $KEY_PASSWORD -T /usr/bin/codesign
 security import ./CI/certs/distribution.p12 -k $KEY_CHAIN -P $KEY_PASSWORD -T /usr/bin/codesign
+
+# Remove UI prompt causing build to timeout
+# http://stackoverflow.com/questions/39868578/security-codesign-in-sierra-keychain-ignores-access-control-settings-and-ui-p
+security set-key-partition-list -S apple-tool:,apple: -s -k travis $KEY_CHAIN
 
 # Put the provisioning profile in place
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
