@@ -13,7 +13,7 @@ fi
 gem install shenzhen
 
 # Archive and package as IPA
-xcodebuild -workspace Recommend-It.xcworkspace -scheme Recommend-It -sdk iphoneos -configuration AppStoreDistribution archive -archivePath ./build/Recommend-It.xcarchive
+xcodebuild -workspace Recommend-It.xcworkspace -scheme Recommend-It -sdk iphoneos archive -archivePath ./build/Recommend-It.xcarchive
 xcodebuild -exportArchive -archivePath ./build/Recommend-It.xcarchive -exportOptionsPlist ./CI/config/exportOptions.plist -exportPath ./build
 
 # Send to iTunes connect
