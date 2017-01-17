@@ -27,5 +27,5 @@ security set-key-partition-list -S apple-tool:,apple: -s -k travis $KEY_CHAIN
 
 # Put the provisioning profile in place
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-cp "./CI/profile/${PROFILE_NAME}Development.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
-cp "./CI/profile/${PROFILE_NAME}Distribution.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
+cp "./CI/profile/RecommendItDevelopment.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
+cp "./CI/profile/XC_iOS_comderrickshowersRecommendIt.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
