@@ -42,6 +42,7 @@
 		E792526A1B1D63D8005F0522 /* AddEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E79252691B1D63D8005F0522 /* AddEdit.storyboard */; };
 		E792526C1B1D66CD005F0522 /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792526B1B1D66CD005F0522 /* AddEditViewController.swift */; };
 		E792526E1B1D6BC4005F0522 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792526D1B1D6BC4005F0522 /* SearchViewController.swift */; };
+		E796CD8F1E2DB1050045D91A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E796CD8E1E2DB1050045D91A /* CloudKit.framework */; };
 		E79C60AD1AF9A7A300F0E511 /* RecommendationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C60AC1AF9A7A300F0E511 /* RecommendationStore.swift */; };
 		E7C7F9D41AF1BC6000945EA1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */; };
 		E7CA65D11DBC5D03002E03BD /* InitialEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7E6748D1DBC153D00672DC5 /* InitialEmptyView.xib */; };
@@ -87,7 +88,7 @@
 		E74DC1E41B49EA3100AE45CF /* RecommendationCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecommendationCellDelegate.swift; path = Protocols/RecommendationCellDelegate.swift; sourceTree = "<group>"; };
 		E75C837B1B2561570070763D /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E75C837D1B256B030070763D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		E760D8B51AE5DA6000C4518F /* DEBUG: Recommend-It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DEBUG: Recommend-It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E760D8B51AE5DA6000C4518F /* Recommend-It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Recommend-It.app"; path = "DEBUG: Recommend-It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E760D8B91AE5DA6000C4518F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E760D8BA1AE5DA6000C4518F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E760D8C11AE5DA6000C4518F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -106,6 +107,8 @@
 		E79252691B1D63D8005F0522 /* AddEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddEdit.storyboard; path = Storyboards/AddEdit.storyboard; sourceTree = "<group>"; };
 		E792526B1B1D66CD005F0522 /* AddEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddEditViewController.swift; path = Controllers/AddEditViewController.swift; sourceTree = "<group>"; };
 		E792526D1B1D6BC4005F0522 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = Controllers/SearchViewController.swift; sourceTree = "<group>"; };
+		E796CD8D1E2DB09D0045D91A /* Recommend-It.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Recommend-It.entitlements"; sourceTree = "<group>"; };
+		E796CD8E1E2DB1050045D91A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E79C60AC1AF9A7A300F0E511 /* RecommendationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecommendationStore.swift; path = Stores/RecommendationStore.swift; sourceTree = "<group>"; };
 		E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedViewController.swift; path = Controllers/FeedViewController.swift; sourceTree = "<group>"; };
 		E7CA65D21DBC968E002E03BD /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultCell.swift; path = Views/SearchResultCell.swift; sourceTree = "<group>"; };
@@ -131,6 +134,7 @@
 				E72DFCF51B4A0442000E6274 /* Security.framework in Frameworks */,
 				E72DFCF61B4A0442000E6274 /* StoreKit.framework in Frameworks */,
 				E72DFCF71B4A0442000E6274 /* SystemConfiguration.framework in Frameworks */,
+				E796CD8F1E2DB1050045D91A /* CloudKit.framework in Frameworks */,
 				E72DFCE31B4A0442000E6274 /* CoreLocation.framework in Frameworks */,
 				FD9257D54A6E62720F16CE2B /* Pods_Recommend_It.framework in Frameworks */,
 			);
@@ -149,6 +153,7 @@
 		3F2CB9DEA3C6AFE2C9580CDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E796CD8E1E2DB1050045D91A /* CloudKit.framework */,
 				E71CFBC31DB5C4DD00DF77D7 /* CoreData.framework */,
 				E721F9251B4A059A00138CCA /* Accounts.framework */,
 				E721F9231B4A059300138CCA /* Social.framework */,
@@ -203,7 +208,7 @@
 		E760D8B61AE5DA6000C4518F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E760D8B51AE5DA6000C4518F /* DEBUG: Recommend-It.app */,
+				E760D8B51AE5DA6000C4518F /* Recommend-It.app */,
 				E760D8CA1AE5DA6000C4518F /* Recommend-ItTests.xctest */,
 			);
 			name = Products;
@@ -234,6 +239,7 @@
 				E7D7FD851B22CBD10078CDD2 /* APIs */,
 				E760D8B91AE5DA6000C4518F /* Info.plist */,
 				E7855B911DB479140066CD16 /* APIKeys.plist */,
+				E796CD8D1E2DB09D0045D91A /* Recommend-It.entitlements */,
 				E75C837B1B2561570070763D /* Helpers.swift */,
 			);
 			name = "Supporting Files";
@@ -359,7 +365,7 @@
 			);
 			name = "Recommend-It";
 			productName = "Recommend-It";
-			productReference = E760D8B51AE5DA6000C4518F /* DEBUG: Recommend-It.app */;
+			productReference = E760D8B51AE5DA6000C4518F /* Recommend-It.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E760D8C91AE5DA6000C4518F /* Recommend-ItTests */ = {
@@ -395,6 +401,14 @@
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = DJPFLH48H5;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					E760D8C91AE5DA6000C4518F = {
 						CreatedOnToolsVersion = 6.3;
@@ -647,6 +661,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_ID = "com.derrickshowers.RecommendIt-debug";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Recommend-It/Recommend-It.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = DJPFLH48H5;
@@ -672,6 +687,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_ID = com.derrickshowers.RecommendIt;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Recommend-It/Recommend-It.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = DJPFLH48H5;
@@ -710,7 +726,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DEBUG: Recommend-It.app/DEBUG: Recommend-It";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Recommend-It.app/Recommend-It";
 			};
 			name = Debug;
 		};
@@ -730,7 +746,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DEBUG: Recommend-It.app/DEBUG: Recommend-It";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Recommend-It.app/Recommend-It";
 			};
 			name = Release;
 		};
