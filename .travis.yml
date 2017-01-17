@@ -29,7 +29,7 @@ install:
 before_script:
   - wget -O ./Recommend-It/APIKeys.plist $API_KEYS_PATH
   - openssl aes-256-cbc -k "$ENCRYPTION_SECRET_PROVISIONING_PROFILE" -in CI/profile/XC_iOS_comderrickshowersRecommendIt.mobileprovision.enc -d -a -out CI/profile/XC_iOS_comderrickshowersRecommendIt.mobileprovision
-  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET_PROVISIONING_PROFILE" -in CI/profile/RecommendItDistribution.mobileprovision.enc -d -a -out CI/profile/RecommendItDistribution.mobileprovision
+  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET_PROVISIONING_PROFILE" -in CI/profile/XC_iOS_comderrickshowersRecommendIt_Team.mobileprovision.enc -d -a -out CI/profile/XC_iOS_comderrickshowersRecommendIt_Team.mobileprovision
   - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in CI/certs/development.cer.enc -d -a -out CI/certs/development.cer
   - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in CI/certs/distribution.cer.enc -d -a -out CI/certs/distribution.cer
   - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in CI/certs/development.p12.enc -d -a -out CI/certs/development.p12
