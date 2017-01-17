@@ -1,17 +1,23 @@
 PODS:
   - Alamofire (4.0.1)
+  - ConsistencyManager (4.0.0)
+  - RocketData (4.0.1):
+    - ConsistencyManager (~> 4.0.0)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0.0)
+  - RocketData
   - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  ConsistencyManager: 323ee466a5c933973529dfa5baa5cbc238633a67
+  RocketData: a661f6e75dd8741dbe95856ca84f5e16ab3b377e
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: dc7001e47f89845f41d9b23fe1c939c3c8f85042
+PODFILE CHECKSUM: 1e1076f34202e47777ac56e56542837b2f442623
 
 COCOAPODS: 1.1.1
