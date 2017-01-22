@@ -19,7 +19,7 @@ class AddEditViewController: UIViewController {
     // MARK: Other
     var recommendationStore: RecommendationStore!
     var selectedYelpBiz: YelpBiz?
-    var currentRecommendation: Recommendation?
+    var currentRecommendation: OldRecommendation?
 
     // MARK: - View Controller Methods
 

@@ -19,6 +19,11 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var recommendationStore: RecommendationStore?
     var feedHeaderView: FeedHeaderReusableView?
     var initialEmptyView: InitialEmptyView?
+    var recommendations: [Recommendation]? {
+        didSet {
+            updateScreen()
+        }
+    }
 
     // MARK: - View Controller Methods
 
@@ -28,16 +33,29 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         feedCollectionView.dataSource = self
 
         // get reservations from the AppDelegate
-        recommendationStore = RecommendationStore.sharedInstance
+        // recommendationStore = RecommendationStore.sharedInstance
+        getData()
 
         // make the navigation bar transparent
         self.navigationController?.navigationBar.makeLight()
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        updateScreen()
+    }
+
+    // MARK: - Data and updaate helpers
+
+    private func getData() {
+        DataProvider<Recommendation>().fetchData(privateDB: false, forCurrentUser: true) { [weak self] (recommendations: [Recommendation]) in
+            self?.recommendations = recommendations
+        }
+    }
+
+    private func updateScreen() {
         feedCollectionView.reloadData()
 
-        if let count = recommendationStore?.allRecommendations.count, count > 0 {
+        if let count = recommendations?.count, count > 0 {
             initialEmptyView?.removeFromSuperview()
         } else {
             initialEmptyView = UIView.loadFromNib(type: InitialEmptyView.self)
@@ -62,7 +80,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: Datasource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let numOfRecs = recommendationStore?.allRecommendations.count {
+        if let numOfRecs = recommendations?.count {
             return numOfRecs
         } else {
             return 0
@@ -72,22 +90,18 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = feedCollectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! RecommendationCell
 
-        cell.nameLabel.text = recommendationStore?.allRecommendations[(indexPath as NSIndexPath).row].name
-        cell.notesLabel.text = recommendationStore?.allRecommendations[(indexPath as NSIndexPath).row].notes
+        cell.nameLabel.text = recommendations?[(indexPath as NSIndexPath).row].name
+        cell.notesLabel.text = recommendations?[(indexPath as NSIndexPath).row].notes
 
         // if there's an image, show it
-        if let imageData = recommendationStore?.allRecommendations[(indexPath as NSIndexPath).row].image {
-            cell.image.image = UIImage(data: imageData as Data, scale: 1.0)
-        } else if
-            let thumbnailURLString = recommendationStore?.allRecommendations[(indexPath as NSIndexPath).row].thumbnailURL,
+        if let thumbnailURLString = recommendations?[(indexPath as NSIndexPath).row].thumbnailURL,
             let thumbailURL = URL(string: thumbnailURLString) {
-
             cell.image.sd_setImage(with: thumbailURL)
         } else {
             cell.image.image = UIImage(named: "RecImagePlaceholder")
         }
 
-        if let location = recommendationStore?.allRecommendations[(indexPath as NSIndexPath).row].location {
+        if let location = recommendations?[(indexPath as NSIndexPath).row].location {
             cell.locationLabel.text = location
         } else {
             cell.locationLabel.text = "Unknown Location"
@@ -114,7 +128,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.view.bounds.width - 20
-        let height = heightFromDynamicLabel(initialHeight: 140.0, width: width, font: UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightThin), text: recommendationStore!.allRecommendations[(indexPath as NSIndexPath).row].notes)
+        let height = heightFromDynamicLabel(initialHeight: 140.0, width: width, font: UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightThin), text: recommendations?[(indexPath as NSIndexPath).row].notes)
         return CGSize(width: self.view.bounds.width - 20, height: height)
     }
 
@@ -153,7 +167,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let alert = UIAlertController(title: "Just so you know...", message: "The archive feature isn't ready for prime time quite yet. By continuing, you will set this recommendation as archived, which means it will no longer show on your feed, but there currently isn't a way to view recommendations you've archived. Don't fret - there will be soon!", preferredStyle: .actionSheet)
         let confirmAction = UIAlertAction(title: "Let's do it!", style: .default) {
             [weak self] action in
-            self?.recommendationStore?.allRecommendations[cellIndex].archived = true
+            self?.recommendations?[cellIndex].archived = true
             CoreDataManager.sharedInstance.saveContext()
             self?.feedCollectionView.reloadData()
         }
@@ -164,7 +178,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 
     func didPressYelpAtIndex(_ cellIndex: Int) {
-        let rec = recommendationStore?.allRecommendations[cellIndex]
+        let rec = recommendations?[cellIndex]
 
         if let id = rec?.yelpId, let url = URL(string: "http://yelp.com/biz/\(id)") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)

@@ -44,6 +44,8 @@
 		E792526E1B1D6BC4005F0522 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792526D1B1D6BC4005F0522 /* SearchViewController.swift */; };
 		E796CD8F1E2DB1050045D91A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E796CD8E1E2DB1050045D91A /* CloudKit.framework */; };
 		E79C60AD1AF9A7A300F0E511 /* RecommendationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C60AC1AF9A7A300F0E511 /* RecommendationStore.swift */; };
+		E7A4750F1E344B2000A6AEE4 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A4750E1E344B2000A6AEE4 /* DataProvider.swift */; };
+		E7A475111E34535000A6AEE4 /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A475101E34535000A6AEE4 /* Recommendation.swift */; };
 		E7C7F9D41AF1BC6000945EA1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */; };
 		E7CA65D11DBC5D03002E03BD /* InitialEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7E6748D1DBC153D00672DC5 /* InitialEmptyView.xib */; };
 		E7CA65D31DBC968E002E03BD /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CA65D21DBC968E002E03BD /* SearchResultCell.swift */; };
@@ -110,6 +112,8 @@
 		E796CD8D1E2DB09D0045D91A /* Recommend-It.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Recommend-It.entitlements"; sourceTree = "<group>"; };
 		E796CD8E1E2DB1050045D91A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E79C60AC1AF9A7A300F0E511 /* RecommendationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecommendationStore.swift; path = Stores/RecommendationStore.swift; sourceTree = "<group>"; };
+		E7A4750E1E344B2000A6AEE4 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataProvider.swift; path = Data/DataProvider.swift; sourceTree = "<group>"; };
+		E7A475101E34535000A6AEE4 /* Recommendation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Recommendation.swift; path = Models/Recommendation.swift; sourceTree = "<group>"; };
 		E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedViewController.swift; path = Controllers/FeedViewController.swift; sourceTree = "<group>"; };
 		E7CA65D21DBC968E002E03BD /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultCell.swift; path = Views/SearchResultCell.swift; sourceTree = "<group>"; };
 		E7D7FD861B22CBE30078CDD2 /* YelpAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpAPI.swift; path = APIs/YelpAPI.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				E760D8BA1AE5DA6000C4518F /* AppDelegate.swift */,
+				E7A4750D1E34411600A6AEE4 /* Data */,
 				E79C60AB1AF9A78000F0E511 /* Stores */,
 				E79C60A81AF9A59200F0E511 /* Models */,
 				E7C7F9D21AF1BC3E00945EA1 /* Controllers */,
@@ -305,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				E71CFC081DB5D07400DF77D7 /* RecommendIt.xcdatamodeld */,
+				E7A475101E34535000A6AEE4 /* Recommendation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -315,6 +321,14 @@
 				E79C60AC1AF9A7A300F0E511 /* RecommendationStore.swift */,
 			);
 			name = Stores;
+			sourceTree = "<group>";
+		};
+		E7A4750D1E34411600A6AEE4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E7A4750E1E344B2000A6AEE4 /* DataProvider.swift */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 		E7C7F9D21AF1BC3E00945EA1 /* Controllers */ = {
@@ -529,6 +543,7 @@
 			files = (
 				E707832E1B36757600168CA9 /* FeedFlowLayout.swift in Sources */,
 				E792526E1B1D6BC4005F0522 /* SearchViewController.swift in Sources */,
+				E7A4750F1E344B2000A6AEE4 /* DataProvider.swift in Sources */,
 				E74DC1E21B49DBF600AE45CF /* UISearchBar.swift in Sources */,
 				E773B5201DB89D6D0082C1AD /* CoreDataManager.swift in Sources */,
 				E7CA65D31DBC968E002E03BD /* SearchResultCell.swift in Sources */,
@@ -538,6 +553,7 @@
 				E71CFC0A1DB5D07400DF77D7 /* RecommendIt.xcdatamodeld in Sources */,
 				E75C837C1B2561570070763D /* Helpers.swift in Sources */,
 				E786CA8D1DBC2ADD00ED136C /* PersistentContainer.swift in Sources */,
+				E7A475111E34535000A6AEE4 /* Recommendation.swift in Sources */,
 				E778D70D1B37710D0022C6AC /* FeedHeaderReusableView.swift in Sources */,
 				E79C60AD1AF9A7A300F0E511 /* RecommendationStore.swift in Sources */,
 				E79252681B1D5F0D005F0522 /* RecommendationCell.swift in Sources */,

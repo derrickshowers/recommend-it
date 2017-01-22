@@ -19,7 +19,7 @@ class RecommendationStore {
 
     static let sharedInstance = RecommendationStore()
 
-    func createRecommendation(yelpId: String, name: String, notes: String?, location: String?, thumbnailURL: String?) -> Recommendation? {
+    func createRecommendation(yelpId: String, name: String, notes: String?, location: String?, thumbnailURL: String?) -> OldRecommendation? {
 
         let rec = CoreDataManager.sharedInstance.newItem(entityName: "Recommendation")
 
@@ -32,11 +32,11 @@ class RecommendationStore {
 
         CoreDataManager.sharedInstance.saveContext()
 
-        return rec as? Recommendation
+        return rec as? OldRecommendation
     }
 
-    func getRecommendation(name: String) -> Recommendation? {
-        var recommendation: Recommendation?
+    func getRecommendation(name: String) -> OldRecommendation? {
+        var recommendation: OldRecommendation?
         for rec in allRecommendations {
             if rec.name == name {
                 recommendation = rec
