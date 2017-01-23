@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import CloudKit
 
 class AddEditViewController: UIViewController {
 
@@ -58,8 +59,11 @@ class AddEditViewController: UIViewController {
 
     @IBAction func savePressed(_ sender: AnyObject) {
 
-        guard let name = nameField.text else { return }
-        guard let notes = notesTextView.text else { return }
+        guard let name = nameField.text,
+            let notes = notesTextView.text,
+            let yelpId = selectedYelpBiz?.yelpId else {
+            return
+        }
 
         // save the location
         var location = ""
@@ -76,11 +80,11 @@ class AddEditViewController: UIViewController {
             }
         }
 
-        currentRecommendation = recommendationStore.createRecommendation(yelpId: selectedYelpBiz?.yelpId ?? "no-yelp-id", name: name, notes: notes, location: location, thumbnailURL: selectedYelpBiz?.thumbnailURL)
+        let recommendation = Recommendation(yelpId: yelpId, name: name, notes: notes, location: location, thumbnailURL: selectedYelpBiz?.thumbnailURL)
 
-        // dismiss the view after we get the image
-        self.dismiss(animated: true, completion: nil)
-
+        DataProvider<Recommendation>().saveData(model: recommendation, privateDB: false) { (savedRecord: CKRecord) in
+            self.dismiss(animated: true, completion: nil)
+        }
 
     }
 }

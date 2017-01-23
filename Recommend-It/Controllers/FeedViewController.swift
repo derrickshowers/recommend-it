@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import CloudKit
 
 class FeedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, RecommendationCellDelegate {
 
@@ -19,11 +20,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var recommendationStore: RecommendationStore?
     var feedHeaderView: FeedHeaderReusableView?
     var initialEmptyView: InitialEmptyView?
-    var recommendations: [Recommendation]? {
-        didSet {
-            updateScreen()
-        }
-    }
+    var recommendations: [Recommendation]?
 
     // MARK: - View Controller Methods
 
@@ -34,14 +31,13 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         // get reservations from the AppDelegate
         // recommendationStore = RecommendationStore.sharedInstance
-        getData()
 
         // make the navigation bar transparent
         self.navigationController?.navigationBar.makeLight()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        updateScreen()
+        getData()
     }
 
     // MARK: - Data and updaate helpers
@@ -49,15 +45,16 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private func getData() {
         DataProvider<Recommendation>().fetchData(privateDB: false, forCurrentUser: true) { [weak self] (recommendations: [Recommendation]) in
             self?.recommendations = recommendations
+            self?.updateScreen()
         }
     }
 
     private func updateScreen() {
         feedCollectionView.reloadData()
 
-        if let count = recommendations?.count, count > 0 {
-            initialEmptyView?.removeFromSuperview()
-        } else {
+        initialEmptyView?.removeFromSuperview()
+
+        if recommendations?.count == 0 {
             initialEmptyView = UIView.loadFromNib(type: InitialEmptyView.self)
 
             if let initialEmptyView = initialEmptyView {
@@ -186,9 +183,16 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 
     func didPressConfirmRemove(_ cellIndex: Int) {
-        recommendationStore?.removeRecommendation(at: cellIndex)
-        feedCollectionView.deleteItems(at: [IndexPath(item: cellIndex, section: 0)])
-        feedCollectionView.reloadSections(IndexSet(integer: 0))
+
+        guard let recordId = recommendations?[cellIndex].cloudKitRecordId else {
+            return
+        }
+
+        DataProvider<Recommendation>().deleteRecord(recordId: recordId, privateDB: false) { (recordId: CKRecordID?) in
+            print("deleted")
+        }
+        recommendations?.remove(at: cellIndex)
+        feedCollectionView.reloadData()
     }
 
     // MARK: - Helper Functions

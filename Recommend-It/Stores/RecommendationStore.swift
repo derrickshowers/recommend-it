@@ -13,7 +13,7 @@ import UIKit
 class RecommendationStore {
 
     /// MARK: - Properties
-    var allRecommendations: [Recommendation] {
+    var allRecommendations: [OldRecommendation] {
         return CoreDataManager.sharedInstance.fetchEntity(entityName: "Recommendation").filter({ !$0.archived })
     }
 
