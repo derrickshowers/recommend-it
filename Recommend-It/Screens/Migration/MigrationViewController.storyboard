@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JTS-ve-1FI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Migration View Controller-->
+        <scene sceneID="ZeI-kx-DZT">
+            <objects>
+                <viewController storyboardIdentifier="MigrationViewController" id="JTS-ve-1FI" customClass="MigrationViewController" customModule="DEBUG__Recommend_It" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Ih-Rb-jRE"/>
+                        <viewControllerLayoutGuide type="bottom" id="euk-1r-44e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YOb-m5-MsC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CloudMigrationHeader" translatesAutoresizingMaskIntoConstraints="NO" id="ove-Wy-Spw">
+                                <rect key="frame" x="95" y="88" width="184" height="98"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="184" id="1Vx-8W-0Hw"/>
+                                    <constraint firstAttribute="height" constant="98" id="Ap5-jS-eUQ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSh-W5-OcV">
+                                <rect key="frame" x="16" y="20" width="343" height="60"/>
+                                <string key="text">Recommend It
+has moved to the cloud!</string>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7E1-LF-Yw9">
+                                <rect key="frame" x="16" y="607" width="343" height="40"/>
+                                <color key="backgroundColor" red="0.38039215686274508" green="0.51372549019607838" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="PFN-HH-qO9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Let's do it. I love the cloud!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="2"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTapConfirmationButton:" destination="JTS-ve-1FI" eventType="touchUpInside" id="Xa6-AZ-qBV"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXH-h4-did">
+                                <rect key="frame" x="16" y="194" width="343" height="393"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">The cloud? Say what?! Why?? 😱  Prior to this release, all of your recommendations were stored locally on your device. While this may be fine for now, it can be quite limiting down the road. Now that everything is stored on the cloud, you may be able to access your recommendations using a web browser, or possibly share recommendations with others. For now, not much is changing, but there are some things you need to know. If you had recommendations (included ones you have archived), they will now be stored in the cloud. Don't worry, they'll still be your recommendations tied to you by your Apple ID (so you don't even have to login! 🎉). That's about it, but please confirm you're ok with your recommendaitons being stored on the cloud (if you never had any recommendations to begin, just tap the button).</string>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Migrating your recommendations..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6s-7r-SW9">
+                                <rect key="frame" x="16" y="616" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="z6s-7r-SW9" secondAttribute="leading" id="2Sg-tf-8nb"/>
+                            <constraint firstItem="euk-1r-44e" firstAttribute="top" secondItem="7E1-LF-Yw9" secondAttribute="bottom" constant="20" id="3gB-TS-0jy"/>
+                            <constraint firstItem="7E1-LF-Yw9" firstAttribute="top" secondItem="OXH-h4-did" secondAttribute="bottom" constant="20" id="7cY-xh-lA0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hSh-W5-OcV" secondAttribute="trailing" id="9AU-AS-fG3"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="7E1-LF-Yw9" secondAttribute="leading" id="Bbs-E1-sg9"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="hSh-W5-OcV" secondAttribute="leading" id="Evh-aG-rMD"/>
+                            <constraint firstItem="euk-1r-44e" firstAttribute="top" secondItem="z6s-7r-SW9" secondAttribute="bottom" constant="30" id="K9w-TV-ik6"/>
+                            <constraint firstItem="ove-Wy-Spw" firstAttribute="top" secondItem="hSh-W5-OcV" secondAttribute="bottom" constant="8" id="NVV-7y-78S"/>
+                            <constraint firstItem="OXH-h4-did" firstAttribute="top" secondItem="ove-Wy-Spw" secondAttribute="bottom" constant="8" id="XlB-8E-Kvk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OXH-h4-did" secondAttribute="trailing" id="Ycy-jC-WIb"/>
+                            <constraint firstItem="hSh-W5-OcV" firstAttribute="top" secondItem="0Ih-Rb-jRE" secondAttribute="bottom" constant="20" id="bYf-OG-yAL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7E1-LF-Yw9" secondAttribute="trailing" id="fCO-OD-7bO"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="OXH-h4-did" secondAttribute="leading" id="tJs-dX-0UX"/>
+                            <constraint firstItem="z6s-7r-SW9" firstAttribute="top" secondItem="OXH-h4-did" secondAttribute="bottom" constant="29" id="vzN-i6-Jkr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z6s-7r-SW9" secondAttribute="trailing" id="z2Q-jC-5tD"/>
+                            <constraint firstItem="ove-Wy-Spw" firstAttribute="centerX" secondItem="YOb-m5-MsC" secondAttribute="centerX" id="zIJ-mA-cZ2"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="confirmationButton" destination="7E1-LF-Yw9" id="r0D-im-akf"/>
+                        <outlet property="migrationLabel" destination="z6s-7r-SW9" id="qfo-30-Pyj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7zu-Rq-cLt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116" y="166.8665667166417"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="CloudMigrationHeader" width="653" height="301"/>
+    </resources>
+</document>

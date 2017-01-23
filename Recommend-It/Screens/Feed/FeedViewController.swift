@@ -29,6 +29,8 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         feedCollectionView.delegate = self
         feedCollectionView.dataSource = self
 
+        showMigrationMessageIfNecessary()
+
         // get reservations from the AppDelegate
         // recommendationStore = RecommendationStore.sharedInstance
 
@@ -195,13 +197,24 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         feedCollectionView.reloadData()
     }
 
-    // MARK: - Helper Functions
+    // MARK: - Private helpers
 
     /// Gets the AddEditViewController from the AddEdit.storyboard
-    func getAddEditViewController() -> AddEditViewController {
+    private func getAddEditViewController() -> AddEditViewController {
         let sb = UIStoryboard(name: "AddEdit", bundle: nil)
         let aevc = sb.instantiateInitialViewController() as! AddEditViewController
         return aevc
+    }
+
+    private func showMigrationMessageIfNecessary() {
+
+        let migrationStoryboard = UIStoryboard(name: "MigrationViewController", bundle: nil)
+
+        guard let migrationViewController = migrationStoryboard.instantiateInitialViewController() else {
+            return
+        }
+
+        self.present(migrationViewController, animated: true, completion: nil)
     }
 
     // MARK: - IBAction Functions

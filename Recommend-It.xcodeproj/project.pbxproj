@@ -45,6 +45,8 @@
 		E7A4750F1E344B2000A6AEE4 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A4750E1E344B2000A6AEE4 /* DataProvider.swift */; };
 		E7A475111E34535000A6AEE4 /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A475101E34535000A6AEE4 /* Recommendation.swift */; };
 		E7A4751F1E35E58900A6AEE4 /* RecommendIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7A4751D1E35E58900A6AEE4 /* RecommendIt.xcdatamodeld */; };
+		E7A475241E35E7FE00A6AEE4 /* MigrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A475231E35E7FE00A6AEE4 /* MigrationViewController.swift */; };
+		E7A475281E35EC5B00A6AEE4 /* MigrationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A475271E35EC5B00A6AEE4 /* MigrationViewController.storyboard */; };
 		E7C7F9D41AF1BC6000945EA1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */; };
 		E7CA65D11DBC5D03002E03BD /* InitialEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7E6748D1DBC153D00672DC5 /* InitialEmptyView.xib */; };
 		E7CA65D31DBC968E002E03BD /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CA65D21DBC968E002E03BD /* SearchResultCell.swift */; };
@@ -112,6 +114,8 @@
 		E7A4750E1E344B2000A6AEE4 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataProvider.swift; path = Data/DataProvider.swift; sourceTree = "<group>"; };
 		E7A475101E34535000A6AEE4 /* Recommendation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Recommendation.swift; path = Data/Models/Recommendation.swift; sourceTree = "<group>"; };
 		E7A4751E1E35E58900A6AEE4 /* RecommendIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecommendIt.xcdatamodel; sourceTree = "<group>"; };
+		E7A475231E35E7FE00A6AEE4 /* MigrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MigrationViewController.swift; path = Screens/Migration/MigrationViewController.swift; sourceTree = "<group>"; };
+		E7A475271E35EC5B00A6AEE4 /* MigrationViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MigrationViewController.storyboard; path = Screens/Migration/MigrationViewController.storyboard; sourceTree = "<group>"; };
 		E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedViewController.swift; path = "Recommend-It/Screens/Feed/FeedViewController.swift"; sourceTree = SOURCE_ROOT; };
 		E7CA65D21DBC968E002E03BD /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultCell.swift; path = Screens/AddEdit/Cells/SearchResultCell.swift; sourceTree = "<group>"; };
 		E7D7FD861B22CBE30078CDD2 /* YelpAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpAPI.swift; path = Data/YelpAPI.swift; sourceTree = "<group>"; };
@@ -258,6 +262,7 @@
 				E7A475191E35E21100A6AEE4 /* AddEdit */,
 				E7A475181E35E1C500A6AEE4 /* Common */,
 				E7A475151E35E17C00A6AEE4 /* Feed */,
+				E7A475221E35E7C900A6AEE4 /* Migration */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
@@ -352,6 +357,15 @@
 				E76CCD801DBC0FD000E739DB /* UIView+.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		E7A475221E35E7C900A6AEE4 /* Migration */ = {
+			isa = PBXGroup;
+			children = (
+				E7A475271E35EC5B00A6AEE4 /* MigrationViewController.storyboard */,
+				E7A475231E35E7FE00A6AEE4 /* MigrationViewController.swift */,
+			);
+			name = Migration;
 			sourceTree = "<group>";
 		};
 		ED3263009FC8F5044B2017AE /* Pods */ = {
@@ -466,6 +480,7 @@
 				E760D8C21AE5DA6000C4518F /* Images.xcassets in Resources */,
 				E7855B921DB479140066CD16 /* APIKeys.plist in Resources */,
 				E760D8E11AE609EB00C4518F /* LaunchScreen.xib in Resources */,
+				E7A475281E35EC5B00A6AEE4 /* MigrationViewController.storyboard in Resources */,
 				E760D8DC1AE6095600C4518F /* Feed.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -546,6 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7A475241E35E7FE00A6AEE4 /* MigrationViewController.swift in Sources */,
 				E707832E1B36757600168CA9 /* FeedFlowLayout.swift in Sources */,
 				E792526E1B1D6BC4005F0522 /* SearchViewController.swift in Sources */,
 				E7A4750F1E344B2000A6AEE4 /* DataProvider.swift in Sources */,
