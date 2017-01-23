@@ -8,6 +8,13 @@
 
 import UIKit
 
+protocol RecommendationCellDelegate {
+    func didPressRemoveAtIndex(_ cellIndex: Int)
+    func didPressArchiveAtIndex(_ cellIndex: Int)
+    func didPressYelpAtIndex(_ cellIndex: Int)
+    func didPressConfirmRemove(_ cellIndex: Int)
+}
+
 class RecommendationCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
