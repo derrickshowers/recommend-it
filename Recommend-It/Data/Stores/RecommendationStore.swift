@@ -14,7 +14,7 @@ class RecommendationStore {
 
     /// MARK: - Properties
     var allRecommendations: [OldRecommendation] {
-        return CoreDataManager.sharedInstance.fetchEntity(entityName: "OldRecommendation").filter({ !$0.archived })
+        return CoreDataManager.sharedInstance.fetchEntity(entityName: "Recommendation").filter({ !$0.archived })
     }
 
     static let sharedInstance = RecommendationStore()
