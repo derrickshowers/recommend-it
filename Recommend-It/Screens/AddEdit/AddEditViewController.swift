@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class AddEditViewController: UIViewController {
+class AddEditViewController: UIViewController, DataProviderErrorDelegate {
 
     // MARK: - Properties
     // MARK: IBOutlet
@@ -20,14 +20,17 @@ class AddEditViewController: UIViewController {
     var recommendationStore: RecommendationStore!
     var selectedYelpBiz: YelpBiz?
     var currentRecommendation: OldRecommendation?
+    var recommendationsDataProvider = DataProvider<Recommendation>()
 
-    // MARK: - View Controller Methods
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // get reservations from the AppDelegate
-        recommendationStore = RecommendationStore.sharedInstance
+        // recommendationStore = RecommendationStore.sharedInstance
+
+        recommendationsDataProvider.errorDelegate = self
 
         // show the blue version of nav controller
         navigationController?.navigationBar.makeDefaultBlue()
@@ -48,6 +51,16 @@ class AddEditViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let svc = segue.destination as! SearchViewController
         svc.addEditViewController = self
+    }
+
+    // MARK: - DataProviderErrorDelegate
+
+    func dataProviderDidError(error: Error?) {
+        let title = "Something went wrong 😱"
+        let message = "Yeah, yeah... Recommend It isn't all too smart when it comes to handling bad network connections, so that's likely the issue 😞.\n\nIt also could be you, though 😉! Make sure you're logged in to iCloud and Recommend It has permission to backup data (Settings -> iCloud -> iCloud Drive).\n\nAll else fails, why not give it another shot?"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 
     // MARK: - IBAction Functions
@@ -81,7 +94,7 @@ class AddEditViewController: UIViewController {
 
         let recommendation = Recommendation(yelpId: yelpId, name: name, notes: notes, location: location, thumbnailURL: selectedYelpBiz?.thumbnailURL)
 
-        DataProvider<Recommendation>().saveData(model: recommendation, privateDB: false) { (savedRecommendation: Recommendation) in
+        recommendationsDataProvider.saveData(model: recommendation, privateDB: false) { (savedRecommendation: Recommendation) in
             NotificationCenter.default.post(name: Notification.Name("newRecommendationSaved"), object: nil, userInfo: ["recommendation": savedRecommendation])
             self.dismiss(animated: true, completion: nil)
         }

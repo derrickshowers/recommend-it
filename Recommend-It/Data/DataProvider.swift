@@ -9,8 +9,14 @@
 import Foundation
 import CloudKit
 
+protocol DataProviderErrorDelegate {
+    func dataProviderDidError(error: Error?) -> Void
+}
+
 // QUESTION: How does Swift resolve conflicting classes?
 class DataProvider<T: Model> {
+
+    var errorDelegate: DataProviderErrorDelegate?
 
     // MARK: - Public Interface
 
@@ -38,7 +44,8 @@ class DataProvider<T: Model> {
 
             guard let record = record,
                 let model = T.buildModelFromRecord(record) as? T else {
-                return
+                    self.handleError(error)
+                    return
             }
 
             DispatchQueue.main.async() {
@@ -51,6 +58,7 @@ class DataProvider<T: Model> {
 
         getDatabase(privateDB: privateDB).delete(withRecordID: recordId) { (recordId: CKRecordID?, error: Error?) in
             guard let recordId = recordId else {
+                self.handleError(error)
                 return
             }
 
@@ -70,7 +78,8 @@ class DataProvider<T: Model> {
 
             guard let savedRecord = savedRecord,
                 let model = T.buildModelFromRecord(savedRecord) as? T else {
-                return
+                    self.handleError(error)
+                    return
             }
 
             DispatchQueue.main.async() {
@@ -83,7 +92,13 @@ class DataProvider<T: Model> {
 
     private func performDatabaseQuery(database: CKDatabase, query: CKQuery, completion: @escaping (_ models: [T]) -> Void) {
         database.perform(query, inZoneWith: nil) { (results: [CKRecord]?, error: Error?) in
+            guard error != nil else {
+                self.handleError(error)
+                return
+            }
+
             var models = [T]()
+
             results?.forEach({ (record: CKRecord) in
 
                 guard let model = T.buildModelFromRecord(record) as? T else {
@@ -112,5 +127,12 @@ class DataProvider<T: Model> {
 
         let container = CKContainer.default()
         return privateDB ? container.privateCloudDatabase : container.publicCloudDatabase
+    }
+
+    private func handleError(_ error: Error?) {
+
+        DispatchQueue.main.async() {
+            self.errorDelegate?.dataProviderDidError(error: error)
+        }
     }
 }
