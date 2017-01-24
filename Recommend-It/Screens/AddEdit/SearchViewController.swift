@@ -23,7 +23,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
     var addEditViewController: AddEditViewController?
     let locationManager = CLLocationManager()
 
-    // MARK: - View Controller Methods
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,8 +52,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
         locationManager.stopUpdatingLocation()
     }
 
-    // MARK: - TableView Methods
-    // MARK: Datasource
+    // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
@@ -74,31 +73,30 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
         return cell
     }
 
-    // MARK: Delegate
+    // MARK: UITableViewDelegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         addEditViewController?.selectedYelpBiz = results[(indexPath as NSIndexPath).row]
         self.dismiss(animated: true, completion: nil)
     }
 
-    // MARK: - SearchBar Methods
-    // MARK: Delegate
+    // MARK: - UISearchBarDelegate
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         currentSearchText = searchText
         debouncedResults()
     }
 
-    // MARK: - TextField Methods
-    // MARK: Delegate
+    // MARK: - UITextFieldDelegate
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         setLocation()
         textField.resignFirstResponder()
         return true
     }
 
-    // MARK: - CLLocationManager Methods
-    // MARK: Delegate
+    // MARK: - CLLocationManagerDelegate
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: { (placemarks, error) -> Void in
             if error == nil {
@@ -114,11 +112,11 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
         })
     }
 
-    // MARK: - Helper Functions
+    // MARK: - Private Helpers
 
     /// Retrieves the location from the location text field and looks up the address using CoreLocation. Then,
     /// updates the location text field in a completion callback and gets new results.
-    func setLocation() {
+    private func setLocation() {
         let location = locationTextField.text
         let geocoder = CLGeocoder()
 
@@ -140,7 +138,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
 
     /// Retrieves the results from the Yelp API. In the callback, updates the results array and reloads
     /// the table view's data
-    func getResults() {
+    private func getResults() {
         let location = locationTextField.text
         YelpAPI.sharedInstance.getBusinessesByLocationAndTerm(location: location, term: self.currentSearchText) { (businesses: [YelpBiz]) -> Void in
             self.results = businesses
@@ -148,7 +146,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
         }
     }
 
-    // MARK: - IBAction Functions
+    // MARK: - IBActions
 
     @IBAction func changeButtonPressed(_ sender: AnyObject) {
         locationTextField.becomeFirstResponder()

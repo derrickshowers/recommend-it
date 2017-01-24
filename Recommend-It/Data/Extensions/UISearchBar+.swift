@@ -1,5 +1,5 @@
 //
-//  NavigationController.swift
+//  UISearchBar+.swift
 //  Recommend-It
 //
 //  Created by Derrick Showers on 6/20/15.
