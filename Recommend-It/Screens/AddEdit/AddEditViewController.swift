@@ -8,7 +8,6 @@
 
 import UIKit
 import Alamofire
-import CloudKit
 
 class AddEditViewController: UIViewController {
 
@@ -82,7 +81,8 @@ class AddEditViewController: UIViewController {
 
         let recommendation = Recommendation(yelpId: yelpId, name: name, notes: notes, location: location, thumbnailURL: selectedYelpBiz?.thumbnailURL)
 
-        DataProvider<Recommendation>().saveData(model: recommendation, privateDB: false) { (savedRecord: CKRecord) in
+        DataProvider<Recommendation>().saveData(model: recommendation, privateDB: false) { (savedRecommendation: Recommendation) in
+            NotificationCenter.default.post(name: Notification.Name("newRecommendationSaved"), object: nil, userInfo: ["recommendation": savedRecommendation])
             self.dismiss(animated: true, completion: nil)
         }
 

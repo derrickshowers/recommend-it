@@ -8,12 +8,25 @@
 
 import Foundation
 import UIKit
-import CloudKit
 
 class MigrationViewController: UIViewController {
 
+    enum UserDefaultsKey {
+        static let messageShown = "migrationMessageShown"
+    }
+
     @IBOutlet weak var confirmationButton: UIButton!
     @IBOutlet weak var migrationLabel: UILabel!
+
+    // MARK: - Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        UserDefaults.standard.set(true, forKey: UserDefaultsKey.messageShown)
+    }
+
+    // MARK: - Private helpers
 
     private func migrateOldRecommendations() {
         let recommendations = RecommendationStore.sharedInstance.allRecommendations
@@ -36,7 +49,7 @@ class MigrationViewController: UIViewController {
 
             let recommendation = Recommendation(yelpId: yelpId, name: name, notes: oldRecommendation.notes, location: oldRecommendation.location, thumbnailURL: oldRecommendation.thumbnailURL)
 
-            recommendationDataProvider.saveData(model: recommendation, privateDB: false, completion: { (record: CKRecord) in
+            recommendationDataProvider.saveData(model: recommendation, privateDB: false, completion: { (savedRecommendation: Recommendation) in
                 self.dismiss(animated: true, completion: nil)
             })
         }

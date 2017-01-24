@@ -60,7 +60,7 @@ class DataProvider<T: Model> {
         }
     }
 
-    func saveData(model: T, privateDB: Bool, completion: @escaping (_ savedRecord: CKRecord) -> Void) {
+    func saveData(model: T, privateDB: Bool, completion: @escaping (_ model: T) -> Void) {
 
         guard let record = T.buildRecordFromModel(model) else {
             return
@@ -68,12 +68,13 @@ class DataProvider<T: Model> {
 
         getDatabase(privateDB: privateDB).save(record) { (savedRecord: CKRecord?, error: Error?) in
 
-            guard let savedRecord = savedRecord else {
+            guard let savedRecord = savedRecord,
+                let model = T.buildModelFromRecord(savedRecord) as? T else {
                 return
             }
 
             DispatchQueue.main.async() {
-                completion(savedRecord)
+                completion(model)
             }
         }
     }

@@ -30,16 +30,15 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         feedCollectionView.dataSource = self
 
         showMigrationMessageIfNecessary()
+        self.getData()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(newRecommendationSaved), name: Notification.Name("newRecommendationSaved"), object: nil)
 
         // get reservations from the AppDelegate
         // recommendationStore = RecommendationStore.sharedInstance
 
         // make the navigation bar transparent
         self.navigationController?.navigationBar.makeLight()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        getData()
     }
 
     // MARK: - Data and updaate helpers
@@ -210,11 +209,24 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         let migrationStoryboard = UIStoryboard(name: "MigrationViewController", bundle: nil)
 
-        guard let migrationViewController = migrationStoryboard.instantiateInitialViewController() else {
+        guard let migrationViewController = migrationStoryboard.instantiateInitialViewController(),
+            !UserDefaults.standard.bool(forKey: MigrationViewController.UserDefaultsKey.messageShown) else {
             return
         }
 
         self.present(migrationViewController, animated: true, completion: nil)
+    }
+
+    // MARK: - Notifications
+
+    @objc private func newRecommendationSaved(notification: Notification) {
+
+        guard let recommendation = notification.userInfo?["recommendation"] as? Recommendation else {
+            return
+        }
+
+        recommendations?.append(recommendation)
+        updateScreen()
     }
 
     // MARK: - IBAction Functions
