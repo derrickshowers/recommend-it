@@ -17,12 +17,11 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var feedCollectionView: UICollectionView!
 
     // MARK: Other
-    var recommendationStore: RecommendationStore?
     var feedHeaderView: FeedHeaderReusableView?
     var initialEmptyView: InitialEmptyView?
     var recommendations: [Recommendation]?
 
-    // MARK: - View Controller Methods
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         // setup feed collection view
@@ -32,16 +31,14 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         showMigrationMessageIfNecessary()
         self.getData()
 
+        // Setup notifications for when new recommendations are saved
         NotificationCenter.default.addObserver(self, selector: #selector(newRecommendationSaved), name: Notification.Name("newRecommendationSaved"), object: nil)
-
-        // get reservations from the AppDelegate
-        // recommendationStore = RecommendationStore.sharedInstance
 
         // make the navigation bar transparent
         self.navigationController?.navigationBar.makeLight()
     }
 
-    // MARK: - Data and updaate helpers
+    // MARK: - Data Helpers
 
     private func getData() {
         DataProvider<Recommendation>().fetchData(privateDB: false, forCurrentUser: true) { [weak self] (recommendations: [Recommendation]) in
@@ -74,8 +71,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
 
-    // MARK: - CollectionView Methods
-    // MARK: Datasource
+    // MARK: - UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let numOfRecs = recommendations?.count {
@@ -84,6 +80,8 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return 0
         }
     }
+
+    // MARK: - UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = feedCollectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! RecommendationCell
@@ -122,7 +120,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return feedHeaderView!
     }
 
-    // MARK: DelegateFlowLayout
+    // MARK: UICollectionViewDelegateFlowLayout
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.view.bounds.width - 20
@@ -130,7 +128,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return CGSize(width: self.view.bounds.width - 20, height: height)
     }
 
-    // MARK: - ScrollView Methods
+    // MARK: - UIScrollViewDelegate
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y + 64.0
@@ -150,7 +148,8 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
 
-    // MARK: - RecommendationCell Methods
+    // MARK: - RecommendationCellDelegate
+
     func didPressRemoveAtIndex(_ cellIndex: Int) {
         let cell = feedCollectionView.cellForItem(at: IndexPath(item: cellIndex, section: 0)) as! RecommendationCell
         cell.confirmRemoveButton.isHidden = false
@@ -229,7 +228,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         updateScreen()
     }
 
-    // MARK: - IBAction Functions
+    // MARK: - IBActions
 
     @IBAction func addPressed(_ sender: AnyObject) {
         self.present(getAddEditViewController(), animated: true, completion: nil)

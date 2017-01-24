@@ -35,7 +35,6 @@ class DataProvider<T: Model> {
             let query = CKQuery(recordType: T.className, predicate: predicate)
             performDatabaseQuery(database: self.getDatabase(privateDB: privateDB), query: query, completion: completion)
         }
-
     }
 
     func fetchSingleRecord(recordId: CKRecordID, privateDB: Bool, completion: @escaping (_ model: T) -> Void) {
@@ -91,6 +90,7 @@ class DataProvider<T: Model> {
     // MARK - Private helpers
 
     private func performDatabaseQuery(database: CKDatabase, query: CKQuery, completion: @escaping (_ models: [T]) -> Void) {
+
         database.perform(query, inZoneWith: nil) { (results: [CKRecord]?, error: Error?) in
             guard error != nil else {
                 self.handleError(error)
@@ -116,6 +116,7 @@ class DataProvider<T: Model> {
     }
 
     private func retrieveUserRecordId(completion: @escaping (_ userId: CKRecordID) -> Void) {
+
         CKContainer.default().fetchUserRecordID { (userId: CKRecordID?, error: Error?) in
             if let userId = userId {
                 completion(userId)

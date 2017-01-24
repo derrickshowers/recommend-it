@@ -17,7 +17,6 @@ class AddEditViewController: UIViewController, DataProviderErrorDelegate {
     @IBOutlet weak var notesTextView: UITextView!
 
     // MARK: Other
-    var recommendationStore: RecommendationStore!
     var selectedYelpBiz: YelpBiz?
     var currentRecommendation: OldRecommendation?
     var recommendationsDataProvider = DataProvider<Recommendation>()
@@ -26,9 +25,6 @@ class AddEditViewController: UIViewController, DataProviderErrorDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // get reservations from the AppDelegate
-        // recommendationStore = RecommendationStore.sharedInstance
 
         recommendationsDataProvider.errorDelegate = self
 
@@ -63,7 +59,7 @@ class AddEditViewController: UIViewController, DataProviderErrorDelegate {
         self.present(alert, animated: true, completion: nil)
     }
 
-    // MARK: - IBAction Functions
+    // MARK: - IBActions
 
     @IBAction func cancelPressed(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
