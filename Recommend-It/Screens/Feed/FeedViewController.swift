@@ -38,6 +38,12 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.navigationController?.navigationBar.makeLight()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        updateScreen()
+    }
+
     // MARK: - Data Helpers
 
     private func getData() {
@@ -52,7 +58,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         initialEmptyView?.removeFromSuperview()
 
-        if recommendations?.count == 0 {
+        if recommendations == nil || recommendations?.count == 0 {
             initialEmptyView = UIView.loadFromNib(type: InitialEmptyView.self)
 
             if let initialEmptyView = initialEmptyView {
