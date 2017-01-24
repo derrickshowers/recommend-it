@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E707832C1B366E8A00168CA9 /* UINavigationBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707832B1B366E8A00168CA9 /* UINavigationBar+.swift */; };
+		E707832C1B366E8A00168CA9 /* UISearchBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707832B1B366E8A00168CA9 /* UISearchBar+.swift */; };
 		E707832E1B36757600168CA9 /* FeedFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707832D1B36757600168CA9 /* FeedFlowLayout.swift */; };
 		E71CFBC41DB5C4DD00DF77D7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71CFBC31DB5C4DD00DF77D7 /* CoreData.framework */; };
 		E721F9241B4A059300138CCA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E721F9231B4A059300138CCA /* Social.framework */; };
@@ -23,7 +23,7 @@
 		E72DFCF51B4A0442000E6274 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72DFCEB1B4A0442000E6274 /* Security.framework */; };
 		E72DFCF61B4A0442000E6274 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72DFCEC1B4A0442000E6274 /* StoreKit.framework */; };
 		E72DFCF71B4A0442000E6274 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72DFCED1B4A0442000E6274 /* SystemConfiguration.framework */; };
-		E74DC1E21B49DBF600AE45CF /* UISearchBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74DC1E11B49DBF600AE45CF /* UISearchBar+.swift */; };
+		E74DC1E21B49DBF600AE45CF /* UINavigationBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74DC1E11B49DBF600AE45CF /* UINavigationBar+.swift */; };
 		E75C837C1B2561570070763D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C837B1B2561570070763D /* Utilities.swift */; };
 		E760D8BB1AE5DA6000C4518F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E760D8BA1AE5DA6000C4518F /* AppDelegate.swift */; };
 		E760D8C21AE5DA6000C4518F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E760D8C11AE5DA6000C4518F /* Images.xcassets */; };
@@ -69,7 +69,7 @@
 		3A6AE5CFD3B359BF4559B113 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		746E6FC41B94847261B47C99 /* Pods-Recommend-It.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recommend-It.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recommend-It/Pods-Recommend-It.release.xcconfig"; sourceTree = "<group>"; };
 		D57C05A75F8596B605212B9D /* Pods-Recommend-It.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recommend-It.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recommend-It/Pods-Recommend-It.debug.xcconfig"; sourceTree = "<group>"; };
-		E707832B1B366E8A00168CA9 /* UINavigationBar+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UINavigationBar+.swift"; path = "Data/Extensions/UINavigationBar+.swift"; sourceTree = "<group>"; };
+		E707832B1B366E8A00168CA9 /* UISearchBar+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UISearchBar+.swift"; path = "Data/Extensions/UISearchBar+.swift"; sourceTree = "<group>"; };
 		E707832D1B36757600168CA9 /* FeedFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedFlowLayout.swift; path = Screens/Feed/Views/FeedFlowLayout.swift; sourceTree = "<group>"; };
 		E71CFBC31DB5C4DD00DF77D7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E721F9231B4A059300138CCA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -86,7 +86,7 @@
 		E72DFCEB1B4A0442000E6274 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E72DFCEC1B4A0442000E6274 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E72DFCED1B4A0442000E6274 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		E74DC1E11B49DBF600AE45CF /* UISearchBar+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UISearchBar+.swift"; path = "Data/Extensions/UISearchBar+.swift"; sourceTree = "<group>"; };
+		E74DC1E11B49DBF600AE45CF /* UINavigationBar+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UINavigationBar+.swift"; path = "Data/Extensions/UINavigationBar+.swift"; sourceTree = "<group>"; };
 		E75C837B1B2561570070763D /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = Data/Utilities.swift; sourceTree = "<group>"; };
 		E75C837D1B256B030070763D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E760D8B51AE5DA6000C4518F /* Recommend-It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Recommend-It.app"; path = "DEBUG: Recommend-It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -352,8 +352,8 @@
 		E7A475211E35E63A00A6AEE4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E707832B1B366E8A00168CA9 /* UINavigationBar+.swift */,
-				E74DC1E11B49DBF600AE45CF /* UISearchBar+.swift */,
+				E74DC1E11B49DBF600AE45CF /* UINavigationBar+.swift */,
+				E707832B1B366E8A00168CA9 /* UISearchBar+.swift */,
 				E76CCD801DBC0FD000E739DB /* UIView+.swift */,
 			);
 			name = Extensions;
@@ -565,7 +565,7 @@
 				E707832E1B36757600168CA9 /* FeedFlowLayout.swift in Sources */,
 				E792526E1B1D6BC4005F0522 /* SearchViewController.swift in Sources */,
 				E7A4750F1E344B2000A6AEE4 /* DataProvider.swift in Sources */,
-				E74DC1E21B49DBF600AE45CF /* UISearchBar+.swift in Sources */,
+				E74DC1E21B49DBF600AE45CF /* UINavigationBar+.swift in Sources */,
 				E773B5201DB89D6D0082C1AD /* CoreDataManager.swift in Sources */,
 				E7CA65D31DBC968E002E03BD /* SearchResultCell.swift in Sources */,
 				E7C7F9D41AF1BC6000945EA1 /* FeedViewController.swift in Sources */,
@@ -581,7 +581,7 @@
 				E760D8BB1AE5DA6000C4518F /* AppDelegate.swift in Sources */,
 				E76CCD811DBC0FD000E739DB /* UIView+.swift in Sources */,
 				E7D7FD871B22CBE30078CDD2 /* YelpAPI.swift in Sources */,
-				E707832C1B366E8A00168CA9 /* UINavigationBar+.swift in Sources */,
+				E707832C1B366E8A00168CA9 /* UISearchBar+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

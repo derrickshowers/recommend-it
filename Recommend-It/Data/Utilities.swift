@@ -1,5 +1,5 @@
 //
-//  Helpers.swift
+//  Utilities.swift
 //  Recommend-It
 //
 //  Created by Derrick Showers on 6/7/15.

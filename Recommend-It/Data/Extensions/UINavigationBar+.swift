@@ -1,5 +1,5 @@
 //
-//  NavigationController.swift
+//  UINavigationBar+.swift
 //  Recommend-It
 //
 //  Created by Derrick Showers on 6/20/15.
@@ -8,17 +8,23 @@
 
 import UIKit
 
-extension UISearchBar {
-    func textColor(_ color: UIColor) {
-        for subView in self.subviews {
-            for secondLevelSubview in subView.subviews {
-                if secondLevelSubview.isKind(of: UITextField.self) {
-                    if let searchBarTextField: UITextField = secondLevelSubview as? UITextField {
-                        searchBarTextField.textColor = color
-                        break
-                    }
-                }
-            }
-        }
+extension UINavigationBar {
+    func makeLight() {
+        self.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.shadowImage = UIImage()
+        self.isTranslucent = true
+        self.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.tintColor = UIColor.white
+        self.barTintColor = UIColor.clear
+        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: false)
+    }
+    func makeDefaultBlue() {
+        self.setBackgroundImage(nil, for: UIBarMetrics.default)
+        self.shadowImage = nil
+        self.isTranslucent = true
+        self.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.tintColor = UIColor.white
+        self.barTintColor = UIColor(red: 68/255, green: 108/255, blue: 149/255, alpha: 1.0)
+        UIApplication.shared.setStatusBarStyle(.lightContent, animated: false)
     }
 }
