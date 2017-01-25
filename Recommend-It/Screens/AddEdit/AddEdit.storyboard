@@ -58,7 +58,7 @@
                                     <action selector="cancelPressed:" destination="UwD-5J-qoQ" eventType="touchUpInside" id="bbj-9P-tRS"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Yah-5X-AaA">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Yah-5X-AaA">
                                 <rect key="frame" x="16" y="72" width="343" height="575"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3J-Vu-MMk" userLabel="Scroll Container View">
