@@ -92,7 +92,7 @@ class DataProvider<T: Model> {
     private func performDatabaseQuery(database: CKDatabase, query: CKQuery, completion: @escaping (_ models: [T]) -> Void) {
 
         database.perform(query, inZoneWith: nil) { (results: [CKRecord]?, error: Error?) in
-            guard error != nil else {
+            guard error == nil else {
                 self.handleError(error)
                 return
             }

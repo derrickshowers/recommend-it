@@ -8,17 +8,19 @@
 
 import UIKit
 import Alamofire
+import SDWebImage
+import UITextView_Placeholder
 
 class AddEditViewController: UIViewController, DataProviderErrorDelegate {
 
     // MARK: - Properties
     // MARK: IBOutlet
     @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var notesTextView: UITextView!
 
     // MARK: Other
     var selectedYelpBiz: YelpBiz?
-    var currentRecommendation: OldRecommendation?
     var recommendationsDataProvider = DataProvider<Recommendation>()
 
     // MARK: - Lifecycle
@@ -35,13 +37,14 @@ class AddEditViewController: UIViewController, DataProviderErrorDelegate {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        if let selectedYelpBiz = selectedYelpBiz {
-            nameField.text = selectedYelpBiz.name
+
+        // Let's show the search screen prior to adding details (perhaps we should swap
+        // the order on the storyboard eventually...)
+        if selectedYelpBiz == nil {
+            presentSearchScreen()
         }
-        if let currentRecommendation = currentRecommendation {
-            nameField.text = currentRecommendation.name
-            notesTextView.text = currentRecommendation.notes
-        }
+
+        configure()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -59,19 +62,46 @@ class AddEditViewController: UIViewController, DataProviderErrorDelegate {
         self.present(alert, animated: true, completion: nil)
     }
 
+    // MARK: - Private Helpers
+
+    private func configure() {
+
+        guard let selectedYelpBiz = selectedYelpBiz else {
+            return
+        }
+
+        nameField.text = selectedYelpBiz.name
+        thumbnailImageView.sd_setImage(with: URL(string: selectedYelpBiz.thumbnailURL ?? ""), placeholderImage: UIImage(named: "RecImagePlaceholder"))
+        notesTextView.placeholder = "What do you know about this place?"
+        notesTextView.placeholderColor = UIColor.lightGray
+        notesTextView.becomeFirstResponder()
+    }
+
+    private func presentSearchScreen() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "AddEdit", bundle:nil)
+        let searchViewController = storyBoard.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController
+
+        if let searchViewController = searchViewController {
+            searchViewController.addEditViewController = self
+            present(searchViewController, animated:true, completion:nil)
+        }
+    }
+
     // MARK: - IBActions
 
     @IBAction func cancelPressed(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func savePressed(_ sender: AnyObject) {
+    @IBAction func savePressed(_ sender: UIButton) {
 
         guard let name = nameField.text,
             let notes = notesTextView.text,
             let yelpId = selectedYelpBiz?.yelpId else {
-            return
+                return
         }
+
+        sender.isEnabled = false
 
         // save the location
         var location = ""
