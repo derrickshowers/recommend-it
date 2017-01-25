@@ -18,6 +18,7 @@ class AddEditViewController: UIViewController, DataProviderErrorDelegate {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var notesTextView: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
 
     // MARK: Other
     var selectedYelpBiz: YelpBiz?
@@ -71,6 +72,7 @@ class AddEditViewController: UIViewController, DataProviderErrorDelegate {
         }
 
         nameField.text = selectedYelpBiz.name
+        scrollView.alwaysBounceVertical = true
         thumbnailImageView.sd_setImage(with: URL(string: selectedYelpBiz.thumbnailURL ?? ""), placeholderImage: UIImage(named: "RecImagePlaceholder"))
         notesTextView.placeholder = "What do you know about this place?"
         notesTextView.placeholderColor = UIColor.lightGray
