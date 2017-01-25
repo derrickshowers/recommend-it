@@ -18,7 +18,7 @@
                         <viewControllerLayoutGuide type="top" id="Dix-9U-DjH"/>
                         <viewControllerLayoutGuide type="bottom" id="uI1-1s-Uhf"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="RLE-hg-tSx">
+                    <view key="view" contentMode="scaleToFill" id="RLE-hg-tSx" userLabel="Container View">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -61,7 +61,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Yah-5X-AaA">
                                 <rect key="frame" x="16" y="72" width="343" height="575"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3J-Vu-MMk">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3J-Vu-MMk" userLabel="Scroll Container View">
                                         <rect key="frame" x="0.0" y="15" width="343" height="103.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hooray! A new recommendation for" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cR-1U-8dK">
@@ -98,9 +98,6 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Y8-8Q-vtU">
                                                 <rect key="frame" x="0.0" y="58" width="343" height="37.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="37.5" id="Zai-Su-gH5"/>
-                                                </constraints>
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
