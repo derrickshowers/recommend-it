@@ -24,7 +24,16 @@ class DataProvider<T: Model> {
 
         if forCurrentUser {
             // TOOD: Store userId so we don't have to make a separate request everytime
-            retrieveUserRecordId() { (userId: CKRecordID) in
+            retrieveUserRecordId() { (userId: CKRecordID?) in
+
+                // TODO: Better error handling - just passing back 0 records if user doesn't exist
+                guard let userId = userId else {
+                    DispatchQueue.main.async() {
+                        completion([])
+                    }
+                    return
+                }
+
                 let reference = CKReference(recordID: userId, action: .none)
                 let predicate = NSPredicate(format: "creatorUserRecordID == %@", reference)
                 let query = CKQuery(recordType: T.className, predicate: predicate)
@@ -115,12 +124,10 @@ class DataProvider<T: Model> {
         }
     }
 
-    private func retrieveUserRecordId(completion: @escaping (_ userId: CKRecordID) -> Void) {
+    private func retrieveUserRecordId(completion: @escaping (_ userId: CKRecordID?) -> Void) {
 
         CKContainer.default().fetchUserRecordID { (userId: CKRecordID?, error: Error?) in
-            if let userId = userId {
-                completion(userId)
-            }
+            completion(userId)
         }
     }
 

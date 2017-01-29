@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JTS-ve-1FI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JTS-ve-1FI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -39,7 +39,7 @@ has moved to the cloud!</string>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7E1-LF-Yw9">
                                 <rect key="frame" x="16" y="607" width="343" height="40"/>
-                                <color key="backgroundColor" red="0.38039215686274508" green="0.51372549019607838" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.30980392156862746" green="0.43529411764705883" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="PFN-HH-qO9"/>
                                 </constraints>
@@ -58,8 +58,8 @@ has moved to the cloud!</string>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXH-h4-did">
                                 <rect key="frame" x="16" y="194" width="343" height="393"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">The cloud? Say what?! Why?? 😱  Prior to this release, all of your recommendations were stored locally on your device. While this may be fine for now, it can be quite limiting down the road. Now that everything is stored on the cloud, you may be able to access your recommendations using a web browser, or possibly share recommendations with others. For now, not much is changing, but there are some things you need to know. If you had recommendations (included ones you have archived), they will now be stored in the cloud. Don't worry, they'll still be your recommendations tied to you by your Apple ID (so you don't even have to login! 🎉). That's about it, but please confirm you're ok with your recommendaitons being stored on the cloud (if you never had any recommendations to begin, just tap the button).</string>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <mutableString key="text">The cloud? Say what?! Why?? 😱  Prior to this release, all of your recommendations were stored locally on your device. While this may be fine for now, it can be quite limiting down the road. Now that everything is stored on the cloud, you may be able to access your recommendations using a web browser, or possibly share recommendations with others. For now, not much is changing, but there are some things you need to know. If you had recommendations (included ones you have archived), they will now be stored in the cloud. Don't worry, they'll still be your recommendations tied to you by your Apple ID (so you don't even have to login! 🎉). That's about it, but please confirm you're ok with your recommendaitons being stored on the cloud (if you never had any recommendations to begin, just tap the button).  Also, it's super important Recommend It has access to iCloud. If you have existing recommendations you don't want to lose, please verify by going to Settings -&gt; iCloud -&gt; iCloud Drive, and make sure Recommend It is enabled.</mutableString>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Migrating your recommendations..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6s-7r-SW9">
