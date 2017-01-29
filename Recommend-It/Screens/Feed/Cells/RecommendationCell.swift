@@ -29,18 +29,6 @@ class RecommendationCell: UICollectionViewCell {
     var cellIndex: Int?
 
     // MARK: - Lifecycle
-    override func awakeFromNib() {
-
-        super.awakeFromNib()
-        setup()
-    }
-
-    // MARK: - Setup
-    func setup() {
-
-//        configureUpperBorderFor(view: buttonContainerView)
-    }
-
     override func layoutSubviews() {
         super.layoutSubviews()
 
