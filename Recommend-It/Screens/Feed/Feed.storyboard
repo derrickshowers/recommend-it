@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -67,13 +68,19 @@
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="8GN-HD-78P">
+                                <rect key="frame" x="178" y="264" width="20" height="20"/>
+                                <color key="color" red="0.32138273119999999" green="0.43517622350000001" blue="0.58473628759999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="KBY-xg-8YI" secondAttribute="trailing" id="2fe-jJ-VRM"/>
-                            <constraint firstItem="KBY-xg-8YI" firstAttribute="top" secondItem="4iO-mu-YaR" secondAttribute="top" constant="-64" id="LHQ-IZ-dsy"/>
                             <constraint firstItem="KBY-xg-8YI" firstAttribute="leading" secondItem="4iO-mu-YaR" secondAttribute="leading" id="ayC-lt-y3H"/>
+                            <constraint firstItem="KBY-xg-8YI" firstAttribute="top" secondItem="4iO-mu-YaR" secondAttribute="topMargin" constant="-64" id="gsj-9m-Pyh"/>
+                            <constraint firstItem="8GN-HD-78P" firstAttribute="centerX" secondItem="KBY-xg-8YI" secondAttribute="centerX" id="niE-Bt-IuK"/>
                             <constraint firstItem="JcF-fw-C8o" firstAttribute="top" secondItem="KBY-xg-8YI" secondAttribute="bottom" id="pGw-RQ-K4E"/>
+                            <constraint firstItem="8GN-HD-78P" firstAttribute="top" secondItem="Vrf-Tc-hf3" secondAttribute="bottom" constant="200" id="vWH-el-Ots"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Recommendations" id="CYx-cv-539">
@@ -84,6 +91,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="8GN-HD-78P" id="ydR-LY-mWW"/>
                         <outlet property="feedCollectionView" destination="KBY-xg-8YI" id="drw-E3-7iO"/>
                     </connections>
                 </viewController>

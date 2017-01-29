@@ -15,10 +15,12 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - Properties
     // MARK: IBOutlet
     @IBOutlet weak var feedCollectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     // MARK: Other
     var feedHeaderView: FeedHeaderReusableView?
     var initialEmptyView: InitialEmptyView?
+    var recommendationsLoading: Bool = false
     var recommendations = [Recommendation]()
 
     // MARK: - Lifecycle
@@ -56,13 +58,23 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - Data Helpers
 
     private func getData() {
+        activityIndicator.startAnimating()
+        recommendationsLoading = true
+
         DataProvider<Recommendation>().fetchData(privateDB: false, forCurrentUser: true) { [weak self] (recommendations: [Recommendation]) in
+            self?.recommendationsLoading = false
+            self?.activityIndicator.stopAnimating()
             self?.recommendations = recommendations
             self?.updateScreen()
         }
     }
 
     private func updateScreen() {
+
+        guard !recommendationsLoading else {
+            return
+        }
+
         feedCollectionView.reloadData()
 
         initialEmptyView?.removeFromSuperview()
