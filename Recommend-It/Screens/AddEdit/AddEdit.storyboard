@@ -85,7 +85,7 @@
                                                     <segue destination="NNW-MZ-8YX" kind="presentation" id="W8L-Ey-EeK"/>
                                                 </connections>
                                             </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H3l-BU-zT0">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RecImagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="H3l-BU-zT0">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="3sI-gW-DPY"/>
@@ -302,4 +302,7 @@
             <point key="canvasLocation" x="1124" y="355.7721139430285"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="RecImagePlaceholder" width="300" height="300"/>
+    </resources>
 </document>
