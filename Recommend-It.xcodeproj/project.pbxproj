@@ -50,6 +50,7 @@
 		E7C7F9D41AF1BC6000945EA1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */; };
 		E7CA65D11DBC5D03002E03BD /* InitialEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7E6748D1DBC153D00672DC5 /* InitialEmptyView.xib */; };
 		E7CA65D31DBC968E002E03BD /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CA65D21DBC968E002E03BD /* SearchResultCell.swift */; };
+		E7D7EBC31E3DDF4700B45793 /* RecommendationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7D7EBC21E3DDF4700B45793 /* RecommendationCell.xib */; };
 		E7D7FD871B22CBE30078CDD2 /* YelpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D7FD861B22CBE30078CDD2 /* YelpAPI.swift */; };
 		FD9257D54A6E62720F16CE2B /* Pods_Recommend_It.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F7F35EC578A903EF18A5A0 /* Pods_Recommend_It.framework */; };
 /* End PBXBuildFile section */
@@ -118,6 +119,7 @@
 		E7A475271E35EC5B00A6AEE4 /* MigrationViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MigrationViewController.storyboard; path = Screens/Migration/MigrationViewController.storyboard; sourceTree = "<group>"; };
 		E7C7F9D31AF1BC6000945EA1 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedViewController.swift; path = "Recommend-It/Screens/Feed/FeedViewController.swift"; sourceTree = SOURCE_ROOT; };
 		E7CA65D21DBC968E002E03BD /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultCell.swift; path = Screens/AddEdit/Cells/SearchResultCell.swift; sourceTree = "<group>"; };
+		E7D7EBC21E3DDF4700B45793 /* RecommendationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecommendationCell.xib; path = Screens/Feed/Cells/RecommendationCell.xib; sourceTree = "<group>"; };
 		E7D7FD861B22CBE30078CDD2 /* YelpAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpAPI.swift; path = Data/YelpAPI.swift; sourceTree = "<group>"; };
 		E7E6748D1DBC153D00672DC5 /* InitialEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InitialEmptyView.xib; path = Screens/Common/InitialEmptyView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				E79252671B1D5F0D005F0522 /* RecommendationCell.swift */,
+				E7D7EBC21E3DDF4700B45793 /* RecommendationCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				E792526A1B1D63D8005F0522 /* AddEdit.storyboard in Resources */,
 				E760D8C21AE5DA6000C4518F /* Images.xcassets in Resources */,
 				E7855B921DB479140066CD16 /* APIKeys.plist in Resources */,
+				E7D7EBC31E3DDF4700B45793 /* RecommendationCell.xib in Resources */,
 				E760D8E11AE609EB00C4518F /* LaunchScreen.xib in Resources */,
 				E7A475281E35EC5B00A6AEE4 /* MigrationViewController.storyboard in Resources */,
 				E760D8DC1AE6095600C4518F /* Feed.storyboard in Resources */,
