@@ -6,12 +6,12 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "recommendation-placeholder.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "steak.jpg"
+      "scale" : "3x"
     }
   ],
   "info" : {

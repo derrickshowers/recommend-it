@@ -15,10 +15,12 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - Properties
     // MARK: IBOutlet
     @IBOutlet weak var feedCollectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     // MARK: Other
     var feedHeaderView: FeedHeaderReusableView?
     var initialEmptyView: InitialEmptyView?
+    var recommendationsLoading: Bool = false
     var recommendations = [Recommendation]()
 
     // MARK: - Lifecycle
@@ -30,6 +32,8 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         showMigrationMessageIfNecessary()
         self.getData()
+
+        setupCollectionView()
 
         // Setup notifications for when new recommendations are saved
         NotificationCenter.default.addObserver(self, selector: #selector(newRecommendationSaved), name: Notification.Name("newRecommendationSaved"), object: nil)
@@ -44,16 +48,33 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         updateScreen()
     }
 
+    // MARK: - Setup
+
+    private func setupCollectionView() {
+
+        feedCollectionView.register(UINib(nibName: "RecommendationCell", bundle: nil), forCellWithReuseIdentifier: "RecommendationCell")
+    }
+
     // MARK: - Data Helpers
 
     private func getData() {
+        activityIndicator.startAnimating()
+        recommendationsLoading = true
+
         DataProvider<Recommendation>().fetchData(privateDB: false, forCurrentUser: true) { [weak self] (recommendations: [Recommendation]) in
+            self?.recommendationsLoading = false
+            self?.activityIndicator.stopAnimating()
             self?.recommendations = recommendations
             self?.updateScreen()
         }
     }
 
     private func updateScreen() {
+
+        guard !recommendationsLoading else {
+            return
+        }
+
         feedCollectionView.reloadData()
 
         initialEmptyView?.removeFromSuperview()
@@ -86,7 +107,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = feedCollectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! RecommendationCell
+        let cell = feedCollectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationCell", for: indexPath) as! RecommendationCell
 
         cell.nameLabel.text = recommendations[(indexPath as NSIndexPath).row].name
         cell.notesLabel.text = recommendations[(indexPath as NSIndexPath).row].notes
@@ -125,8 +146,17 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: UICollectionViewDelegateFlowLayout
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        /**
+         TODO: Wish there was a cleaner way to do this, but using automatic sizing doesn't seem to work. Tried both
+         approaches in this article: https://possiblemobile.com/2016/02/sizing-uicollectionviewcell-fit-multiline-uilabel/
+         Setting estimatedItemSize removes cells from the view, `collectionView:cellForItemAt` doesn't even get called. :(
+         For now, we'll just figure out the height of the label and use that to set the height of the cell.
+         */
+
         let width = self.view.bounds.width - 20
         let height = heightFromDynamicLabel(initialHeight: 140.0, width: width, font: UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightThin), text: recommendations[(indexPath as NSIndexPath).row].notes)
+
         return CGSize(width: self.view.bounds.width - 20, height: height)
     }
 
