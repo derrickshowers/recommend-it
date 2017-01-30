@@ -83,7 +83,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
             initialEmptyView = UIView.loadFromNib(type: InitialEmptyView.self)
 
             if let initialEmptyView = initialEmptyView {
-                initialEmptyView.frame = CGRect(x: 10.0, y: 140.0, width: view.bounds.width - 20.0, height: view.bounds.height - 150.0)
+                initialEmptyView.frame = CGRect(x: 10.0, y: 140.0, width: view.bounds.width - 20.0, height: 375.0)
                 initialEmptyView.onTapAddRecommendation = { sender in
                     self.present(self.getAddEditViewController(), animated: true, completion: nil)
                 }
