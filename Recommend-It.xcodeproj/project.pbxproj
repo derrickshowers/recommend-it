@@ -90,7 +90,7 @@
 		E74DC1E11B49DBF600AE45CF /* UINavigationBar+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UINavigationBar+.swift"; path = "Data/Extensions/UINavigationBar+.swift"; sourceTree = "<group>"; };
 		E75C837B1B2561570070763D /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = Data/Utilities.swift; sourceTree = "<group>"; };
 		E75C837D1B256B030070763D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		E760D8B51AE5DA6000C4518F /* Recommend-It Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recommend-It Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E760D8B51AE5DA6000C4518F /* Recommend-It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recommend-It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E760D8B91AE5DA6000C4518F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E760D8BA1AE5DA6000C4518F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E760D8C11AE5DA6000C4518F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 		E760D8B61AE5DA6000C4518F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E760D8B51AE5DA6000C4518F /* Recommend-It Debug.app */,
+				E760D8B51AE5DA6000C4518F /* Recommend-It.app */,
 				E760D8CA1AE5DA6000C4518F /* Recommend-ItTests.xctest */,
 			);
 			name = Products;
@@ -401,7 +401,7 @@
 			);
 			name = "Recommend-It";
 			productName = "Recommend-It";
-			productReference = E760D8B51AE5DA6000C4518F /* Recommend-It Debug.app */;
+			productReference = E760D8B51AE5DA6000C4518F /* Recommend-It.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E760D8C91AE5DA6000C4518F /* Recommend-ItTests */ = {
@@ -715,7 +715,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.derrickshowers.RecommendIt;
-				PRODUCT_NAME = "$(TARGET_NAME) Debug";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "37f4e801-d78d-4947-ac69-9efe31bf7328";
 				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.derrickshowers.RecommendIt Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -773,7 +773,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Recommend-It Debug.app/Recommend-It Debug";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Recommend-It.app/Recommend-It";
 			};
 			name = Debug;
 		};
@@ -793,7 +793,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Recommend-It Debug.app/Recommend-It Debug";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Recommend-It.app/Recommend-It";
 			};
 			name = Release;
 		};
