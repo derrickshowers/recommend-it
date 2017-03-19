@@ -28,7 +28,7 @@ class DataProvider<T: Model> {
 
                 // TODO: Better error handling - just passing back 0 records if user doesn't exist
                 guard let userId = userId else {
-                    DispatchQueue.main.async() {
+                    DispatchQueue.main.async {
                         completion([])
                     }
                     return
@@ -56,13 +56,13 @@ class DataProvider<T: Model> {
                     return
             }
 
-            DispatchQueue.main.async() {
+            DispatchQueue.main.async {
                 completion(model)
             }
         }
     }
 
-    func deleteRecord(recordId: CKRecordID, privateDB: Bool, completion: @escaping (_ recordId: CKRecordID?) -> Void) {
+    func deleteRecord(recordId: CKRecordID, privateDB: Bool, completion: ((_ recordId: CKRecordID?) -> Void)? = nil) {
 
         getDatabase(privateDB: privateDB).delete(withRecordID: recordId) { (recordId: CKRecordID?, error: Error?) in
             guard let recordId = recordId else {
@@ -70,8 +70,8 @@ class DataProvider<T: Model> {
                 return
             }
 
-            DispatchQueue.main.async() {
-                completion(recordId)
+            DispatchQueue.main.async {
+                completion?(recordId)
             }
         }
     }
@@ -90,7 +90,7 @@ class DataProvider<T: Model> {
                     return
             }
 
-            DispatchQueue.main.async() {
+            DispatchQueue.main.async {
                 completion(model)
             }
         }
@@ -118,7 +118,7 @@ class DataProvider<T: Model> {
             })
 
             // QUESTION: Why does weak self not work here? 🤔
-            DispatchQueue.main.async() {
+            DispatchQueue.main.async {
                 completion(models)
             }
         }
@@ -139,7 +139,7 @@ class DataProvider<T: Model> {
 
     private func handleError(_ error: Error?) {
 
-        DispatchQueue.main.async() {
+        DispatchQueue.main.async {
             self.errorDelegate?.dataProviderDidError(error: error)
         }
     }
