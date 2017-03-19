@@ -120,8 +120,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return UICollectionViewCell()
         }
 
-        // cell.containerView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 20.0).isActive = true
-        // return cell
         return configure(cell: cell, recommendation: recommendations[indexPath.row])
     }
 
