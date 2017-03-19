@@ -36,6 +36,7 @@
 		E778D70D1B37710D0022C6AC /* FeedHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E778D70C1B37710D0022C6AC /* FeedHeaderReusableView.swift */; };
 		E7855B921DB479140066CD16 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7855B911DB479140066CD16 /* APIKeys.plist */; };
 		E786CA8D1DBC2ADD00ED136C /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E786CA8C1DBC2ADD00ED136C /* PersistentContainer.swift */; };
+		E78CF88D1E7F212800248E81 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E78CF88C1E7F212800248E81 /* Localizable.strings */; };
 		E79252681B1D5F0D005F0522 /* RecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79252671B1D5F0D005F0522 /* RecommendationCell.swift */; };
 		E792526A1B1D63D8005F0522 /* AddEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E79252691B1D63D8005F0522 /* AddEdit.storyboard */; };
 		E792526C1B1D66CD005F0522 /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792526B1B1D66CD005F0522 /* AddEditViewController.swift */; };
@@ -105,6 +106,7 @@
 		E778D70C1B37710D0022C6AC /* FeedHeaderReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedHeaderReusableView.swift; path = Screens/Feed/Views/FeedHeaderReusableView.swift; sourceTree = "<group>"; };
 		E7855B911DB479140066CD16 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		E786CA8C1DBC2ADD00ED136C /* PersistentContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentContainer.swift; path = Data/PersistentContainer.swift; sourceTree = "<group>"; };
+		E78CF88C1E7F212800248E81 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E79252671B1D5F0D005F0522 /* RecommendationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecommendationCell.swift; path = Screens/Feed/Cells/RecommendationCell.swift; sourceTree = "<group>"; };
 		E79252691B1D63D8005F0522 /* AddEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddEdit.storyboard; path = Screens/AddEdit/AddEdit.storyboard; sourceTree = "<group>"; };
 		E792526B1B1D66CD005F0522 /* AddEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddEditViewController.swift; path = Screens/AddEdit/AddEditViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				E760D8B91AE5DA6000C4518F /* Info.plist */,
 				E7855B911DB479140066CD16 /* APIKeys.plist */,
 				E796CD8D1E2DB09D0045D91A /* Recommend-It.entitlements */,
+				E78CF88C1E7F212800248E81 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				E792526A1B1D63D8005F0522 /* AddEdit.storyboard in Resources */,
 				E760D8C21AE5DA6000C4518F /* Images.xcassets in Resources */,
 				E7855B921DB479140066CD16 /* APIKeys.plist in Resources */,
+				E78CF88D1E7F212800248E81 /* Localizable.strings in Resources */,
 				E7D7EBC31E3DDF4700B45793 /* RecommendationCell.xib in Resources */,
 				E760D8E11AE609EB00C4518F /* LaunchScreen.xib in Resources */,
 				E7A475281E35EC5B00A6AEE4 /* MigrationViewController.storyboard in Resources */,

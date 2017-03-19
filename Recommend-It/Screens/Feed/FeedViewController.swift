@@ -116,7 +116,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        guard let cell = feedCollectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationCell", for: indexPath) as? RecommendationCell else {
+        guard let cell = feedCollectionView.dequeueReusableCell(withReuseIdentifier: ReuseIdentifier.recommendationCell, for: indexPath) as? RecommendationCell else {
             return UICollectionViewCell()
         }
 
@@ -220,14 +220,14 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     private func didPressArchive(for recommendation: Recommendation) {
 
-        let alert = UIAlertController(title: "Just so you know...", message: "The archive feature isn't ready for prime time quite yet. By continuing, you will set this recommendation as archived, which means it will no longer show on your feed, but there currently isn't a way to view recommendations you've archived. Don't fret - there will be soon!", preferredStyle: .actionSheet)
-        let confirmAction = UIAlertAction(title: "Let's do it!", style: .default) {
+        let alert = UIAlertController(title: NSLocalizedString("archive_alert_title", comment: ""), message:  NSLocalizedString("archive_alert_message", comment: ""), preferredStyle: .actionSheet)
+        let confirmAction = UIAlertAction(title: NSLocalizedString("archive_action_confirm", comment: ""), style: .default) {
             [weak self] (action) in
             recommendation.archived = true
             CoreDataManager.sharedInstance.saveContext()
             self?.feedCollectionView.reloadData()
         }
-        let cancelAction = UIAlertAction(title: "Nevermind, I'll wait", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("archive_action_cancel", comment: ""), style: .cancel, handler: nil)
         alert.addAction(confirmAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true) {}

@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Recommend-It
+
+  Created by Derrick Showers on 3/19/17.
+  Copyright © 2017 Derrick Showers. All rights reserved.
+*/
+
+// MARK: - Feed
+"archive_alert_title" = "Just so you know...";
+"archive_alert_message" = "The archive feature isn't ready for prime time quite yet. By continuing, you will set this recommendation as archived, which means it will no longer show on your feed, but there currently isn't a way to view recommendations you've archived. Don't fret - there will be soon!";
+"archive_action_confirm" = "Let's do it!";
+"archive_action_cancel" = "Nevermind, I'll wait";
