@@ -8,13 +8,6 @@
 
 import UIKit
 
-protocol RecommendationCellDelegate {
-    func didPressRemoveAtIndex(_ cellIndex: Int)
-    func didPressArchiveAtIndex(_ cellIndex: Int)
-    func didPressYelpAtIndex(_ cellIndex: Int)
-    func didPressConfirmRemove(_ cellIndex: Int)
-}
-
 class RecommendationCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
@@ -23,14 +16,19 @@ class RecommendationCell: UICollectionViewCell {
     @IBOutlet weak var confirmRemoveButton: UIButton!
     @IBOutlet weak var cancelRemoveButton: UIButton!
     @IBOutlet weak var buttonContainerView: UIView!
+    @IBOutlet weak var containerView: UIView!
 
-    var delegate: RecommendationCellDelegate?
     var borderLayer: CALayer?
-    var cellIndex: Int?
+
+    // Button Action Closures
+    var onTapYelp: (() -> ())?
+    var onTapRemove: (() -> ())?
+    var onTapArchive: (() -> ())?
 
     // MARK: - Lifecycle
-    override func layoutSubviews() {
-        super.layoutSubviews()
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
 
         configureUpperBorderFor(view: buttonContainerView)
     }
@@ -41,30 +39,30 @@ class RecommendationCell: UICollectionViewCell {
         confirmRemoveButton.isHidden = true
         cancelRemoveButton.isHidden = true
     }
+
     @IBAction func confirmRemovePressed(_ sender: AnyObject) {
-        if let delegate = delegate, let cellIndex = cellIndex {
-            delegate.didPressConfirmRemove(cellIndex)
-        }
-    }
-    @IBAction func removePressed(_ sender: AnyObject) {
-        if let delegate = delegate, let cellIndex = cellIndex {
-            delegate.didPressRemoveAtIndex(cellIndex)
-        }
-    }
-    @IBAction func archivePressed(_ sender: AnyObject) {
-        if let delegate = delegate, let cellIndex = cellIndex {
-            delegate.didPressArchiveAtIndex(cellIndex)
-        }
-    }
-    @IBAction func yelpPressed(_ sender: AnyObject) {
-        if let delegate = delegate, let cellIndex = cellIndex {
-            delegate.didPressYelpAtIndex(cellIndex)
-        }
+        onTapRemove?()
     }
 
-    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        layoutAttributes.bounds.size.height = systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-        return layoutAttributes
+    @IBAction func removePressed(_ sender: AnyObject) {
+
+        confirmRemoveButton.isHidden = false
+        cancelRemoveButton.isHidden = false
+
+        UIView.animate(withDuration: 0.3, animations: {
+            [weak self] () -> Void in
+
+            self?.confirmRemoveButton.alpha = 0.80
+            self?.cancelRemoveButton.alpha = 1.0
+        })
+    }
+
+    @IBAction func archivePressed(_ sender: AnyObject) {
+        onTapArchive?()
+    }
+
+    @IBAction func yelpPressed(_ sender: AnyObject) {
+        onTapYelp?()
     }
 
     // MARK: - Private helpers
@@ -87,21 +85,4 @@ class RecommendationCell: UICollectionViewCell {
         borderLayer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 1)
         view.layer.addSublayer(borderLayer)
     }
-
-    // MARK: - Class methods
-
-    class func loadNib() -> RecommendationCell? {
-
-        var cell: RecommendationCell?
-        let nibViews = Bundle.main.loadNibNamed("RecommendationCell", owner: nil, options: nil)
-
-        nibViews?.forEach({ (nibView: Any) in
-            if let nibView = nibView as? RecommendationCell {
-                cell = nibView
-            }
-        })
-
-        return cell
-    }
-
 }
