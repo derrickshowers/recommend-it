@@ -81,9 +81,10 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return
         }
 
-        // FIXME: No idea why this is necessary. Posted question on SO for help: http://stackoverflow.com/questions/42891597/uicollectionview-cells-only-display-after-second-call-to-reloaddata
         feedCollectionView.reloadData()
-        feedCollectionView.reloadData()
+
+        // UICollectionViewFlowLayout isn't invalidated correctly after number of items changes. See http://stackoverflow.com/questions/42891597/uicollectionview-cells-only-display-after-second-call-to-reloaddata
+        feedCollectionView.collectionViewLayout.invalidateLayout()
 
         initialEmptyView?.removeFromSuperview()
 
@@ -120,8 +121,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return UICollectionViewCell()
         }
 
-        // cell.containerView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 20.0).isActive = true
-        // return cell
         return configure(cell: cell, recommendation: recommendations[indexPath.row])
     }
 
