@@ -1,6 +1,16 @@
 #!/bin/sh
 
 KEY_CHAIN=ios-build.keychain
+CERTS_DIR=./CI/certs/
+PROFILE_DIR=./CI/profile/
+
+# Decrypt certs and provisioning profiles
+openssl aes-256-cbc -k "$ENCRYPTION_SECRET_PROVISIONING_PROFILE" -in ${PROFILE_DIR}RecommendIt_Development.enc -d -a -out ${PROFILE_DIR}RecommendIt_Development.mobileprovision
+openssl aes-256-cbc -k "$ENCRYPTION_SECRET_PROVISIONING_PROFILE" -in ${PROFILE_DIR}RecommendIt_Distribution.enc -d -a -out ${PROFILE_DIR}RecommendIt_Distribution.mobileprovision
+openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in ${CERTS_DIR}development.cer.enc -d -a -out ${CERTS_DIR}development.cer
+openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in ${CERTS_DIR}distribution.cer.enc -d -a -out ${CERTS_DIR}distribution.cer
+openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in ${CERTS_DIR}development.p12.enc -d -a -out ${CERTS_DIR}development.p12
+openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in ${CERTS_DIR}distribution.p12.enc -d -a -out ${CERTS_DIR}distribution.p12
 
 # Create a custom keychain
 security create-keychain -p travis $KEY_CHAIN
@@ -25,5 +35,5 @@ security set-key-partition-list -S apple-tool:,apple: -s -k travis $KEY_CHAIN
 
 # Put the provisioning profile in place
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-cp "./CI/profile/XC_iOS_comderrickshowersRecommendIt_Development.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
-cp "./CI/profile/XC_iOS_comderrickshowersRecommendIt_Distribution.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
+cp "${PROFILE_DIR}RecommendIt_Development.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
+cp "${PROFILE_DIR}RecommendIt_Distribution.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
