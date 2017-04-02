@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode8.1
+osx_image: xcode8.3
 
 # TODO: Why does build not fail when scripts fail?
 # - https://github.com/travis-ci/travis-ci/issues/891
@@ -8,8 +8,6 @@ osx_image: xcode8.1
 # Environment variables: https://docs.travis-ci.com/user/environment-variables/
 env:
   global:
-  - APP_NAME="Recommend-It"
-  - 'DEVELOPER_NAME="iPhone Distribution: Derrick Showers (DJPFLH48H5)"'
   - INFO_PLIST="Recommend-It/Info.plist"
   - secure: gcCaYAd8xrAnitP5yjN1TlZ6dsoO/xsGXqVfYkNykKfGTzhzPigm4HxHOorCkeGoqReg1gTIGArlnfd8s6Ym/lOAUgOmWWfG1VO88gNLYostHp591JP0bd2HliVOrkOlyJRs4mD77k9bKcNkRchOzVBjAy1ma/XlDbVWGb5fqEFRv5mD+ECZtl2t/Xl3LF55rB1gvo+sL4NtNXXEPRXmI006XfHj4wFOTk2wgENTQevdDsc5iDcu/HDKUBKc13G8vj60QoXCdkL5uh7RXTro0wAf7YHRfsqSo8iOVrUEOTdu55HkvMTq7JWj4bUOzNxAn7zcGRnmLKiCZUWxLTE3K1l83rrgZyiuQqAENlkt+JXkwhIsoFfaxURj5HTf8Bjor3OYYFMQw7uXIivOFVGy83jX+VnL//NYh6swInU8NMUp5bSE0o3WQSaEnAkTXeNJ9T9AXFdKVzBgPcgLzWhvG0ywNTItumsDtfTL3RTe3kP7WjsKu5h2mJavnn8MqK4wtNVHxUr6hQHOWyGLdYTNwZw5XMpBvoVd8Scf/r9oFD8ZTZm3r+8hVsJoqYW2IEeeiDc2FtGEfL718qPOXQBK1gDVSYFEvJr3kQjAVOYmWN5Usz4IGd3Drxqn4p3QP07x+so8FrdZTSWjrFHMMjURklW2U9fq4HqIu6CpE2ZdHJY=
   - secure: q0dysOqHlUaTlE0NCWgQpucdcMUqW6WcI34qeBduZZzooSC8pAw43j2teOEkx7OU/xB5Y5gA8QY9xjSAgl5QA0KyvqQ20I+Eq1yIKShEOivRLbE5SSm58V47/uCnmWd54Vd9hpLQf2csp563duJk/9A5h7Ag+wU8xmZY++UXbJ7fQfJ5Ar20kppzeZ3xDVXl8JoydcKI+omN/EZ6GYr+YvVvpv2TYqUw5jZZ/guTyIkUmqYwJ7OtAxzHR+kyeNSsXpxPEBafHpGRSy0+n2lqM2BVALikC9FVFQ7U4n68EalIgSP9FEUAPd+YYdhI2g3j57GlT8D8fKJbKCF7mPenaxMgd4UszIjSEKxJcy/Nywrp5axkyQzCpq6GgG+6J3TEK4UCx3ekI5b1rH4lnSLnlZx9HlncUMBCumbZY4Lxhtuhjrx9Hp7Nt929ohneO8uU3OnV0C53t0gIoPQzajpIM1VAtmDZJu61JFX1JheDdlauxSS4TDmTfrnz8SoWc5aQZalYRWQW+OYg1zxGqQQRi/t4Ug7tlTTx/4VH1WhfOVbFAi9YhZ9wK1y99MDeT7CBFd+2WETmH9uLdT1+n2W+XbbQcv2OfCVDvmrOcEBNbkIIx9wCqFT+8ug+uSY8QUYFqU+12IjsO//y7wz2VJNrmzqfk8CBfnymDaX9ZIQouU4=
@@ -29,12 +27,6 @@ install:
   - pod install --repo-update
 before_script:
   - wget -O ./Recommend-It/APIKeys.plist $API_KEYS_PATH
-  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET_PROVISIONING_PROFILE" -in CI/profile/XC_iOS_comderrickshowersRecommendIt_Development.enc -d -a -out CI/profile/XC_iOS_comderrickshowersRecommendIt_Development.mobileprovision
-  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET_PROVISIONING_PROFILE" -in CI/profile/XC_iOS_comderrickshowersRecommendIt_Distribution.enc -d -a -out CI/profile/XC_iOS_comderrickshowersRecommendIt_Distribution.mobileprovision
-  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in CI/certs/development.cer.enc -d -a -out CI/certs/development.cer
-  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in CI/certs/distribution.cer.enc -d -a -out CI/certs/distribution.cer
-  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in CI/certs/development.p12.enc -d -a -out CI/certs/development.p12
-  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in CI/certs/distribution.p12.enc -d -a -out CI/certs/distribution.p12
   - ./CI/add-key.sh
   - ./CI/update-bundle.sh
 script:
