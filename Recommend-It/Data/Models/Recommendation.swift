@@ -8,14 +8,7 @@
 
 import Foundation
 import CloudKit
-
-// TODO: Rename this to something cloudkit specific
-protocol Model {
-    var className: String { get }
-    static var className: String { get }
-    static func buildModelFromRecord(_ record: CKRecord) -> Model?
-    static func buildRecordFromModel(_ model: Model) -> CKRecord?
-}
+import DataLayer
 
 class Recommendation: Model {
     let yelpId: String

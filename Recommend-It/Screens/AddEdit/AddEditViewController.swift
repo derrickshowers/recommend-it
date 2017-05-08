@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SDWebImage
 import UITextView_Placeholder
+import DataLayer
 
 class AddEditViewController: UIViewController, DataProviderErrorDelegate {
 

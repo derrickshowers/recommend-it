@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import DataLayer
 
 class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
 

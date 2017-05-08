@@ -20,33 +20,33 @@ import Alamofire
  may need to be declared in another class to understand the data being returned
  from Yelp.
  */
-struct YelpBiz {
-    let yelpId: String
-    let name: String
-    let thumbnailURL: String?
-    let city: String?
-    let state: String?
-    let address: String?
+public struct YelpBiz {
+    public let yelpId: String
+    public let name: String
+    public let thumbnailURL: String?
+    public let city: String?
+    public let state: String?
+    public let address: String?
 }
 
 /**
  A singleton to access Yelp's API endpoint. Proper usage is always `YelpAPI.sharedInstance().method`
  (with 'method' being the method needed to retrieve data.
  */
-class YelpAPI {
+public class YelpAPI {
 
     // MARK: - Properties
     // MARK: CONSTANTS
-    fileprivate let YELP_SEARCH_URI = "https://api.yelp.com/v3/businesses/search"
-    fileprivate let YELP_AUTH_URI = "https://api.yelp.com/oauth2/token"
+    private let YELP_SEARCH_URI = "https://api.yelp.com/v3/businesses/search"
+    private let YELP_AUTH_URI = "https://api.yelp.com/oauth2/token"
 
     // MARK: Other
-    fileprivate let clientId: String
-    fileprivate let clientSecret: String
-    fileprivate var accessToken: String?
+    private let clientId: String
+    private let clientSecret: String
+    private var accessToken: String?
 
     // MARK: - Singleton Pattern
-    class var sharedInstance: YelpAPI {
+    public class var sharedInstance: YelpAPI {
         struct Static {
             static let instance = YelpAPI()
         }
@@ -74,7 +74,7 @@ class YelpAPI {
 
      - returns: an array of results based on the data passed in
      */
-    fileprivate func parseJSON(_ data: NSDictionary) -> [YelpBiz] {
+    private func parseJSON(_ data: NSDictionary) -> [YelpBiz] {
         var results = [YelpBiz]()
         let businesses = data.value(forKey: "businesses") as! NSArray
         for biz in businesses {
@@ -98,7 +98,7 @@ class YelpAPI {
 
      - parameter completion: callback function that is called once accessToken is available
      */
-    fileprivate func getAccessToken(_ completion: @escaping (String) -> Void) {
+    private func getAccessToken(_ completion: @escaping (String) -> Void) {
         if let accessToken = accessToken {
             completion(accessToken)
         }
@@ -117,7 +117,7 @@ class YelpAPI {
         }
     }
 
-    // MARK: - Public Functions
+    // MARK: - Public Interface
     /**
      Gets businesses from Yelp based on a location and search term string. Example would be 'seafood' (term)
      in 'San Francisco' (location). Because a request is being made to a server, a completion function is
@@ -127,7 +127,7 @@ class YelpAPI {
      - parameter term: the search term (e.g. seafood)
      - parameter completion: callback function that is called once request is complete (passes in an array of businesses as `YelpBiz` objects)
      */
-    func getBusinessesByLocationAndTerm(location: String?, term: String?, completion: @escaping ([YelpBiz]) -> Void) {
+    public func getBusinessesByLocationAndTerm(location: String?, term: String?, completion: @escaping ([YelpBiz]) -> Void) {
         guard let location = location else {
             return
         }

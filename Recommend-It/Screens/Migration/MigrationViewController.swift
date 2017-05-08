@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import DataLayer
 
 class MigrationViewController: UIViewController {
 
