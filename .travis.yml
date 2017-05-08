@@ -25,12 +25,14 @@ before_install:
   - gem install cocoapods
 install:
   - pod install --repo-update
+  - pod install --project-directory=DataLayer
 before_script:
   - wget -O ./Recommend-It/APIKeys.plist $API_KEYS_PATH
   - ./CI/add-key.sh
   - ./CI/update-bundle.sh
 script:
   - travis_retry xcodebuild test -workspace Recommend-It.xcworkspace -scheme Recommend-It -destination "platform=iOS Simulator,name=iPhone 7"
+  - travis_retry xcodebuild test -workspace DataLayer/DataLayer.xcworkspace -scheme DataLayer -destination "platform=iOS Simulator,name=iPhone 7"
 after_script:
   - ./CI/sign-and-upload.sh
   - ./CI/remove-key.sh

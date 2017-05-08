@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 import CloudKit
+import DataLayer
 
 class FeedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 

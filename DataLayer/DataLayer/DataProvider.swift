@@ -9,18 +9,26 @@
 import Foundation
 import CloudKit
 
-protocol DataProviderErrorDelegate {
+public protocol DataProviderErrorDelegate {
     func dataProviderDidError(error: Error?) -> Void
 }
 
-// QUESTION: How does Swift resolve conflicting classes?
-class DataProvider<T: Model> {
+public protocol Model {
+    var className: String { get }
+    static var className: String { get }
+    static func buildModelFromRecord(_ record: CKRecord) -> Model?
+    static func buildRecordFromModel(_ model: Model) -> CKRecord?
+}
 
-    var errorDelegate: DataProviderErrorDelegate?
+public class DataProvider<T: Model> {
+
+    public var errorDelegate: DataProviderErrorDelegate?
 
     // MARK: - Public Interface
 
-    func fetchData(privateDB: Bool, forCurrentUser: Bool, completion: @escaping (_ models: [T]) -> Void) {
+    public init() {}
+
+    public func fetchData(privateDB: Bool, forCurrentUser: Bool, completion: @escaping (_ models: [T]) -> Void) {
 
         if forCurrentUser {
             // TOOD: Store userId so we don't have to make a separate request everytime
@@ -46,7 +54,7 @@ class DataProvider<T: Model> {
         }
     }
 
-    func fetchSingleRecord(recordId: CKRecordID, privateDB: Bool, completion: @escaping (_ model: T) -> Void) {
+    public func fetchSingleRecord(recordId: CKRecordID, privateDB: Bool, completion: @escaping (_ model: T) -> Void) {
 
         getDatabase(privateDB: privateDB).fetch(withRecordID: recordId) { (record: CKRecord?, error: Error?) in
 
@@ -62,7 +70,7 @@ class DataProvider<T: Model> {
         }
     }
 
-    func deleteRecord(recordId: CKRecordID, privateDB: Bool, completion: ((_ recordId: CKRecordID?) -> Void)? = nil) {
+    public func deleteRecord(recordId: CKRecordID, privateDB: Bool, completion: ((_ recordId: CKRecordID?) -> Void)? = nil) {
 
         getDatabase(privateDB: privateDB).delete(withRecordID: recordId) { (recordId: CKRecordID?, error: Error?) in
             guard let recordId = recordId else {
@@ -76,7 +84,7 @@ class DataProvider<T: Model> {
         }
     }
 
-    func saveData(model: T, privateDB: Bool, completion: @escaping (_ model: T) -> Void) {
+    public func saveData(model: T, privateDB: Bool, completion: @escaping (_ model: T) -> Void) {
 
         guard let record = T.buildRecordFromModel(model) else {
             return
@@ -117,7 +125,6 @@ class DataProvider<T: Model> {
                 models.append(model)
             })
 
-            // QUESTION: Why does weak self not work here? 🤔
             DispatchQueue.main.async {
                 completion(models)
             }

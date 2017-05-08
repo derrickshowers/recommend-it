@@ -1,6 +1,8 @@
 PODS:
   - Alamofire (4.0.1)
   - ConsistencyManager (4.0.0)
+  - DataLayer (0.0.1):
+    - Alamofire (~> 4.0.0)
   - RocketData (4.0.1):
     - ConsistencyManager (~> 4.0.0)
   - SDWebImage (3.8.2):
@@ -10,17 +12,23 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.0.0)
+  - DataLayer (from `DataLayer`)
   - RocketData
   - SDWebImage (~> 3.8)
   - UITextView+Placeholder
 
+EXTERNAL SOURCES:
+  DataLayer:
+    :path: DataLayer
+
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   ConsistencyManager: 323ee466a5c933973529dfa5baa5cbc238633a67
+  DataLayer: 3b7dddddd80fdcfa1b75f8734f6cc5f32c7a99ef
   RocketData: a661f6e75dd8741dbe95856ca84f5e16ab3b377e
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: 5d445a19fb7b82ddc1207840515bd218fe2a800c
+PODFILE CHECKSUM: aa2e9d0a4194f98fb162176197017b3fa5f9eb6c
 
 COCOAPODS: 1.1.1
