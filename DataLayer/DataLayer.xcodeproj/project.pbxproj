@@ -7,111 +7,111 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26B042ABBBF52BD2D9798B0B /* Pods_DataLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA4807706E3FF1FAA472680 /* Pods_DataLayer.framework */; };
-		E78ADC9D1EC00C5200163504 /* DataLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78ADC931EC00C5100163504 /* DataLayer.framework */; };
-		E78ADCA21EC00C5200163504 /* DataLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78ADCA11EC00C5200163504 /* DataLayerTests.swift */; };
-		E78ADCA41EC00C5200163504 /* DataLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E78ADC961EC00C5100163504 /* DataLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E78ADCAE1EC00C7900163504 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78ADCAD1EC00C7900163504 /* DataProvider.swift */; };
-		E78ADCB01EC00C8700163504 /* YelpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78ADCAF1EC00C8700163504 /* YelpAPI.swift */; };
+		3D1B91ACCF5DD4B23124F1EF /* Pods_DataLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB857C329A80C0378B94714 /* Pods_DataLayer.framework */; };
+		E70672EA1EC01E9B00469A86 /* DataLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E70672E01EC01E9B00469A86 /* DataLayer.framework */; };
+		E70672EF1EC01E9B00469A86 /* DataLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70672EE1EC01E9B00469A86 /* DataLayerTests.swift */; };
+		E70672F11EC01E9B00469A86 /* DataLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E70672E31EC01E9B00469A86 /* DataLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E70672FC1EC01EF300469A86 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70672FA1EC01EF300469A86 /* DataProvider.swift */; };
+		E70672FD1EC01EF300469A86 /* YelpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70672FB1EC01EF300469A86 /* YelpAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E78ADC9E1EC00C5200163504 /* PBXContainerItemProxy */ = {
+		E70672EB1EC01E9B00469A86 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E78ADC8A1EC00C5100163504 /* Project object */;
+			containerPortal = E70672D71EC01E9B00469A86 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E78ADC921EC00C5100163504;
+			remoteGlobalIDString = E70672DF1EC01E9B00469A86;
 			remoteInfo = DataLayer;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0D53F689A42AE9BDD8236A66 /* Pods-DataLayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataLayer.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-DataLayer/Pods-DataLayer.debug.xcconfig"; sourceTree = "<group>"; };
-		106162BB755A60ED058552A6 /* Pods-DataLayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataLayer.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DataLayer/Pods-DataLayer.release.xcconfig"; sourceTree = "<group>"; };
-		E78ADC931EC00C5100163504 /* DataLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E78ADC961EC00C5100163504 /* DataLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataLayer.h; sourceTree = "<group>"; };
-		E78ADC971EC00C5100163504 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E78ADC9C1EC00C5200163504 /* DataLayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataLayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E78ADCA11EC00C5200163504 /* DataLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerTests.swift; sourceTree = "<group>"; };
-		E78ADCA31EC00C5200163504 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E78ADCAD1EC00C7900163504 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
-		E78ADCAF1EC00C8700163504 /* YelpAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpAPI.swift; sourceTree = "<group>"; };
-		FEA4807706E3FF1FAA472680 /* Pods_DataLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40A1804A9DF1CBC00CC66E45 /* Pods-DataLayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataLayer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DataLayer/Pods-DataLayer.debug.xcconfig"; sourceTree = "<group>"; };
+		9D04ADC5EBF27DFACE704792 /* Pods-DataLayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataLayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-DataLayer/Pods-DataLayer.release.xcconfig"; sourceTree = "<group>"; };
+		DFB857C329A80C0378B94714 /* Pods_DataLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E70672E01EC01E9B00469A86 /* DataLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E70672E31EC01E9B00469A86 /* DataLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataLayer.h; sourceTree = "<group>"; };
+		E70672E41EC01E9B00469A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E70672E91EC01E9B00469A86 /* DataLayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataLayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E70672EE1EC01E9B00469A86 /* DataLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerTests.swift; sourceTree = "<group>"; };
+		E70672F01EC01E9B00469A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E70672FA1EC01EF300469A86 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		E70672FB1EC01EF300469A86 /* YelpAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E78ADC8F1EC00C5100163504 /* Frameworks */ = {
+		E70672DC1EC01E9B00469A86 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26B042ABBBF52BD2D9798B0B /* Pods_DataLayer.framework in Frameworks */,
+				3D1B91ACCF5DD4B23124F1EF /* Pods_DataLayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E78ADC991EC00C5200163504 /* Frameworks */ = {
+		E70672E61EC01E9B00469A86 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E78ADC9D1EC00C5200163504 /* DataLayer.framework in Frameworks */,
+				E70672EA1EC01E9B00469A86 /* DataLayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		31BD40BD2F7531096510F068 /* Frameworks */ = {
+		15C41FD5D97DEB9215AAEC15 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FEA4807706E3FF1FAA472680 /* Pods_DataLayer.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		82BD7F822EF8103836C74212 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0D53F689A42AE9BDD8236A66 /* Pods-DataLayer.debug.xcconfig */,
-				106162BB755A60ED058552A6 /* Pods-DataLayer.release.xcconfig */,
+				40A1804A9DF1CBC00CC66E45 /* Pods-DataLayer.debug.xcconfig */,
+				9D04ADC5EBF27DFACE704792 /* Pods-DataLayer.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		E78ADC891EC00C5100163504 = {
+		3FE568A06FAA570F9823566E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E78ADC951EC00C5100163504 /* DataLayer */,
-				E78ADCA01EC00C5200163504 /* DataLayerTests */,
-				E78ADC941EC00C5100163504 /* Products */,
-				82BD7F822EF8103836C74212 /* Pods */,
-				31BD40BD2F7531096510F068 /* Frameworks */,
+				DFB857C329A80C0378B94714 /* Pods_DataLayer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E70672D61EC01E9B00469A86 = {
+			isa = PBXGroup;
+			children = (
+				E70672E21EC01E9B00469A86 /* DataLayer */,
+				E70672ED1EC01E9B00469A86 /* DataLayerTests */,
+				E70672E11EC01E9B00469A86 /* Products */,
+				15C41FD5D97DEB9215AAEC15 /* Pods */,
+				3FE568A06FAA570F9823566E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		E78ADC941EC00C5100163504 /* Products */ = {
+		E70672E11EC01E9B00469A86 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E78ADC931EC00C5100163504 /* DataLayer.framework */,
-				E78ADC9C1EC00C5200163504 /* DataLayerTests.xctest */,
+				E70672E01EC01E9B00469A86 /* DataLayer.framework */,
+				E70672E91EC01E9B00469A86 /* DataLayerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E78ADC951EC00C5100163504 /* DataLayer */ = {
+		E70672E21EC01E9B00469A86 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
-				E78ADCAD1EC00C7900163504 /* DataProvider.swift */,
-				E78ADCAF1EC00C8700163504 /* YelpAPI.swift */,
-				E78ADC961EC00C5100163504 /* DataLayer.h */,
-				E78ADC971EC00C5100163504 /* Info.plist */,
+				E70672FA1EC01EF300469A86 /* DataProvider.swift */,
+				E70672FB1EC01EF300469A86 /* YelpAPI.swift */,
+				E70672E31EC01E9B00469A86 /* DataLayer.h */,
+				E70672E41EC01E9B00469A86 /* Info.plist */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
 		};
-		E78ADCA01EC00C5200163504 /* DataLayerTests */ = {
+		E70672ED1EC01E9B00469A86 /* DataLayerTests */ = {
 			isa = PBXGroup;
 			children = (
-				E78ADCA11EC00C5200163504 /* DataLayerTests.swift */,
-				E78ADCA31EC00C5200163504 /* Info.plist */,
+				E70672EE1EC01E9B00469A86 /* DataLayerTests.swift */,
+				E70672F01EC01E9B00469A86 /* Info.plist */,
 			);
 			path = DataLayerTests;
 			sourceTree = "<group>";
@@ -119,27 +119,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		E78ADC901EC00C5100163504 /* Headers */ = {
+		E70672DD1EC01E9B00469A86 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E78ADCA41EC00C5200163504 /* DataLayer.h in Headers */,
+				E70672F11EC01E9B00469A86 /* DataLayer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		E78ADC921EC00C5100163504 /* DataLayer */ = {
+		E70672DF1EC01E9B00469A86 /* DataLayer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E78ADCA71EC00C5200163504 /* Build configuration list for PBXNativeTarget "DataLayer" */;
+			buildConfigurationList = E70672F41EC01E9B00469A86 /* Build configuration list for PBXNativeTarget "DataLayer" */;
 			buildPhases = (
-				9DA81C534C0A5F56B7B478AE /* [CP] Check Pods Manifest.lock */,
-				E78ADC8E1EC00C5100163504 /* Sources */,
-				E78ADC8F1EC00C5100163504 /* Frameworks */,
-				E78ADC901EC00C5100163504 /* Headers */,
-				E78ADC911EC00C5100163504 /* Resources */,
-				E2CCB53CBB345C3969B87AA0 /* [CP] Copy Pods Resources */,
+				4E3A6C27918A99C8986D54B9 /* [CP] Check Pods Manifest.lock */,
+				E70672DB1EC01E9B00469A86 /* Sources */,
+				E70672DC1EC01E9B00469A86 /* Frameworks */,
+				E70672DD1EC01E9B00469A86 /* Headers */,
+				E70672DE1EC01E9B00469A86 /* Resources */,
+				15D18C935E9ED5DCD0A7039B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -147,77 +147,77 @@
 			);
 			name = DataLayer;
 			productName = DataLayer;
-			productReference = E78ADC931EC00C5100163504 /* DataLayer.framework */;
+			productReference = E70672E01EC01E9B00469A86 /* DataLayer.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E78ADC9B1EC00C5200163504 /* DataLayerTests */ = {
+		E70672E81EC01E9B00469A86 /* DataLayerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E78ADCAA1EC00C5200163504 /* Build configuration list for PBXNativeTarget "DataLayerTests" */;
+			buildConfigurationList = E70672F71EC01E9B00469A86 /* Build configuration list for PBXNativeTarget "DataLayerTests" */;
 			buildPhases = (
-				E78ADC981EC00C5200163504 /* Sources */,
-				E78ADC991EC00C5200163504 /* Frameworks */,
-				E78ADC9A1EC00C5200163504 /* Resources */,
+				E70672E51EC01E9B00469A86 /* Sources */,
+				E70672E61EC01E9B00469A86 /* Frameworks */,
+				E70672E71EC01E9B00469A86 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E78ADC9F1EC00C5200163504 /* PBXTargetDependency */,
+				E70672EC1EC01E9B00469A86 /* PBXTargetDependency */,
 			);
 			name = DataLayerTests;
 			productName = DataLayerTests;
-			productReference = E78ADC9C1EC00C5200163504 /* DataLayerTests.xctest */;
+			productReference = E70672E91EC01E9B00469A86 /* DataLayerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E78ADC8A1EC00C5100163504 /* Project object */ = {
+		E70672D71EC01E9B00469A86 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Derrick Showers";
 				TargetAttributes = {
-					E78ADC921EC00C5100163504 = {
+					E70672DF1EC01E9B00469A86 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = DJPFLH48H5;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
-					E78ADC9B1EC00C5200163504 = {
+					E70672E81EC01E9B00469A86 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = DJPFLH48H5;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = E78ADC8D1EC00C5100163504 /* Build configuration list for PBXProject "DataLayer" */;
+			buildConfigurationList = E70672DA1EC01E9B00469A86 /* Build configuration list for PBXProject "DataLayer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = E78ADC891EC00C5100163504;
-			productRefGroup = E78ADC941EC00C5100163504 /* Products */;
+			mainGroup = E70672D61EC01E9B00469A86;
+			productRefGroup = E70672E11EC01E9B00469A86 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E78ADC921EC00C5100163504 /* DataLayer */,
-				E78ADC9B1EC00C5200163504 /* DataLayerTests */,
+				E70672DF1EC01E9B00469A86 /* DataLayer */,
+				E70672E81EC01E9B00469A86 /* DataLayerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E78ADC911EC00C5100163504 /* Resources */ = {
+		E70672DE1EC01E9B00469A86 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E78ADC9A1EC00C5200163504 /* Resources */ = {
+		E70672E71EC01E9B00469A86 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -227,22 +227,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9DA81C534C0A5F56B7B478AE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E2CCB53CBB345C3969B87AA0 /* [CP] Copy Pods Resources */ = {
+		15D18C935E9ED5DCD0A7039B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -257,38 +242,53 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DataLayer/Pods-DataLayer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4E3A6C27918A99C8986D54B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E78ADC8E1EC00C5100163504 /* Sources */ = {
+		E70672DB1EC01E9B00469A86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E78ADCB01EC00C8700163504 /* YelpAPI.swift in Sources */,
-				E78ADCAE1EC00C7900163504 /* DataProvider.swift in Sources */,
+				E70672FD1EC01EF300469A86 /* YelpAPI.swift in Sources */,
+				E70672FC1EC01EF300469A86 /* DataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E78ADC981EC00C5200163504 /* Sources */ = {
+		E70672E51EC01E9B00469A86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E78ADCA21EC00C5200163504 /* DataLayerTests.swift in Sources */,
+				E70672EF1EC01E9B00469A86 /* DataLayerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E78ADC9F1EC00C5200163504 /* PBXTargetDependency */ = {
+		E70672EC1EC01E9B00469A86 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E78ADC921EC00C5100163504 /* DataLayer */;
-			targetProxy = E78ADC9E1EC00C5200163504 /* PBXContainerItemProxy */;
+			target = E70672DF1EC01E9B00469A86 /* DataLayer */;
+			targetProxy = E70672EB1EC01E9B00469A86 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		E78ADCA51EC00C5200163504 /* Debug */ = {
+		E70672F21EC01E9B00469A86 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -342,7 +342,7 @@
 			};
 			name = Debug;
 		};
-		E78ADCA61EC00C5200163504 /* Release */ = {
+		E70672F31EC01E9B00469A86 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -389,9 +389,9 @@
 			};
 			name = Release;
 		};
-		E78ADCA81EC00C5200163504 /* Debug */ = {
+		E70672F51EC01E9B00469A86 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D53F689A42AE9BDD8236A66 /* Pods-DataLayer.debug.xcconfig */;
+			baseConfigurationReference = 40A1804A9DF1CBC00CC66E45 /* Pods-DataLayer.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -411,9 +411,9 @@
 			};
 			name = Debug;
 		};
-		E78ADCA91EC00C5200163504 /* Release */ = {
+		E70672F61EC01E9B00469A86 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 106162BB755A60ED058552A6 /* Pods-DataLayer.release.xcconfig */;
+			baseConfigurationReference = 9D04ADC5EBF27DFACE704792 /* Pods-DataLayer.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -432,7 +432,7 @@
 			};
 			name = Release;
 		};
-		E78ADCAB1EC00C5200163504 /* Debug */ = {
+		E70672F81EC01E9B00469A86 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -445,7 +445,7 @@
 			};
 			name = Debug;
 		};
-		E78ADCAC1EC00C5200163504 /* Release */ = {
+		E70672F91EC01E9B00469A86 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -461,32 +461,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E78ADC8D1EC00C5100163504 /* Build configuration list for PBXProject "DataLayer" */ = {
+		E70672DA1EC01E9B00469A86 /* Build configuration list for PBXProject "DataLayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E78ADCA51EC00C5200163504 /* Debug */,
-				E78ADCA61EC00C5200163504 /* Release */,
+				E70672F21EC01E9B00469A86 /* Debug */,
+				E70672F31EC01E9B00469A86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E78ADCA71EC00C5200163504 /* Build configuration list for PBXNativeTarget "DataLayer" */ = {
+		E70672F41EC01E9B00469A86 /* Build configuration list for PBXNativeTarget "DataLayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E78ADCA81EC00C5200163504 /* Debug */,
-				E78ADCA91EC00C5200163504 /* Release */,
+				E70672F51EC01E9B00469A86 /* Debug */,
+				E70672F61EC01E9B00469A86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		E78ADCAA1EC00C5200163504 /* Build configuration list for PBXNativeTarget "DataLayerTests" */ = {
+		E70672F71EC01E9B00469A86 /* Build configuration list for PBXNativeTarget "DataLayerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E78ADCAB1EC00C5200163504 /* Debug */,
-				E78ADCAC1EC00C5200163504 /* Release */,
+				E70672F81EC01E9B00469A86 /* Debug */,
+				E70672F91EC01E9B00469A86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E78ADC8A1EC00C5100163504 /* Project object */;
+	rootObject = E70672D71EC01E9B00469A86 /* Project object */;
 }
