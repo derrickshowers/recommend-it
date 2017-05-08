@@ -25,6 +25,7 @@ before_install:
   - gem install cocoapods
 install:
   - pod install --repo-update
+  - pod install --project-directory=DataLayer
 before_script:
   - wget -O ./Recommend-It/APIKeys.plist $API_KEYS_PATH
   - ./CI/add-key.sh
