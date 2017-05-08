@@ -31,6 +31,7 @@ before_script:
   - ./CI/update-bundle.sh
 script:
   - travis_retry xcodebuild test -workspace Recommend-It.xcworkspace -scheme Recommend-It -destination "platform=iOS Simulator,name=iPhone 7"
+  - travis_retry xcodebuild test -workspace DataLayer/DataLayer.xcworkspace -scheme DataLayer -destination "platform=iOS Simulator,name=iPhone 7"
 after_script:
   - ./CI/sign-and-upload.sh
   - ./CI/remove-key.sh
