@@ -3,6 +3,43 @@ PODS:
   - ConsistencyManager (4.0.0)
   - DataLayer (0.0.1):
     - Alamofire (~> 4.0.0)
+  - LayoutTest/Swift (3.0.0):
+    - LayoutTest/SwiftSubspec
+    - LayoutTest/TestCase
+    - LayoutTestBase (= 3.0.0)
+    - LayoutTestBase/Autolayout
+    - LayoutTestBase/Catalog
+    - LayoutTestBase/Config
+    - LayoutTestBase/Core
+    - LayoutTestBase/UIViewHelpers
+  - LayoutTest/SwiftSubspec (3.0.0):
+    - LayoutTest/TestCase
+    - LayoutTestBase (= 3.0.0)
+    - LayoutTestBase/Swift
+  - LayoutTest/TestCase (3.0.0):
+    - LayoutTestBase (= 3.0.0)
+    - LayoutTestBase/Config
+    - LayoutTestBase/Core
+  - LayoutTestBase (3.0.0):
+    - LayoutTestBase/Autolayout (= 3.0.0)
+    - LayoutTestBase/Catalog (= 3.0.0)
+    - LayoutTestBase/Config (= 3.0.0)
+    - LayoutTestBase/Core (= 3.0.0)
+    - LayoutTestBase/UIViewHelpers (= 3.0.0)
+  - LayoutTestBase/Autolayout (3.0.0)
+  - LayoutTestBase/Catalog (3.0.0):
+    - LayoutTestBase/Core
+  - LayoutTestBase/Config (3.0.0)
+  - LayoutTestBase/Core (3.0.0):
+    - LayoutTestBase/Config
+  - LayoutTestBase/Swift (3.0.0):
+    - LayoutTestBase/Autolayout
+    - LayoutTestBase/Catalog
+    - LayoutTestBase/Config
+    - LayoutTestBase/Core
+    - LayoutTestBase/UIViewHelpers
+  - LayoutTestBase/UIViewHelpers (3.0.0):
+    - LayoutTestBase/Config
   - RocketData (4.0.1):
     - ConsistencyManager (~> 4.0.0)
   - SDWebImage (3.8.2):
@@ -13,6 +50,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.0.0)
   - DataLayer (from `DataLayer`)
+  - LayoutTest/Swift (from `https://github.com/mpdifran/LayoutTest-iOS.git`, branch `castToUIView`)
   - RocketData
   - SDWebImage (~> 3.8)
   - UITextView+Placeholder
@@ -20,15 +58,25 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   DataLayer:
     :path: DataLayer
+  LayoutTest:
+    :branch: castToUIView
+    :git: https://github.com/mpdifran/LayoutTest-iOS.git
+
+CHECKOUT OPTIONS:
+  LayoutTest:
+    :commit: 37e02f52959a56cc5737b7f51dd2e32954adf082
+    :git: https://github.com/mpdifran/LayoutTest-iOS.git
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   ConsistencyManager: 323ee466a5c933973529dfa5baa5cbc238633a67
   DataLayer: 3b7dddddd80fdcfa1b75f8734f6cc5f32c7a99ef
+  LayoutTest: b58c9a953aa9bb92603625ae0d8409fa57030600
+  LayoutTestBase: d21c075ef8c058299bd509eef3b278988b8d24c1
   RocketData: a661f6e75dd8741dbe95856ca84f5e16ab3b377e
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: aa2e9d0a4194f98fb162176197017b3fa5f9eb6c
+PODFILE CHECKSUM: a374dd5aec4e9df9ecd06e8b801d3fe752a23604
 
 COCOAPODS: 1.1.1
