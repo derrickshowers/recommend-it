@@ -57,6 +57,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYu-4e-OVV">
                                         <rect key="frame" x="125.5" y="0.0" width="125.5" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" label="Open in Yelp"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <state key="normal" title="Yelp">
                                             <color key="titleColor" red="0.31063047049999998" green="0.43534708020000001" blue="0.58472490310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -68,6 +69,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMc-kX-B2A">
                                         <rect key="frame" x="0.0" y="0.0" width="125.5" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" label="Archive"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <state key="normal" title="Archive">
                                             <color key="titleColor" red="0.31063047049999998" green="0.43534708020000001" blue="0.58472490310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -78,6 +80,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4I-a6-TCw">
                                         <rect key="frame" x="251" y="0.0" width="125" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" label="Remove"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <state key="normal" title="Remove">
                                             <color key="titleColor" red="0.31063047049999998" green="0.43534708020000001" blue="0.58472490310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -107,6 +110,7 @@
                             <button hidden="YES" opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1H-Ce-afd">
                                 <rect key="frame" x="0.0" y="0.0" width="379" height="175"/>
                                 <color key="backgroundColor" red="0.85175073150000002" green="0.0" blue="0.094276867809999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" label="Confirm remove"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                 <state key="normal" title="Tap to confirm">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -118,6 +122,7 @@
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2G-tm-UbS">
                                 <rect key="frame" x="166" y="136" width="47" height="29"/>
+                                <accessibility key="accessibilityConfiguration" label="Cancel remove"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
