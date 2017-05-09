@@ -8,3 +8,7 @@ target 'Recommend-It' do
   pod 'SDWebImage', '~> 3.8'
   pod 'DataLayer', :path => 'DataLayer'
 end
+
+target 'Recommend-ItTests' do
+  pod 'LayoutTest/Swift', :git => 'https://github.com/mpdifran/LayoutTest-iOS.git', :branch => 'castToUIView'
+end
