@@ -18,6 +18,12 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         static let recommendationCell = "RecommendationCell"
     }
 
+    private enum Layout {
+        static let titleBarHeight: CGFloat = 134
+        static let titleBarBackgroundColor = UIColor(red: 97/255, green: 131/255, blue: 166/255, alpha: 1.0)
+        static let statusBarHeight: CGFloat = 64
+    }
+
     // MARK: - Properties
     // MARK: IBOutlet
     @IBOutlet weak var feedCollectionView: UICollectionView!
@@ -94,14 +100,14 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             if let initialEmptyView = initialEmptyView {
                 initialEmptyView.frame = CGRect(x: 10.0, y: 140.0, width: view.bounds.width - 20.0, height: 375.0)
-                initialEmptyView.onTapAddRecommendation = { sender in
-                    self.present(self.getAddEditViewController(), animated: true, completion: nil)
+                initialEmptyView.onTapAddRecommendation = { [weak self] (sender) in
+                    SearchViewController.present(from: self)
                 }
                 view.addSubview(initialEmptyView)
             }
         }
 
-        if self.feedCollectionView.bounds.origin.y < 134.0 {
+        if self.feedCollectionView.bounds.origin.y < Layout.titleBarHeight {
             navigationController?.navigationBar.makeLight()
         } else {
             navigationController?.navigationBar.makeDefaultBlue()
@@ -126,27 +132,15 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        return feedCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ReuseIdentifier.header, for: indexPath) as? FeedHeaderReusableView ?? UICollectionReusableView()
+
+        feedHeaderView = feedCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ReuseIdentifier.header, for: indexPath) as? FeedHeaderReusableView
+        return feedHeaderView ?? UICollectionReusableView()
     }
 
     // MARK: - UIScrollViewDelegate
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset.y + 64.0
-
-        // first we need to check if the view is loaded, otherwise this will be applied to stacked views
-        if self.isViewLoaded && view.window != nil {
-            if let feedHeaderView = feedHeaderView {
-                if offset < 134.0 {
-                    feedHeaderView.backgroundColor = UIColor(red: 97/255, green: 131/255, blue: 166/255, alpha: 1.0)
-                    feedHeaderView.feedHeaderImage.alpha = 0.8 - (offset / 134.0)
-                    navigationController?.navigationBar.makeLight()
-                } else {
-                    feedHeaderView.backgroundColor = UIColor.clear
-                    navigationController?.navigationBar.makeDefaultBlue()
-                }
-            }
-        }
+        animateHeader(contentOffset: scrollView.contentOffset)
     }
 
     // MARK: - Private helpers
@@ -196,14 +190,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return cell
     }
 
-    // Gets the AddEditViewController from the AddEdit.storyboard
-    private func getAddEditViewController() -> AddEditViewController {
-
-        let sb = UIStoryboard(name: "AddEdit", bundle: nil)
-        let aevc = sb.instantiateInitialViewController() as! AddEditViewController
-        return aevc
-    }
-
     private func showMigrationMessageIfNecessary() {
 
         let migrationStoryboard = UIStoryboard(name: "MigrationViewController", bundle: nil)
@@ -214,6 +200,24 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
 
         self.present(migrationViewController, animated: true, completion: nil)
+    }
+
+    private func animateHeader(contentOffset: CGPoint) {
+
+        guard let feedHeaderView = feedHeaderView else {
+            return
+        }
+
+        let yPosition = contentOffset.y + Layout.statusBarHeight
+
+        if yPosition < Layout.titleBarHeight {
+            feedHeaderView.backgroundColor = Layout.titleBarBackgroundColor
+            feedHeaderView.feedHeaderImage.alpha = 0.8 - (yPosition / Layout.titleBarHeight)
+            navigationController?.navigationBar.makeLight()
+        } else {
+            feedHeaderView.backgroundColor = UIColor.clear
+            navigationController?.navigationBar.makeDefaultBlue()
+        }
     }
 
     // MARK: Actions
@@ -266,7 +270,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - IBActions
 
     @IBAction func addPressed(_ sender: AnyObject) {
-        present(getAddEditViewController(), animated: true, completion: nil)
+        SearchViewController.present(from: self)
     }
 
 }
