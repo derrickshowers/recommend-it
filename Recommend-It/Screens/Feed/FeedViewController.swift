@@ -101,7 +101,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
             if let initialEmptyView = initialEmptyView {
                 initialEmptyView.frame = CGRect(x: 10.0, y: 140.0, width: view.bounds.width - 20.0, height: 375.0)
                 initialEmptyView.onTapAddRecommendation = { [weak self] (sender) in
-                    AddEditViewController.present(from: self)
+                    SearchViewController.present(from: self)
                 }
                 view.addSubview(initialEmptyView)
             }
@@ -270,7 +270,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - IBActions
 
     @IBAction func addPressed(_ sender: AnyObject) {
-        AddEditViewController.present(from: self)
+        SearchViewController.present(from: self)
     }
 
 }

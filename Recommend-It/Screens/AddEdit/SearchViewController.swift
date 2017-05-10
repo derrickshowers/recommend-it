@@ -21,8 +21,8 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
     var results = [YelpBiz]()
     var debouncedResults: (() -> ())!
     var currentSearchText: String?
-    var addEditViewController: AddEditViewController?
     let locationManager = CLLocationManager()
+    var presenter: UIViewController?
 
     // MARK: - Lifecycle
 
@@ -77,8 +77,8 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
     // MARK: UITableViewDelegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        addEditViewController?.selectedYelpBiz = results[(indexPath as NSIndexPath).row]
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
+        AddEditViewController.present(from: presenter, selectedYelpBiz: results[(indexPath as NSIndexPath).row])
     }
 
     // MARK: - UISearchBarDelegate
@@ -107,8 +107,6 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
                     self.setLocation()
                     self.locationManager.stopUpdatingLocation()
                 }
-            } else {
-                print(error)
             }
         })
     }
@@ -151,5 +149,17 @@ class SearchViewController: UITableViewController, UISearchBarDelegate, UITextFi
 
     @IBAction func changeButtonPressed(_ sender: AnyObject) {
         locationTextField.becomeFirstResponder()
+    }
+
+    // MARK: - Presentation
+
+    class func present(from viewController: UIViewController?) {
+
+        guard let searchViewController = UIStoryboard(name: "AddEdit", bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else {
+            return
+        }
+
+        searchViewController.presenter = viewController
+        viewController?.present(searchViewController, animated: true, completion: nil)
     }
 }

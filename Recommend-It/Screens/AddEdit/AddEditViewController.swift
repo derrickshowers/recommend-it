@@ -39,19 +39,7 @@ class AddEditViewController: UIViewController, DataProviderErrorDelegate {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-
-        // Let's show the search screen prior to adding details (perhaps we should swap
-        // the order on the storyboard eventually...)
-        if selectedYelpBiz == nil {
-            presentSearchScreen()
-        }
-
         configure()
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let svc = segue.destination as! SearchViewController
-        svc.addEditViewController = self
     }
 
     // MARK: - DataProviderErrorDelegate
@@ -78,16 +66,6 @@ class AddEditViewController: UIViewController, DataProviderErrorDelegate {
         notesTextView.placeholder = "What do you know about this place?"
         notesTextView.placeholderColor = UIColor.lightGray
         notesTextView.becomeFirstResponder()
-    }
-
-    private func presentSearchScreen() {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "AddEdit", bundle:nil)
-        let searchViewController = storyBoard.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController
-
-        if let searchViewController = searchViewController {
-            searchViewController.addEditViewController = self
-            present(searchViewController, animated:true, completion:nil)
-        }
     }
 
     // MARK: - IBActions
@@ -131,12 +109,13 @@ class AddEditViewController: UIViewController, DataProviderErrorDelegate {
 
     // MARK: - Presentation
 
-    class func present(from viewController: UIViewController?) {
+    class func present(from viewController: UIViewController?, selectedYelpBiz: YelpBiz, completion: (() -> Void)? = nil) {
 
         guard let addEditViewController = UIStoryboard(name: "AddEdit", bundle: nil).instantiateInitialViewController() as? AddEditViewController else {
             return
         }
 
-        viewController?.present(addEditViewController, animated: true, completion: nil)
+        addEditViewController.selectedYelpBiz = selectedYelpBiz
+        viewController?.present(addEditViewController, animated: true, completion: completion)
     }
 }
