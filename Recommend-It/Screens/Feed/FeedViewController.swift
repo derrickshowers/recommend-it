@@ -250,6 +250,8 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return
         }
 
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
+
         DataProvider<Recommendation>().deleteRecord(recordId: recordId, privateDB: false)
         recommendations = recommendations.filter { $0.yelpId != recommendation.yelpId }
         updateScreen()
@@ -270,6 +272,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - IBActions
 
     @IBAction func addPressed(_ sender: AnyObject) {
+        UISelectionFeedbackGenerator().selectionChanged()
         SearchViewController.present(from: self)
     }
 

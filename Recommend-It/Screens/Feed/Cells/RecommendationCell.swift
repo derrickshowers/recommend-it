@@ -49,6 +49,8 @@ class RecommendationCell: UICollectionViewCell {
         confirmRemoveButton.isHidden = false
         cancelRemoveButton.isHidden = false
 
+        UINotificationFeedbackGenerator().notificationOccurred(.warning)
+
         UIView.animate(withDuration: 0.3, animations: {
             [weak self] () -> Void in
 
