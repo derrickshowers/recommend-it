@@ -103,6 +103,7 @@ class AddEditViewController: UIViewController, DataProviderErrorDelegate {
 
         recommendationsDataProvider.saveData(model: recommendation, privateDB: false) { (savedRecommendation: Recommendation) in
             NotificationCenter.default.post(name: Notification.Name("newRecommendationSaved"), object: nil, userInfo: ["recommendation": savedRecommendation])
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
             self.dismiss(animated: true, completion: nil)
         }
     }
