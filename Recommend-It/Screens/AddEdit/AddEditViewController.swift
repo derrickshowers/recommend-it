@@ -127,6 +127,16 @@ class AddEditViewController: UIViewController, DataProviderErrorDelegate {
             NotificationCenter.default.post(name: Notification.Name("newRecommendationSaved"), object: nil, userInfo: ["recommendation": savedRecommendation])
             self.dismiss(animated: true, completion: nil)
         }
+    }
 
+    // MARK: - Presentation
+
+    class func present(from viewController: UIViewController?) {
+
+        guard let addEditViewController = UIStoryboard(name: "AddEdit", bundle: nil).instantiateInitialViewController() as? AddEditViewController else {
+            return
+        }
+
+        viewController?.present(addEditViewController, animated: true, completion: nil)
     }
 }
