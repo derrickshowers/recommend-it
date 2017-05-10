@@ -12,7 +12,7 @@ import LayoutTest
 
 extension RecommendationCell: ViewProvider {
 
-    public class func dataSpecForTest() -> [AnyHashable : Any] {
+    public static func dataSpecForTest() -> [AnyHashable : Any] {
         return [
             "title": StringValues(),
             "location": StringValues(),
@@ -20,14 +20,14 @@ extension RecommendationCell: ViewProvider {
         ]
     }
 
-    public class func sizesForView() -> [ViewSize] {
+    public static func sizesForView() -> [ViewSize] {
         return [
             ViewSize(width: LYTiPhone4Width),
             ViewSize(width: LYTiPhone6PlusWidth)
         ]
     }
 
-    public class func view(forData data: [AnyHashable : Any], reuse reuseView: UIView?, size: ViewSize?, context: AutoreleasingUnsafeMutablePointer<AnyObject?>?) -> UIView {
+    public static func view(forData data: [AnyHashable : Any], reuse reuseView: UIView?, size: ViewSize?, context: AutoreleasingUnsafeMutablePointer<AnyObject?>?) -> UIView {
 
         let cell: RecommendationCell = {
             if let reuseView = reuseView as? RecommendationCell {
@@ -42,5 +42,21 @@ extension RecommendationCell: ViewProvider {
         cell.notesLabel.text = data["notes"] as? String
 
         return cell
+    }
+
+    public static func adjustViewSize(_ view: UIView, data: [AnyHashable : Any], size: ViewSize?, context: Any?) {
+
+        guard let cell = view as? RecommendationCell,
+            let width = size?.width else {
+            return
+        }
+
+        // Set width (same logic as collection view setup)
+        let widthConstraint = cell.containerView.widthAnchor.constraint(equalToConstant: width - 20.0)
+        widthConstraint.priority = 999.0
+        widthConstraint.isActive = true
+
+        // Set height from autolayout
+        cell.height = cell.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
     }
 }
